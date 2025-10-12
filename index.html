@@ -5,121 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ПУЛЬСА-ДЕ-НУРА</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
             font-family: 'Times New Roman', serif;
-            background: #400020; /* Темно-бордовый фон */
-            color: #40E0D0; /* Бирюзовый текст */
-            line-height: 1.6;
+            background: #400020; 
+            color: #40E0D0;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(80, 10, 40, 0.5) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(70, 10, 50, 0.5) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, rgba(60, 5, 35, 0.6) 0%, transparent 50%);
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(100, 20, 60, 0.2) 2px,
-                    rgba(100, 20, 60, 0.2) 4px
-                );
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .container {
-            max-width: 800px;
             text-align: center;
             position: relative;
-            z-index: 1;
+            overflow: hidden;
         }
-        
-        .title {
-            font-size: 2.2rem;
+        .container { max-width: 800px; position: relative; z-index: 2; }
+        .title { 
+            font-size: 1.8rem;
             margin-bottom: 2rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: #40E0D0; /* Бирюзовый */
             text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
-            position: relative;
-            padding-bottom: 1rem;
+            line-height: 1.4;
         }
-        
-        .title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 25%;
-            width: 50%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #40E0D0, transparent);
-        }
-        
-        .lightning {
+        .lightning { 
             font-size: 1.8rem;
-            letter-spacing: 5px;
             margin: 1.5rem 0;
-            color: #40E0D0; /* Бирюзовый */
-            text-shadow: 0 0 8px rgba(64, 224, 208, 0.7);
             animation: pulse 3s infinite alternate;
         }
-        
-        .text {
-            font-size: 1.2rem;
+        .text { 
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
-            text-align: center;
-            color: #40E0D0; /* Бирюзовый */
-            text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
+            line-height: 1.6;
         }
-        
-        .highlight {
-            color: #4169E1; /* Синий для выделенного текста */
+        .highlight { 
+            color: #4169E1;
             font-weight: bold;
             text-shadow: 0 0 8px rgba(65, 105, 225, 0.6);
         }
-        
         .final-line {
             font-size: 1.5rem;
             margin-top: 2.5rem;
             font-weight: bold;
-            color: #40E0D0; /* Бирюзовый */
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
-            position: relative;
-            padding-top: 1rem;
         }
         
-        .final-line::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 30%;
-            width: 40%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #40E0D0, transparent);
+        @keyframes pulse {
+            0% { opacity: 0.7; text-shadow: 0 0 5px rgba(64, 224, 208, 0.5); }
+            100% { opacity: 1; text-shadow: 0 0 15px rgba(64, 224, 208, 0.9); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
         
         .floating-symbols {
@@ -129,68 +70,26 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
         
         .symbol {
             position: absolute;
-            color: rgba(64, 224, 208, 0.15); /* Бирюзовые символы */
-            font-size: 2rem;
-            animation: float 20s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                opacity: 0.7;
-                text-shadow: 0 0 8px rgba(64, 224, 208, 0.7);
-            }
-            100% {
-                opacity: 1;
-                text-shadow: 0 0 15px rgba(64, 224, 208, 0.9);
-            }
-        }
-        
-        .fire-effect {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(transparent, rgba(100, 20, 60, 0.3));
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .title {
-                font-size: 1.8rem;
-            }
-            
-            .text {
-                font-size: 1.1rem;
-            }
-            
-            .final-line {
-                font-size: 1.3rem;
-            }
+            color: rgba(64, 224, 208, 0.2);
+            font-size: 1.5rem;
+            animation: float 20s linear infinite;
         }
     </style>
 </head>
 <body>
     <div class="floating-symbols" id="symbols"></div>
-    <div class="fire-effect"></div>
     
     <div class="container">
-        <h1 class="title">АССА, Непостижимая Безпредельность, ЕСМЬ СМЕРТЬ всех смертей и ПОСВЯТИТЕЛЬНИЦА всех посвятителей</h1>
+        <h1 class="title">
+            АССА, Непостижимая Безпредельность,<br>
+            ЕСМЬ СМЕРТЬ всех смертей<br>
+            и ПОСВЯТИТЕЛЬНИЦА всех посвятителей
+        </h1>
         
         <div class="lightning">⚡️⚡️⚡️</div>
         
@@ -210,34 +109,18 @@
     </div>
 
     <script>
-        // Создаем плавающие символы
         const symbolsContainer = document.getElementById('symbols');
-        const symbols = ['✧', '✦', '❖', '♰', '⚚', '☾', '☽', '⚕', '⚔', '🜁', '🜂', '🜃', '🜄'];
+        const symbols = ['✧', '✦', '❖', '♰', '⚚', '☾', '☽'];
         
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 12; i++) {
             const symbol = document.createElement('div');
             symbol.className = 'symbol';
             symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
             symbol.style.left = Math.random() * 100 + 'vw';
-            symbol.style.animationDuration = (15 + Math.random() * 20) + 's';
-            symbol.style.animationDelay = Math.random() * 5 + 's';
-            symbol.style.fontSize = (1 + Math.random() * 2) + 'rem';
+            symbol.style.animationDuration = (15 + Math.random() * 15) + 's';
+            symbol.style.animationDelay = Math.random() * 10 + 's';
             symbolsContainer.appendChild(symbol);
         }
-        
-        // Добавляем мерцающий эффект для текста
-        const highlights = document.querySelectorAll('.highlight');
-        setInterval(() => {
-            highlights.forEach(el => {
-                el.style.textShadow = `0 0 ${5 + Math.random() * 5}px rgba(65, 105, 225, ${0.4 + Math.random() * 0.4})`;
-            });
-            
-            // Также добавляем мерцание для основного текста
-            const texts = document.querySelectorAll('.text, .title, .final-line');
-            texts.forEach(el => {
-                el.style.textShadow = `0 0 ${3 + Math.random() * 4}px rgba(64, 224, 208, ${0.3 + Math.random() * 0.3})`;
-            });
-        }, 1000);
     </script>
 </body>
 </html>
