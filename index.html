@@ -7,18 +7,18 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-    	font-family: 'Times New Roman', serif;
-  	  background: #400010;
-  	  color: #40E0D0;
-  	  min-height: 100vh;
-  	  display: flex;
-  	  align-items: center;
-  	  justify-content: center;
-	    padding: 2rem;
- 	   text-align: center;
- 	   position: relative;
- 	   overflow-x: hidden;
-	}
+            font-family: 'Times New Roman', serif;
+            background: #400010;
+            color: #40E0D0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+        }
         .container { 
             max-width: 800px; 
             position: relative; 
@@ -29,7 +29,7 @@
         }
         .title { 
             font-size: 1.8rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
@@ -48,7 +48,7 @@
         }
         .lightning { 
             font-size: 1.8rem;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
             animation: pulse 3s infinite alternate;
         }
         .text { 
@@ -82,6 +82,13 @@
             width: 40%;
             height: 1px;
             background: linear-gradient(90deg, transparent, #40E0D0, transparent);
+        }
+        .symbol-image {
+            width: 100%;
+            height: auto;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
         }
         
         @keyframes pulse {
@@ -128,6 +135,9 @@
                 ЕСМЬ СМЕРТЬ всех смертей<br>
                 и ПОСВЯТИТЕЛЬНИЦА всех посвятителей
             </h1>
+            
+            <!-- Обновленная картинка с нормальным качеством -->
+            <img src="https://i.postimg.cc/Sx1HrHsW/photo-2025-10-12-17-30-25.jpg" alt="Сакральный символ" class="symbol-image">
             
             <div class="lightning">⚡️⚡️⚡️</div>
             
@@ -192,14 +202,12 @@
         const symbolsContainer = document.getElementById('symbols');
         const symbols = ['✧', '✦', '❖', '♰', '⚚', '☾', '☽', '⚕', '⚔', '🜁', '🜂', '🜃', '🜄'];
         
-        // Увеличиваем количество символов до 40
         for (let i = 0; i < 40; i++) {
             const symbol = document.createElement('div');
             symbol.className = 'symbol';
             symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
             symbol.style.left = Math.random() * 100 + 'vw';
             symbol.style.animationDuration = (15 + Math.random() * 20) + 's';
-            // Равномерно распределяем задержки от 0 до 30 секунд
             symbol.style.animationDelay = (i * 0.75) + 's';
             symbol.style.fontSize = (1 + Math.random() * 2) + 'rem';
             symbolsContainer.appendChild(symbol);
