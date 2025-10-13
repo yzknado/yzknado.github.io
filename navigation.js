@@ -1,34 +1,3 @@
-// Роутинг для красивых URL
-(function() {
-    const routes = {
-        'new-worldview': 'pages/new-worldview.html',
-        'practice': 'pages/practice.html',
-        'learning': 'pages/learning.html',
-        'joint-actions': 'pages/joint-actions.html', 
-        'videos': 'pages/videos.html',
-        'publications': 'pages/publications.html',
-        'unpublished': 'pages/unpublished.html',
-        'interesting-cases': 'pages/interesting-cases.html',
-        'reviews': 'pages/reviews.html',
-        'contacts': 'pages/contacts.html'
-    };
-
-    const currentPath = window.location.pathname.split('/').pop();
-    
-    // Если это красивый URL (без .html) и файл существует в routes
-    if (routes[currentPath] && !currentPath.includes('.html')) {
-        // Проверяем, существует ли HTML файл
-        fetch(routes[currentPath])
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = routes[currentPath];
-                }
-            })
-            .catch(error => {
-                console.log('Файл не найден');
-            });
-    }
-})();
 
 // Универсальная навигация для всех страниц
 document.addEventListener('DOMContentLoaded', function() {
