@@ -1,17 +1,12 @@
-// Универсальная навигация для всех страниц
+// ПРОСТОЙ И РАБОЧИЙ ВАРИАНТ
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
         sidebar.classList.add('minimal-scroll');
     }
     
-    // Восстанавливаем активную кнопку из localStorage ИЛИ определяем текущую страницу
-    const savedActive = localStorage.getItem('activeNavButton');
-    if (savedActive) {
-        setActiveButton(savedActive);
-    } else {
-        activateCurrentPageButton();
-    }
+    // ВСЕГДА определяем активную кнопку по текущему URL
+    setActiveButtonByCurrentPage();
     
     // Вешаем обработчики на все кнопки
     const navButtons = document.querySelectorAll('.nav-btn');
@@ -20,66 +15,42 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             
             const section = this.getAttribute('data-section');
+            const currentPage = getCurrentPage();
             
-            // Сохраняем активную кнопку в localStorage
-            localStorage.setItem('activeNavButton', section);
+            // Если кликаем на кнопку текущей страницы - прокрутка наверх
+            if (section === currentPage) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
             
-            // Обработка разных разделов
+            // Иначе переход на другую страницу
             switch(section) {
-                case 'main':
-                    if (isMainPage()) {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        setActiveButton('main');
-                    } else {
-                        window.location.href = 'index.html';
-                    }
-                    break;
-                    
-                case 'practice':
-                    window.location.href = 'practice.html';
-                    break;
-                    
-                case 'learning':
-                    window.location.href = 'learning.html';
-                    break;
-                    
-                default:
-                    console.log('Раздел:', section);
+                case 'main': window.location.href = 'index.html'; break;
+                case 'practice': window.location.href = 'practice.html'; break;
+                case 'learning': window.location.href = 'learning.html'; break;
+                default: console.log('Раздел:', section);
             }
         });
     });
 });
 
-// Функция для установки активной кнопки
-function setActiveButton(section) {
+function setActiveButtonByCurrentPage() {
+    const currentPage = getCurrentPage();
     const navButtons = document.querySelectorAll('.nav-btn');
+    
     navButtons.forEach(btn => {
         btn.classList.remove('active');
-        if (btn.getAttribute('data-section') === section) {
+        if (btn.getAttribute('data-section') === currentPage) {
             btn.classList.add('active');
         }
     });
 }
 
-// Функция для автоматической активации кнопки текущей страницы
-function activateCurrentPageButton() {
-    const currentPage = getCurrentPage();
-    setActiveButton(currentPage);
-}
-
-// Проверка на главную страницу
-function isMainPage() {
-    const path = window.location.pathname;
-    const page = path.split('/').pop();
-    return (path === '/' || page === 'index.html' || page === '' || page === 'yzknado.github.io');
-}
-
-// Функция для определения текущей страницы
 function getCurrentPage() {
     const path = window.location.pathname;
     const page = path.split('/').pop();
     
-    if (isMainPage()) return 'main';
+    if (path === '/' || page === 'index.html' || page === '' || page.includes('yzknado')) return 'main';
     if (page === 'practice.html') return 'practice';
     if (page === 'learning.html') return 'learning';
     
