@@ -1,52 +1,74 @@
-// Функция для показа выбранной секции
-function showSection(sectionId) {
-    // Скрыть все секции
-    const sections = document.querySelectorAll('.content-section');
-    sections.forEach(section => {
-        section.classList.remove('active');
-    });
+// Функция для навигации
+function initNavigation() {
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const contentSections = document.querySelectorAll('.content-section');
     
-    // Показать выбранную секцию
-    const activeSection = document.getElementById(sectionId);
-    if (activeSection) {
-        activeSection.classList.add('active');
-        
-        // Прокрутить к секции
-        activeSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-}
-
-// Показываем первую секцию по умолчанию при загрузке
-document.addEventListener('DOMContentLoaded', function() {
-    // Показать первую секцию
-    const firstSection = document.querySelector('.content-section');
-    if (firstSection) {
-        firstSection.classList.add('active');
+    // Создаем секции если их нет
+    if (contentSections.length === 0) {
+        createContentSections();
     }
     
-    // Добавляем обработчики для существующей навигации
-    const navLinks = document.querySelectorAll('.main-nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
+    navButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const sectionId = this.getAttribute('data-section');
             
-            if (targetSection) {
-                // Скрыть все content-section
-                const contentSections = document.querySelectorAll('.content-section');
-                contentSections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Прокрутить к целевой секции
-                targetSection.scrollIntoView({
-                    behavior: 'smooth'
-                });
+            // Убираем активный класс у всех кнопок
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            // Добавляем активный класс текущей кнопке
+            this.classList.add('active');
+            
+            // Скрываем все секции
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Показываем выбранную секцию
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+                activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
+    
+    // Активируем первую кнопку по умолчанию
+    if (navButtons.length > 0) {
+        navButtons[0].classList.add('active');
+    }
+}
+
+// Функция для создания секций контента
+function createContentSections() {
+    const sections = [
+        { id: 'new-worldview', title: 'НОВОЕ ОБЪЯСНЕНИЕ МИРА', content: 'Содержимое раздела мировоззренческой теории...' },
+        { id: 'practice', title: 'Практика', content: 'Содержимое раздела практики...' },
+        { id: 'learning', title: 'Обучение', content: 'Содержимое раздела обучения...' },
+        { id: 'joint-actions', title: 'Совместные акции', content: 'Содержимое раздела совместных акций...' },
+        { id: 'broadcasts', title: 'Трансляции', content: 'Содержимое раздела трансляций...' },
+        { id: 'video', title: 'Видеотека', content: 'Содержимое видеотеки...' },
+        { id: 'interesting-cases', title: 'Интересные случаи из жизни', content: 'Содержимое раздела интересных случаев...' },
+        { id: 'reviews', title: 'Отзывы', content: 'Содержимое раздела отзывов...' },
+        { id: 'contacts', title: 'Контакты', content: 'Содержимое раздела контактов...' },
+        { id: 'cooperation', title: 'Сотрудничество', content: 'Содержимое раздела сотрудничества...' }
+    ];
+    
+    const container = document.querySelector('.container');
+    
+    sections.forEach(section => {
+        const sectionElement = document.createElement('div');
+        sectionElement.className = 'content-section section';
+        sectionElement.id = section.id;
+        
+        sectionElement.innerHTML = `
+            <h1 class="title">${section.title}</h1>
+            <p class="text">${section.content}</p>
+        `;
+        
+        container.appendChild(sectionElement);
+    });
+}
+
+// Инициализируем навигацию после загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    initNavigation();
 });
