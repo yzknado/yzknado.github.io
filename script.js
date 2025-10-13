@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM загружен'); // Отладка
+    
     // Создание плавающих символов
     const symbolsContainer = document.querySelector('.floating-symbols');
     if (symbolsContainer) {
+        console.log('Контейнер символов найден');
         const symbols = ['✧', '✦', '❖', '♰', '⚚', '☾', '☽', '⚕', '⚔', '🜁', '🜂', '🜃', '🜄'];
         
         for (let i = 0; i < 40; i++) {
@@ -18,11 +21,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Кнопка открытия попапа
     const joinButton = document.querySelector('.join-button');
+    console.log('Найдена кнопка:', joinButton); // Отладка
+    
     if (joinButton) {
-        joinButton.addEventListener('click', showPopup);
+        joinButton.addEventListener('click', function() {
+            console.log('Кнопка нажата'); // Отладка
+            showPopup();
+        });
+    } else {
+        console.log('Кнопка не найдена!'); // Отладка
     }
     
-    // Закрытие по клику вне попапа (делегирование)
+    // Закрытие по клику вне попапа
     document.addEventListener('click', function(e) {
         const popup = document.getElementById('paymentPopup');
         if (popup && popup.style.display === 'flex' && e.target === popup) {
@@ -40,9 +50,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function showPopup() {
+    console.log('showPopup вызвана'); // Отладка
     const popup = document.getElementById('paymentPopup');
     if (popup) {
+        console.log('Попап найден, показываем');
         popup.style.display = 'flex';
+    } else {
+        console.log('Попап не найден!');
     }
 }
 
