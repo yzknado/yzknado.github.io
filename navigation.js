@@ -64,6 +64,7 @@ function activateCurrentPageButton() {
 function getCurrentPage() {
     const path = window.location.pathname;
     const page = path.split('/').pop();
+    console.log('Current page:', page); // Для диагностики
     
     if (path === '/' || page === 'index.html' || page === '' || path.includes('yzknado')) return 'main';
     if (page === 'new-worldview.html') return 'new-worldview';
