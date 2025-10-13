@@ -2,6 +2,9 @@
 function initNavigation() {
     const navButtons = document.querySelectorAll('.nav-btn');
     
+    // Создаем секции если их нет
+    createContentSections();
+    
     navButtons.forEach(button => {
         button.addEventListener('click', function() {
             const sectionId = this.getAttribute('data-section');
@@ -57,27 +60,69 @@ function createContentSections() {
             title: 'Практика', 
             content: 'Практические методы и техники для применения знаний в повседневной жизни.' 
         },
-        // ... остальные секции по аналогии
+        { 
+            id: 'learning', 
+            title: 'Обучение', 
+            content: 'Образовательные программы и курсы для глубокого погружения в тему.' 
+        },
+        { 
+            id: 'joint-actions', 
+            title: 'Совместные акции', 
+            content: 'Коллективные мероприятия и акции для единомышленников.' 
+        },
+        { 
+            id: 'broadcasts', 
+            title: 'Трансляции', 
+            content: 'Прямые эфиры и онлайн-трансляции важных событий.' 
+        },
+        { 
+            id: 'video', 
+            title: 'Видеотека', 
+            content: 'Архив видео материалов и записей прошедших мероприятий.' 
+        },
+        { 
+            id: 'interesting-cases', 
+            title: 'Интересные случаи из жизни', 
+            content: 'Реальные истории и случаи из практики.' 
+        },
+        { 
+            id: 'reviews', 
+            title: 'Отзывы', 
+            content: 'Отзывы участников и последователей.' 
+        },
+        { 
+            id: 'contacts', 
+            title: 'Контакты', 
+            content: 'Способы связи и координаты для обратной связи.' 
+        },
+        { 
+            id: 'cooperation', 
+            title: 'Сотрудничество', 
+            content: 'Возможности для совместной работы и партнерства.' 
+        }
     ];
     
     const container = document.querySelector('.container');
     
     sectionsConfig.forEach(section => {
-        const sectionElement = document.createElement('div');
-        sectionElement.className = 'content-section section';
-        sectionElement.id = section.id;
-        
-        sectionElement.innerHTML = `
-            <h1 class="title">${section.title}</h1>
-            <div class="text">${section.content}</div>
-        `;
-        
-        container.appendChild(sectionElement);
+        // Проверяем, существует ли уже секция
+        if (!document.getElementById(section.id)) {
+            const sectionElement = document.createElement('div');
+            sectionElement.className = 'content-section section';
+            sectionElement.id = section.id;
+            
+            sectionElement.innerHTML = `
+                <h1 class="title">${section.title}</h1>
+                <div class="text">${section.content}</div>
+            `;
+            
+            // Добавляем в начало контейнера
+            container.insertBefore(sectionElement, container.firstChild);
+        }
     });
 }
 
 // Инициализация после загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
-    createContentSections();
     initNavigation();
 });
