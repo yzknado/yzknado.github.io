@@ -9,7 +9,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainButton = document.querySelector('.nav-btn[data-section="main"]');
     if (mainButton) {
         mainButton.classList.add('active');
+        
+        // Добавляем обработчик клика на кнопку "Главная"
+        mainButton.addEventListener('click', showMainContent);
     }
+    
+    // Вешаем обработчики на все остальные кнопки
+    const otherButtons = document.querySelectorAll('.nav-btn:not([data-section="main"])');
+    otherButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Убираем активный класс у всех кнопок
+            const allButtons = document.querySelectorAll('.nav-btn');
+            allButtons.forEach(btn => btn.classList.remove('active'));
+            // Добавляем активный класс текущей кнопке
+            this.classList.add('active');
+        });
+    });
     
     // Инициализируем навигацию если она есть
     if (typeof initNavigation === 'function') {
@@ -18,10 +33,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function showMainContent(event) {
-    // Добавляем параметр event
     event.preventDefault();
     
-    // Скрываем все секции контента
+    // Убираем активный класс у всех кнопок
+    const allButtons = document.querySelectorAll('.nav-btn');
+    allButtons.forEach(btn => btn.classList.remove('active'));
+    
+    // Добавляем активный класс текущей кнопке
+    event.currentTarget.classList.add('active');
+    
+    // Прокручиваем к началу страницы
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
+    // Скрываем все секции контента (если они есть)
     const allSections = document.querySelectorAll('.content-section');
     allSections.forEach(section => {
         section.classList.remove('active');
@@ -33,19 +60,6 @@ function showMainContent(event) {
     sections.forEach(section => {
         section.style.display = 'block';
     });
-    
-    // Прокручиваем к началу страницы
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-    
-    // Обновляем активную кнопку
-    const navButtons = document.querySelectorAll('.nav-btn');
-    navButtons.forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.currentTarget.classList.add('active'); // Используем currentTarget вместо target
 }
 
 
