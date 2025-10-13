@@ -59,8 +59,16 @@ function getCurrentPage() {
     const page = path.split('/').pop();
     
     if (path === '/' || page === 'index.html' || page === '' || path.includes('yzknado')) return 'main';
+    if (page === 'new-worldview.html') return 'new-worldview';
     if (page === 'practice.html') return 'practice';
     if (page === 'learning.html') return 'learning';
+    if (page === 'joint-actions.html') return 'joint-actions';
+    if (page === 'videos.html') return 'videos';
+    if (page === 'publications.html') return 'publications';
+    if (page === 'unpublished.html') return 'unpublished';
+    if (page === 'interesting-cases.html') return 'interesting-cases';
+    if (page === 'reviews.html') return 'reviews';
+    if (page === 'contacts.html') return 'contacts';
     
     return 'main';
 }
