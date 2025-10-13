@@ -21,29 +21,22 @@ document.addEventListener('DOMContentLoaded', function() {
             // Обработка разных разделов
             switch(section) {
                 case 'main':
-                    // Для главной - прокрутка наверх
                     if (window.location.pathname === '/' || window.location.pathname.includes('index')) {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     } else {
-                        // Если на другой странице - переход на главную
                         window.location.href = '/';
                     }
                     break;
                     
                 case 'practice':
-                    // Для практики - переход на страницу практики
-                    window.location.href = '/practice.html';
+                    window.location.href = 'practice.html';
                     break;
                     
                 case 'learning':
-                    // Для обучения - переход на страницу обучения
-                    window.location.href = '/learning.html';
+                    window.location.href = 'learning.html';
                     break;
                     
-                // Добавьте другие страницы по аналогии
-                    
                 default:
-                    // Для остальных - просто меняем активную кнопку
                     console.log('Раздел:', section);
             }
         });
@@ -71,11 +64,18 @@ function activateCurrentPageButton() {
 // Функция для определения текущей страницы
 function getCurrentPage() {
     const path = window.location.pathname;
+    const page = path.split('/').pop(); // Получаем имя файла
     
-    if (path === '/' || path.includes('index')) return 'main';
-    if (path.includes('practice')) return 'practice';
-    if (path.includes('learning')) return 'learning';
-    // Добавьте другие страницы
+    if (path === '/' || path.includes('index') || page === '' || page === 'yzknado.github.io') {
+        return 'main';
+    }
+    if (page.includes('practice')) return 'practice';
+    if (page.includes('learning')) return 'learning';
     
     return 'main'; // По умолчанию главная
 }
+
+// Слушаем событие возврата назад/вперед в истории
+window.addEventListener('popstate', function() {
+    activateCurrentPageButton();
+});
