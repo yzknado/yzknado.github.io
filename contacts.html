@@ -69,21 +69,18 @@
             border-color: #40E0D0;
         }
         
+        /* ОБЩИЙ СТИЛЬ ДЛЯ ВСЕХ ИКОНОК */
         .contact-icon {
             width: 60px;
-            height: 60px;
+            height: 60px; /* Фиксированная высота для всех иконок */
             margin: 0 auto 1rem auto;
             display: block;
             opacity: 0.8;
             transition: all 0.3s ease;
-            object-fit: contain;
+            object-fit: contain; /* Сохраняем пропорции внутри фиксированного размера */
         }
         
-        .youtube-card .contact-icon {
-            width: 70px;
-            height: 50px;
-        }
-        
+        /* УБИРАЕМ специальные стили для YouTube - теперь все иконки одинаковые */
         .contact-card:hover .contact-icon {
             opacity: 1;
             transform: scale(1.1);
@@ -144,6 +141,11 @@
             .contacts-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
+            }
+            
+            .contact-icon {
+                width: 50px;
+                height: 50px;
             }
         }
     </style>
