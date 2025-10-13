@@ -1,65 +1,83 @@
-// Автоматически добавляем класс для красивого скроллбара и инициализируем
+// Универсальная навигация для всех страниц
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
         sidebar.classList.add('minimal-scroll');
     }
     
-    // Находим кнопку "Главная" и делаем ее активной
-    const mainButton = document.querySelector('.nav-btn[data-section="main"]');
-    if (mainButton) {
-        mainButton.classList.add('active');
-        
-        // Добавляем обработчик клика на кнопку "Главная"
-        mainButton.addEventListener('click', showMainContent);
-    }
-    
-    // Вешаем обработчики на все остальные кнопки
-    const otherButtons = document.querySelectorAll('.nav-btn:not([data-section="main"])');
-    otherButtons.forEach(button => {
-        button.addEventListener('click', function() {
+    // Вешаем обработчики на все кнопки
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            const section = this.getAttribute('data-section');
+            
             // Убираем активный класс у всех кнопок
-            const allButtons = document.querySelectorAll('.nav-btn');
-            allButtons.forEach(btn => btn.classList.remove('active'));
+            navButtons.forEach(btn => btn.classList.remove('active'));
             // Добавляем активный класс текущей кнопке
             this.classList.add('active');
+            
+            // Обработка разных разделов
+            switch(section) {
+                case 'main':
+                    // Для главной - прокрутка наверх
+                    if (window.location.pathname === '/' || window.location.pathname.includes('index')) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        // Если на другой странице - переход на главную
+                        window.location.href = '/';
+                    }
+                    break;
+                    
+                case 'practice':
+                    // Для практики - переход на страницу практики
+                    window.location.href = '/practice.html';
+                    break;
+                    
+                case 'learning':
+                    // Для обучения - переход на страницу обучения
+                    window.location.href = '/learning.html';
+                    break;
+                    
+                // Добавьте другие страницы по аналогии
+                    
+                default:
+                    // Для остальных - просто меняем активную кнопку
+                    console.log('Раздел:', section);
+            }
         });
     });
     
-    // Инициализируем навигацию если она есть
-    if (typeof initNavigation === 'function') {
-        initNavigation();
-    }
+    // Автоматически активируем кнопку текущей страницы
+    activateCurrentPageButton();
 });
 
-function showMainContent(event) {
-    event.preventDefault();
+// Функция для автоматической активации кнопки текущей страницы
+function activateCurrentPageButton() {
+    const currentPage = getCurrentPage();
+    const activeButton = document.querySelector(`.nav-btn[data-section="${currentPage}"]`);
     
-    // Убираем активный класс у всех кнопок
-    const allButtons = document.querySelectorAll('.nav-btn');
-    allButtons.forEach(btn => btn.classList.remove('active'));
+    if (activeButton) {
+        // Убираем активный класс у всех кнопок
+        const allButtons = document.querySelectorAll('.nav-btn');
+        allButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Добавляем активный класс текущей странице
+        activeButton.classList.add('active');
+    }
+}
+
+// Функция для определения текущей страницы
+function getCurrentPage() {
+    const path = window.location.pathname;
     
-    // Добавляем активный класс текущей кнопке
-    event.currentTarget.classList.add('active');
+    if (path === '/' || path.includes('index')) return 'main';
+    if (path.includes('practice')) return 'practice';
+    if (path.includes('learning')) return 'learning';
+    // Добавьте другие страницы
     
-    // Прокручиваем к началу страницы
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-    
-    // Скрываем все секции контента (если они есть)
-    const allSections = document.querySelectorAll('.content-section');
-    allSections.forEach(section => {
-        section.classList.remove('active');
-    });
-    
-    // Показываем основной контент (все существующие блоки)
-    const container = document.querySelector('.container');
-    const sections = container.querySelectorAll('.section');
-    sections.forEach(section => {
-        section.style.display = 'block';
-    });
+    return 'main'; // По умолчанию главная
 }
 
 
