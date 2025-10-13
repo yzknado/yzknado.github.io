@@ -15,18 +15,20 @@
         
         .contacts-list li {
             margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: rgba(60, 10, 40, 0.2); /* Полупрозрачный фон */
+            padding: 0; /* УБИРАЕМ padding у li */
+            background: rgba(60, 10, 40, 0.2);
             border-radius: 8px;
             border-left: 3px solid #40E0D0;
+            overflow: hidden; /* ДОБАВЛЯЕМ чтобы скругления работали */
         }
         
         .contact-platform {
             color: #40E0D0;
             font-weight: bold;
             font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0;
             text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
+            padding: 1rem 1rem 0.5rem 1rem; /* ДОБАВЛЯЕМ padding только для заголовка */
         }
         
         .contact-link {
@@ -34,10 +36,16 @@
             text-decoration: none;
             transition: all 0.3s ease;
             display: block;
-            margin: 0.3rem 0;
-            padding: 0.5rem;
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.05); /* Полупрозрачный фон для ссылок */
+            margin: 0; /* УБИРАЕМ margin */
+            padding: 0.7rem 1rem; /* УВЕЛИЧИВАЕМ padding */
+            border-radius: 0; /* УБИРАЕМ скругления у отдельных ссылок */
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* ДОБАВЛЯЕМ разделитель */
+        }
+        
+        /* Убираем нижнюю границу у последней ссылки в блоке */
+        .contact-link:last-child {
+            border-bottom: none;
         }
         
         .contact-link:hover {
