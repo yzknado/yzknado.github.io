@@ -12,6 +12,29 @@
             display: block;
             padding: 0;
         }
+        .video-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.95);
+            color: #40E0D0;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #40E0D0;
+            white-space: normal;
+            max-width: 280px;
+            text-align: center;
+            font-size: 0.9rem;
+            z-index: 10000;
+            box-shadow: 0 5px 15px rgba(64, 224, 208, 0.3);
+            line-height: 1.4;
+            word-wrap: break-word;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-tooltip.show {
+            opacity: 1;
+        }
         
         .videos-container {
             width: calc(100% - 320px);
@@ -559,5 +582,60 @@
 <div class="floating-symbols"></div>
 <script src="script.js"></script>
 <script src="navigation.js"></script>
+<script>
+    // Кастомные подсказки для видео
+    document.addEventListener('DOMContentLoaded', function() {
+        const videoItems = document.querySelectorAll('.video-item');
+        
+        videoItems.forEach(item => {
+            const titleElement = item.querySelector('.video-title');
+            if (!titleElement) return;
+            
+            const fullTitle = titleElement.textContent.trim();
+            
+            item.addEventListener('mouseenter', function(e) {
+                // Удаляем старые подсказки
+                const oldTooltips = document.querySelectorAll('.video-tooltip');
+                oldTooltips.forEach(tooltip => tooltip.remove());
+                
+                // Создаем новую подсказку
+                const tooltip = document.createElement('div');
+                tooltip.className = 'video-tooltip';
+                tooltip.textContent = fullTitle;
+                
+                document.body.appendChild(tooltip);
+                
+                // Позиционируем
+                const rect = item.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
+                tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
+                
+                // Показываем с задержкой
+                setTimeout(() => tooltip.classList.add('show'), 100);
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                const tooltips = document.querySelectorAll('.video-tooltip');
+                tooltips.forEach(tooltip => {
+                    tooltip.classList.remove('show');
+                    setTimeout(() => tooltip.remove(), 300);
+                });
+            });
+            
+            item.addEventListener('mousemove', function(e) {
+                const tooltip = document.querySelector('.video-tooltip');
+                if (tooltip) {
+                    const rect = item.getBoundingClientRect();
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
+                    tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
