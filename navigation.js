@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 case 'interesting-cases': window.location.href = 'interesting-cases.html'; break;
                 case 'reviews': window.location.href = 'reviews.html'; break;
                 case 'contacts': window.location.href = 'contacts.html'; break;
+                case 'exclusive': window.location.href = 'exclusive.html'; break;
                 default: console.log('Раздел:', section);
             }
         });
@@ -88,6 +89,7 @@ function getCurrentPage() {
     if (page === 'interesting-cases.html') return 'interesting-cases';
     if (page === 'reviews.html') return 'reviews';
     if (page === 'contacts.html') return 'contacts';
+    if (page === 'exclusive.html') return 'exclusive';
     
     return 'main';
 }
