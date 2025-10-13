@@ -3,9 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Название страницы</title>
+    <title>Мои публикации</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
+    <style>
+        .publications-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .publications-list li {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(60, 10, 40, 0.3);
+            border-radius: 8px;
+            border-left: 3px solid #40E0D0;
+        }
+        
+        .publication-link {
+            color: #40E0D0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .publication-link:hover {
+            color: #20B2AA;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+        }
+        
+        .publication-description {
+            color: #ccc;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 <!-- Левая панель навигации -->
@@ -15,7 +48,7 @@
         <div class="nav-divider"></div>
     </div>
     <div class="nav-buttons">
-        <button class="nav-btn active" data-section="main">
+        <button class="nav-btn" data-section="main">
             <span class="btn-text">Главная</span>
             <span class="btn-glow"></span>
         </button>
@@ -40,7 +73,7 @@
             <span class="btn-text">Онлайн-трансляции, Видеотека</span>
             <span class="btn-glow"></span>
         </button>
-        <button class="nav-btn" data-section="publications">
+        <button class="nav-btn active" data-section="publications">
             <span class="btn-text">Мои публикации</span>
             <span class="btn-glow"></span>
         </button>
@@ -66,14 +99,34 @@
 <!-- Основной контент -->
 <div class="container">
     <div class="section">
-        <h1 class="title">Заголовок страницы</h1>
+        <h1 class="title">Мои публикации</h1>
         
-        <!-- Ваш контент здесь -->
-        <p class="text">Текст вашей страницы...</p>
+        <ul class="publications-list">
+            <li>
+                <a href="http://samlib.ru/a/afanasxewa_o_n/inis-1.shtml" class="publication-link" target="_blank">
+                    http://samlib.ru/a/afanasxewa_o_n/inis-1.shtml
+                </a>
+                <div class="publication-description">Публикации в СамИздате</div>
+            </li>
+            
+            <li>
+                <a href="http://www.inisvirgin.narod.ru/" class="publication-link" target="_blank">
+                    http://www.inisvirgin.narod.ru/
+                </a>
+                <div class="publication-description">Сайт InisVirgin</div>
+            </li>
+            
+            <li>
+                <a href="https://spblib.ru/en/catalog/-/books/12835315-tayny-i-zagadki-kryma-vyp-3" class="publication-link" target="_blank">
+                    https://spblib.ru/en/catalog/-/books/12835315-tayny-i-zagadki-kryma-vyp-3
+                </a>
+                <div class="publication-description">Архив крымской газеты "Тайная Доктрина" за 2004-2012 гг.</div>
+            </li>
+        </ul>
         
     </div>
 </div>
-
+<div class="floating-symbols"></div>
 <script src="script.js"></script>
 <script src="navigation.js"></script>
 </body>
