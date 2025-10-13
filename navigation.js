@@ -1,12 +1,26 @@
-// Автоматически добавляем класс для красивого скроллбара
+// Автоматически добавляем класс для красивого скроллбара и инициализируем
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
         sidebar.classList.add('minimal-scroll');
     }
+    
+    // Находим кнопку "Главная" и делаем ее активной
+    const mainButton = document.querySelector('.nav-btn[data-section="main"]');
+    if (mainButton) {
+        mainButton.classList.add('active');
+    }
+    
+    // Инициализируем навигацию если она есть
+    if (typeof initNavigation === 'function') {
+        initNavigation();
+    }
 });
 
-function showMainContent() {
+function showMainContent(event) {
+    // Добавляем параметр event
+    event.preventDefault();
+    
     // Скрываем все секции контента
     const allSections = document.querySelectorAll('.content-section');
     allSections.forEach(section => {
@@ -31,22 +45,8 @@ function showMainContent() {
     navButtons.forEach(btn => {
         btn.classList.remove('active');
     });
-    event.target.classList.add('active');
+    event.currentTarget.classList.add('active'); // Используем currentTarget вместо target
 }
-
-// Инициализация - делаем кнопку "Главная" активной при загрузке
-document.addEventListener('DOMContentLoaded', function() {
-    // Находим кнопку "Главная" и делаем ее активной
-    const mainButton = document.querySelector('.nav-btn[data-section="main"]');
-    if (mainButton) {
-        mainButton.classList.add('active');
-    }
-    
-    // Инициализируем навигацию если она есть
-    if (typeof initNavigation === 'function') {
-        initNavigation();
-    }
-});
 
 
 
