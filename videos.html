@@ -577,6 +577,9 @@
             
             const fullTitle = titleElement.textContent.trim();
             
+            // Убираем стандартный title атрибут чтобы не было двойных подсказок
+            item.removeAttribute('title');
+            
             item.addEventListener('mouseenter', function(e) {
                 // Удаляем старые подсказки
                 const oldTooltips = document.querySelectorAll('.video-tooltip');
@@ -593,11 +596,12 @@
                 const rect = item.getBoundingClientRect();
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
-                tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
-                tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
-                
-                // Показываем с задержкой
-                setTimeout(() => tooltip.classList.add('show'), 100);
+                // Обновляем позицию после добавления в DOM
+                setTimeout(() => {
+                    tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
+                    tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
+                    tooltip.classList.add('show');
+                }, 10);
             });
             
             item.addEventListener('mouseleave', function() {
