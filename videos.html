@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Видео</title>
+    <title>Видеотека</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
     <style>
@@ -56,11 +56,10 @@
             border: 1px solid rgba(64, 224, 208, 0.3);
             border-radius: 8px;
             padding: 0.8rem; /* одинаковые отступы со всех сторон */
-            padding-bottom: 0.8rem;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            height: 240px; /* увеличил высоту чтобы было место */
+            height: 240px;
             box-sizing: border-box;
             width: 100%; 
             min-width: 0;
@@ -80,7 +79,7 @@
             overflow: hidden;
             border-radius: 6px;
             flex-shrink: 0;
-            /* УБРАЛ margin-bottom - отступ будет за счет padding родителя */
+            margin-bottom: 0.8rem; /* добавляем отступ снизу равный боковым отступам */
         }
         
         .video-wrapper iframe {
@@ -100,7 +99,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            padding: 0.8rem 0.3rem; /* сверху/снизу такой же отступ как по бокам блока */
+            padding: 0;
             width: 100%;
             height: auto; 
             min-height: 2.2rem; 
@@ -147,15 +146,16 @@
             
             .video-item {
                 padding: 0.6rem; /* одинаковые отступы со всех сторон */
-                padding-bottom: 0.6rem;
-                height: 220px; /* увеличил высоту */
+                height: 220px;
+            }
+            
+            .video-wrapper {
+                margin-bottom: 0.6rem; /* отступ снизу равен боковым отступам */
             }
             
             .video-title {
                 font-size: 0.9rem;
                 min-height: 2rem;
-                padding: 0.3rem 0.2rem; /* сверху/снизу такой же отступ как по бокам блока */
-                margin-top: auto;
             }
         }
     </style>
