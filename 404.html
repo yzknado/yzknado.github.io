@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        const path = window.location.pathname.split('/').pop();
+        const routes = {
+            'new-worldview': 'pages/new-worldview.html',
+            'practice': 'pages/practice.html',
+            'learning': 'pages/learning.html',
+            'joint-actions': 'pages/joint-actions.html',
+            'videos': 'pages/videos.html',
+            'publications': 'pages/publications.html',
+            'unpublished': 'pages/unpublished.html',
+            'interesting-cases': 'pages/interesting-cases.html',
+            'reviews': 'pages/reviews.html',
+            'contacts': 'pages/contacts.html'
+        };
+
+        if (routes[path]) {
+            window.location.href = routes[path];
+        } else {
+            window.location.href = '/';
+        }
+    </script>
+</head>
+<body>
+    <p>Перенаправление...</p>
+</body>
+</html>
