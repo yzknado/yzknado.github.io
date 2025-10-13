@@ -1,4 +1,3 @@
-
 // Универсальная навигация для всех страниц
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
@@ -25,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
+            // Переход на страницы в папке pages/
             switch(section) {
                 case 'main': window.location.href = '/'; break;
                 case 'new-worldview': window.location.href = 'pages/new-worldview.html'; break;
@@ -66,16 +66,16 @@ function getCurrentPage() {
     const page = path.split('/').pop();
     
     if (path === '/' || page === '' || page === 'index.html' || path.includes('yzknado')) return 'main';
-    if (page === 'new-worldview') return 'new-worldview';
-    if (page === 'practice') return 'practice';
-    if (page === 'learning') return 'learning';
-    if (page === 'joint-actions') return 'joint-actions';
-    if (page === 'videos') return 'videos';
-    if (page === 'publications') return 'publications';
-    if (page === 'unpublished') return 'unpublished';
-    if (page === 'interesting-cases') return 'interesting-cases';
-    if (page === 'reviews') return 'reviews';
-    if (page === 'contacts') return 'contacts';
+    if (page === 'new-worldview.html' || page === 'pages/new-worldview.html') return 'new-worldview';
+    if (page === 'practice.html' || page === 'pages/practice.html') return 'practice';
+    if (page === 'learning.html' || page === 'pages/learning.html') return 'learning';
+    if (page === 'joint-actions.html' || page === 'pages/joint-actions.html') return 'joint-actions';
+    if (page === 'videos.html' || page === 'pages/videos.html') return 'videos';
+    if (page === 'publications.html' || page === 'pages/publications.html') return 'publications';
+    if (page === 'unpublished.html' || page === 'pages/unpublished.html') return 'unpublished';
+    if (page === 'interesting-cases.html' || page === 'pages/interesting-cases.html') return 'interesting-cases';
+    if (page === 'reviews.html' || page === 'pages/reviews.html') return 'reviews';
+    if (page === 'contacts.html' || page === 'pages/contacts.html') return 'contacts';
     
     return 'main';
 }
