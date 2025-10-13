@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Видео</title>
+    <title>Видеотека</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
     <style>
@@ -58,7 +58,7 @@
             padding: 0.8rem;
             transition: all 0.3s ease;
             position: relative; /* ДОБАВЛЕНО */
-            height: 240px;
+            height: 280px;
             box-sizing: border-box;
             width: 100%; 
             min-width: 0;
@@ -75,7 +75,7 @@
         
         .video-wrapper {
             position: absolute; /* ИЗМЕНЕНО */
-            top: calc(2.2rem + 0.8rem + 0.8rem); /* название + margin-bottom + отступ сверху */
+            top: calc(2.2rem + 0.8rem); /* название + margin-bottom + отступ сверху */
             left: 0.8rem;
             right: 0.8rem;
             bottom: 0.8rem; /* отступ снизу */
@@ -144,12 +144,15 @@
             }
 
             .video-wrapper {
-                margin-bottom: 0.6rem; /* ДОБАВЛЕНО: отступ для мобильных */
+                top: calc(2rem + 0.6rem);
+                left: 0.6rem;
+                right: 0.6rem;
+                bottom: 0.6rem;
             }
             
             .video-item {
                 padding: 0.6rem;
-                height: 220px;
+                height: 250px;
             }
             
             .video-title {
