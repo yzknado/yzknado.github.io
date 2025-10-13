@@ -8,13 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Сразу активируем текущую страницу
     activateCurrentPageButton();
     
-    // ПОСЛЕ активации показываем навигацию
-    setTimeout(() => {
-        if (sidebar) {
-            sidebar.classList.add('loaded');
-        }
-    }, 10);
-    
     // Остальной код обработчиков...
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(button => {
