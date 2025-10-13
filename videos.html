@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Видеотек</title>
+    <title>Видеок</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
     <style>
@@ -79,6 +79,7 @@
             overflow: hidden;
             border-radius: 6px;
             flex-shrink: 0;
+            margin-bottom: 0.8rem; /* ДОБАВЛЕНО: отступ снизу видео */
         }
         
         .video-wrapper iframe {
@@ -107,9 +108,7 @@
             min-width: 0;
             max-width: 100%;
             margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             margin-bottom: 0.8rem;
         }
         
@@ -141,6 +140,10 @@
             .video-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
+            }
+
+            .video-wrapper {
+                margin-bottom: 0.6rem; /* ДОБАВЛЕНО: отступ для мобильных */
             }
             
             .video-item {
