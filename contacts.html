@@ -9,7 +9,7 @@
     <style>
         .contacts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Увеличил минимальную ширину */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
@@ -17,16 +17,12 @@
         .contact-card {
             background: rgba(60, 10, 40, 0.3);
             border-radius: 12px;
-            padding: 2.5rem; /* Увеличил padding */
+            padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(64, 224, 208, 0.2);
             position: relative;
             overflow: hidden;
-            min-height: 280px; /* Добавил минимальную высоту */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         
         .contact-card::before {
@@ -35,20 +31,20 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px; /* Увеличил высоту полоски */
+            height: 3px;
             background: linear-gradient(90deg, #40E0D0, #4169E1, #40E0D0);
         }
         
         .contact-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(64, 224, 208, 0.3); /* Усилил тень */
+            box-shadow: 0 10px 30px rgba(64, 224, 208, 0.2);
             border-color: #40E0D0;
         }
         
         .contact-icon {
-            width: 80px; /* Увеличил иконки */
-            height: 80px;
-            margin: 0 auto 1.5rem auto;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem auto;
             display: block;
             opacity: 0.8;
             transition: all 0.3s ease;
@@ -57,78 +53,52 @@
         
         /* Специальный стиль для YouTube иконки */
         .youtube-card .contact-icon {
-            width: 100px; /* шире чем высота */
-            height: 70px; /* ниже чем ширина */
+            width: 80px; /* шире чем высота */
+            height: 56px; /* ниже чем ширина */
         }
         
         .contact-card:hover .contact-icon {
             opacity: 1;
-            transform: scale(1.2); /* Увеличил масштаб при наведении */
-            filter: drop-shadow(0 0 12px rgba(64, 224, 208, 0.8));
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(64, 224, 208, 0.6));
         }
         
         .contact-platform {
             color: #40E0D0;
-            font-size: 1.5rem; /* Увеличил шрифт */
+            font-size: 1.3rem;
             font-weight: bold;
-            margin-bottom: 2rem; /* Увеличил отступ */
-            text-shadow: 0 0 15px rgba(64, 224, 208, 0.6);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
         }
         
         .contact-links {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem; /* Увеличил расстояние между ссылками */
+            gap: 1rem;
         }
         
         .contact-link {
             color: #ccc;
             text-decoration: none;
-            padding: 1rem 1.5rem; /* Увеличил padding */
-            border-radius: 10px; /* Увеличил скругление */
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
             background: rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
             border: 1px solid transparent;
-            font-size: 1.1rem; /* Увеличил шрифт ссылок */
-            min-height: 50px; /* Минимальная высота кнопки */
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .contact-link:hover {
             color: #40E0D0;
-            background: rgba(64, 224, 208, 0.15);
+            background: rgba(64, 224, 208, 0.1);
             border-color: #40E0D0;
-            transform: translateX(8px); /* Увеличил смещение */
-            text-shadow: 0 0 15px rgba(64, 224, 208, 0.6);
-            box-shadow: 0 5px 20px rgba(64, 224, 208, 0.3);
+            transform: translateX(5px);
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
         }
         
         .telegram-card::before { background: linear-gradient(90deg, #0088cc, #40E0D0); }
         .vk-card::before { background: linear-gradient(90deg, #4a76a8, #40E0D0); }
         .youtube-card::before { background: linear-gradient(90deg, #ff0000, #40E0D0); }
         .email-card::before { background: linear-gradient(90deg, #ff9900, #40E0D0); }
-        
-        /* Для очень широких экранов */
-        @media (min-width: 1600px) {
-            .contacts-grid {
-                grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            }
-        }
-        
-        /* Для мобильных устройств */
-        @media (max-width: 768px) {
-            .contacts-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .contact-card {
-                padding: 2rem;
-                min-height: 250px;
-            }
-        }
     </style>
 </head>
 <body>
