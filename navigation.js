@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-return;
+return; // так надо
 
 
 // Навигационная система
