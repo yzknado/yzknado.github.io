@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="navigation.css">
     <style>
         .videos-container {
-            max-width: 1400px;
+            max-width: 95%;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem;
         }
         
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
@@ -54,16 +54,10 @@
         
         .video-title {
             color: #40E0D0;
-            font-size: 0.95rem;
+            font-size: 1rem;
             margin-bottom: 0.3rem;
             text-align: center;
             line-height: 1.3;
-        }
-        
-        .video-meta {
-            color: #888;
-            font-size: 0.8rem;
-            text-align: center;
         }
         
         .pagination {
@@ -91,36 +85,34 @@
             box-shadow: 0 5px 15px rgba(64, 224, 208, 0.4);
         }
         
-        /* Для мобильных */
-        @media (max-width: 768px) {
+        /* Для широких экранов - больше видео в ряду */
+        @media (min-width: 1600px) {
             .video-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 1rem;
-            }
-            
-            .videos-container {
-                padding: 1rem;
+                grid-template-columns: repeat(5, 1fr);
             }
         }
         
-        /* Для очень широких экранов - 4 в ряд */
-        @media (min-width: 1400px) {
+        @media (min-width: 1200px) and (max-width: 1599px) {
             .video-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
         
-        /* Для средних экранов - 3 в ряд */
-        @media (min-width: 1024px) and (max-width: 1399px) {
+        @media (min-width: 900px) and (max-width: 1199px) {
             .video-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
         
-        /* Для планшетов - 2 в ряд */
-        @media (min-width: 768px) and (max-width: 1023px) {
+        @media (max-width: 899px) {
             .video-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .video-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -192,7 +184,6 @@
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254815" allowfullscreen></iframe>
                 </div>
-                <div class="video-meta">Часть 1</div>
             </div>
 
             <!-- Видео 2 -->
@@ -201,7 +192,6 @@
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254811" allowfullscreen></iframe>
                 </div>
-                <div class="video-meta">Часть 2</div>
             </div>
 
             <!-- Видео 3 -->
@@ -210,7 +200,6 @@
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254810" allowfullscreen></iframe>
                 </div>
-                <div class="video-meta">Часть 3</div>
             </div>
 
             <!-- Видео 4 -->
@@ -219,11 +208,41 @@
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254809" allowfullscreen></iframe>
                 </div>
-                <div class="video-meta">Утренняя практика</div>
             </div>
 
-            <!-- Добавь остальные видео по аналогии -->
-            <!-- Всего можно разместить 20-25 видео на странице -->
+            <!-- Видео 5 -->
+            <div class="video-item">
+                <div class="video-title">Дыхательные практики</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254806" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 6 -->
+            <div class="video-item">
+                <div class="video-title">Работа с энергией</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254798" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 7 -->
+            <div class="video-item">
+                <div class="video-title">Техники защиты</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254797" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 8 -->
+            <div class="video-item">
+                <div class="video-title">Развитие интуиции</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254796" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Добавь остальные видео 9-25 -->
 
         </div>
 
@@ -244,8 +263,8 @@
         </div>
     </div>
 </div>
-    <div class="floating-symbols"></div>
-    <script src="script.js"></script>
-    <script src="navigation.js"></script>
+
+<script src="script.js"></script>
+<script src="navigation.js"></script>
 </body>
-</html> 
+</html>
