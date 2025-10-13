@@ -1,4 +1,7 @@
-        const symbolsContainer = document.getElementById('symbols');
+document.addEventListener('DOMContentLoaded', function() {
+    // Создание плавающих символов
+    const symbolsContainer = document.getElementById('symbols');
+    if (symbolsContainer) {
         const symbols = ['✧', '✦', '❖', '♰', '⚚', '☾', '☽', '⚕', '⚔', '🜁', '🜂', '🜃', '🜄'];
         
         for (let i = 0; i < 40; i++) {
@@ -11,32 +14,9 @@
             symbol.style.fontSize = (1 + Math.random() * 2) + 'rem';
             symbolsContainer.appendChild(symbol);
         }
-
-// Обработчик для кнопки "ВСТУПИТЬ В ЗАКРЫТУЮ ГРУППУ"
-document.addEventListener('DOMContentLoaded', function() {
-    const joinButton = document.querySelector('.join-button');
-    if (joinButton) {
-        joinButton.addEventListener('click', showPopup);
     }
-});
 
-function showPopup() {
-    const popup = document.getElementById('paymentPopup');
-    if (popup) {
-        popup.style.display = 'flex';
-    }
-}
-
-function closePopup() {
-    const popup = document.getElementById('paymentPopup');
-    if (popup) {
-        popup.style.display = 'none';
-    }
-}
-
-// Один раз вешаем обработчики при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-    // Кнопка открытия (только если существует на этой странице)
+    // Кнопка открытия попапа
     const joinButton = document.querySelector('.join-button');
     if (joinButton) {
         joinButton.addEventListener('click', showPopup);
@@ -58,3 +38,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function showPopup() {
+    const popup = document.getElementById('paymentPopup');
+    if (popup) {
+        popup.style.display = 'flex';
+    }
+}
+
+function closePopup() {
+    const popup = document.getElementById('paymentPopup');
+    if (popup) {
+        popup.style.display = 'none';
+    }
+}
