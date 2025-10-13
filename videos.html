@@ -41,6 +41,55 @@
             width: 100%; 
             min-width: 0;
             overflow: hidden;
+            cursor: help;
+            position: relative;
+        }
+
+        .video-item::after {
+            content: attr(data-fulltitle);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.95);
+            color: #40E0D0;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #40E0D0;
+            white-space: normal;
+            width: 280px;
+            text-align: center;
+            font-size: 0.9rem;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(64, 224, 208, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            line-height: 1.4;
+        }
+        
+        .video-item:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-5px);
+        }
+        
+        .video-item::before {
+            content: '';
+            position: absolute;
+            bottom: calc(100% - 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: #40E0D0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .video-item:hover::before {
+            opacity: 1;
+            visibility: visible;
         }
         
         .video-item:hover {
@@ -77,8 +126,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
             padding: 0.8rem 0.3rem;
-            cursor: help;
-            position: relative;
             width: 100%;
             height: 3rem; 
             margin-bottom: 0.5rem;
@@ -87,55 +134,6 @@
             min-width: 0;
             max-width: 100%; 
             display: block;
-        }
-        
-        /* Всплывающая подсказка */
-        .video-title::after {
-            content: attr(data-fulltitle);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.95);
-            color: #40E0D0;
-            padding: 0.8rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #40E0D0;
-            white-space: normal;
-            width: 280px;
-            text-align: center;
-            font-size: 0.9rem;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(64, 224, 208, 0.3);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            line-height: 1.4;
-        }
-        
-        .video-title:hover::after {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(-5px);
-        }
-        
-        /* Стрелочка подсказки */
-        .video-title::before {
-            content: '';
-            position: absolute;
-            bottom: calc(100% - 8px);
-            left: 50%;
-            transform: translateX(-50%);
-            border: 8px solid transparent;
-            border-top-color: #40E0D0;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .video-title:hover::before {
-            opacity: 1;
-            visibility: visible;
         }
         
         /* Убираем нумерацию */
@@ -248,8 +246,8 @@
     
     <div class="video-grid">
             <!-- Видео 1-60+ -->
-            <div class="video-item">
-                <div class="video-title" data-fulltitle="Мы сообща возродили ныне НОВОЕ Древо Жизни!">
+            <div class="video-item" data-fulltitle="Мы сообща возродили ныне НОВОЕ Древо Жизни!">
+                <div class="video-title">
                     Мы сообща возродили ныне НОВОЕ Древо Жизни!
                 </div>
                 <div class="video-wrapper">
@@ -257,8 +255,8 @@
                 </div>
             </div>
 
-            <div class="video-item">
-                <div class="video-title" data-fulltitle="МОЖНО ИЗБЕЖАТЬ СМЕРТИ – НО НЕЛЬЗЯ ИЗБЕЖАТЬ ЛЮБВИ!">
+            <div class="video-item" data-fulltitle="МОЖНО ИЗБЕЖАТЬ СМЕРТИ – НО НЕЛЬЗЯ ИЗБЕЖАТЬ ЛЮБВИ!">
+                <div class="video-title">
                     МОЖНО ИЗБЕЖАТЬ СМЕРТИ – НО НЕЛЬЗЯ ИЗБЕЖАТЬ ЛЮБВИ!
                 </div>
                 <div class="video-wrapper">
@@ -266,8 +264,8 @@
                 </div>
             </div>
 
-            <div class="video-item">
-                <div class="video-title" data-fulltitle="НОВАЯ ЭЛИТА Руси *Земли Света* не нуждается в признании со стороны быдломассы">
+            <div class="video-item" data-fulltitle="НОВАЯ ЭЛИТА Руси *Земли Света* не нуждается в признании со стороны быдломассы">
+                <div class="video-title">
                     НОВАЯ ЭЛИТА Руси *Земли Света* не нуждается в признании со стороны быдломассы
                 </div>
                 <div class="video-wrapper">
@@ -275,22 +273,22 @@
                 </div>
             </div>
 
-            <div class="video-item">
-                <div class="video-title" data-fulltitle="Медитации и концентрация">Медитации и концентрация</div>
+            <div class="video-item" data-fulltitle="Медитации и концентрация">
+                <div class="video-title">Медитации и концентрация</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254809" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
-                <div class="video-title" data-fulltitle="Дыхательные практики">Дыхательные практики</div>
+            <div class="video-item" data-fulltitle="Дыхательные практики">
+                <div class="video-title">Дыхательные практики</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254806" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
-                <div class="video-title" data-fulltitle="Работа с энергией">Работа с энергией</div>
+            <div class="video-item" data-fulltitle="Работа с энергией">
+                <div class="video-title">Работа с энергией</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254798" allowfullscreen></iframe>
                 </div>
