@@ -166,3 +166,149 @@ body {
         margin-top: 1rem;
     }
 }
+/* Кастомный скроллбар для левой панели */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(64, 224, 208, 0.1);
+    border-radius: 4px;
+    margin: 5px 0;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #40E0D0, #4169E1);
+    border-radius: 4px;
+    border: 1px solid rgba(64, 224, 208, 0.3);
+    box-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #4169E1, #40E0D0);
+    box-shadow: 0 0 15px rgba(64, 224, 208, 0.7);
+}
+
+.sidebar::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(135deg, #40E0D0, #40E0D0);
+    box-shadow: 0 0 20px rgba(64, 224, 208, 0.9);
+}
+
+/* Для Firefox */
+.sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: #40E0D0 rgba(64, 224, 208, 0.1);
+}
+
+/* Более красивый вариант с анимацией */
+.sidebar.fancy-scroll::-webkit-scrollbar {
+    width: 10px;
+}
+
+.sidebar.fancy-scroll::-webkit-scrollbar-track {
+    background: rgba(40, 0, 16, 0.8);
+    border-radius: 5px;
+    margin: 10px 0;
+    border: 1px solid rgba(64, 224, 208, 0.2);
+}
+
+.sidebar.fancy-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #40E0D0, #4169E1, #40E0D0);
+    border-radius: 5px;
+    border: 1px solid rgba(64, 224, 208, 0.5);
+    box-shadow: 
+        0 0 10px rgba(64, 224, 208, 0.6),
+        inset 0 0 5px rgba(255, 255, 255, 0.2);
+    position: relative;
+    animation: scroll-glow 2s infinite alternate;
+}
+
+.sidebar.fancy-scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #4169E1, #40E0D0, #4169E1);
+    box-shadow: 
+        0 0 15px rgba(64, 224, 208, 0.8),
+        inset 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.sidebar.fancy-scroll::-webkit-scrollbar-thumb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    border-radius: 5px;
+}
+
+@keyframes scroll-glow {
+    0% {
+        box-shadow: 
+            0 0 10px rgba(64, 224, 208, 0.6),
+            inset 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        box-shadow: 
+            0 0 15px rgba(64, 224, 208, 0.8),
+            inset 0 0 8px rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Минималистичный стиль */
+.sidebar.minimal-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar.minimal-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar.minimal-scroll::-webkit-scrollbar-thumb {
+    background: rgba(64, 224, 208, 0.4);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.sidebar.minimal-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(64, 224, 208, 0.7);
+}
+
+/* Стиль в виде символов */
+.sidebar.symbol-scroll::-webkit-scrollbar {
+    width: 12px;
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-track {
+    background: rgba(40, 0, 16, 0.9);
+    border-radius: 6px;
+    margin: 5px 0;
+    border: 1px solid rgba(64, 224, 208, 0.2);
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-thumb {
+    background: rgba(64, 224, 208, 0.3);
+    border-radius: 6px;
+    border: 1px solid rgba(64, 224, 208, 0.5);
+    position: relative;
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-thumb::before {
+    content: '⚡';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #40E0D0;
+    font-size: 10px;
+    text-shadow: 0 0 5px rgba(64, 224, 208, 0.8);
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-thumb:hover::before {
+    content: '☾';
+    animation: symbol-spin 1s infinite linear;
+}
+
+@keyframes symbol-spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
