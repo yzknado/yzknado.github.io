@@ -6,6 +6,50 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+function showMainContent() {
+    // Скрываем все секции контента
+    const allSections = document.querySelectorAll('.content-section');
+    allSections.forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Показываем основной контент (все существующие блоки)
+    const container = document.querySelector('.container');
+    const sections = container.querySelectorAll('.section');
+    sections.forEach(section => {
+        section.style.display = 'block';
+    });
+    
+    // Прокручиваем к началу страницы
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
+    // Обновляем активную кнопку
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+}
+
+// Инициализация - делаем кнопку "Главная" активной при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    // Находим кнопку "Главная" и делаем ее активной
+    const mainButton = document.querySelector('.nav-btn[data-section="main"]');
+    if (mainButton) {
+        mainButton.classList.add('active');
+    }
+    
+    // Инициализируем навигацию если она есть
+    if (typeof initNavigation === 'function') {
+        initNavigation();
+    }
+});
+
+
+
 return; // так надо
 
 
