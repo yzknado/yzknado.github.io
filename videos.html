@@ -13,8 +13,8 @@
         }
         
         .videos-container {
-            width: calc(100% - 320px); /* Учитываем ширину навигации + отступ */
-            margin-left: 300px; /* Навигация 280px + отступ 20px */
+            width: calc(100% - 320px);
+            margin-left: 300px;
             padding: 1rem;
             box-sizing: border-box;
         }
@@ -90,28 +90,24 @@
             box-shadow: 0 5px 15px rgba(64, 224, 208, 0.4);
         }
         
-        /* Для широких экранов - 4 видео в ряд */
         @media (min-width: 1400px) {
             .video-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
         
-        /* Для обычных десктопов - 3 видео в ряд */
         @media (min-width: 1100px) and (max-width: 1399px) {
             .video-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
         
-        /* Для планшетов - 2 видео в ряд */
         @media (min-width: 768px) and (max-width: 1099px) {
             .video-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
         
-        /* Для мобильных */
         @media (max-width: 767px) {
             .videos-container {
                 width: 100%;
@@ -186,7 +182,7 @@
         <p class="text">Коллекция видео-материалов и онлайн-трансляций</p>
         
         <div class="video-grid">
-            <!-- Видео 1-12 -->
+            <!-- Видео 1 -->
             <div class="video-item">
                 <div class="video-title">Основы миропонимания</div>
                 <div class="video-wrapper">
@@ -194,6 +190,7 @@
                 </div>
             </div>
 
+            <!-- Видео 2 -->
             <div class="video-item">
                 <div class="video-title">Практики очищения</div>
                 <div class="video-wrapper">
@@ -201,6 +198,7 @@
                 </div>
             </div>
 
+            <!-- Видео 3 -->
             <div class="video-item">
                 <div class="video-title">Энергетические потоки</div>
                 <div class="video-wrapper">
@@ -208,13 +206,15 @@
                 </div>
             </div>
 
+            <!-- Видео 4 -->
             <div class="video-item">
-                <div class="video-title">Медитации</div>
+                <div class="video-title">Медитации и концентрация</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254809" allowfullscreen></iframe>
                 </div>
             </div>
 
+            <!-- Видео 5 -->
             <div class="video-item">
                 <div class="video-title">Дыхательные практики</div>
                 <div class="video-wrapper">
@@ -222,6 +222,7 @@
                 </div>
             </div>
 
+            <!-- Видео 6 -->
             <div class="video-item">
                 <div class="video-title">Работа с энергией</div>
                 <div class="video-wrapper">
@@ -229,6 +230,7 @@
                 </div>
             </div>
 
+            <!-- Видео 7 -->
             <div class="video-item">
                 <div class="video-title">Техники защиты</div>
                 <div class="video-wrapper">
@@ -236,6 +238,7 @@
                 </div>
             </div>
 
+            <!-- Видео 8 -->
             <div class="video-item">
                 <div class="video-title">Развитие интуиции</div>
                 <div class="video-wrapper">
@@ -243,7 +246,141 @@
                 </div>
             </div>
 
-            <!-- Добавь остальные видео 9-12 -->
+            <!-- Видео 9 -->
+            <div class="video-item">
+                <div class="video-title">Работа с подсознанием</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254793" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 10 -->
+            <div class="video-item">
+                <div class="video-title">Очищение кармы</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254791" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 11 -->
+            <div class="video-item">
+                <div class="video-title">Энергетическое целительство</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254790" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 12 -->
+            <div class="video-item">
+                <div class="video-title">Мантры и звуковые вибрации</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254788" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 13 -->
+            <div class="video-item">
+                <div class="video-title">Работа с чакрами</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254786" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 14 -->
+            <div class="video-item">
+                <div class="video-title">Астральные путешествия</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254784" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 15 -->
+            <div class="video-item">
+                <div class="video-title">Осознанные сновидения</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254783" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 16 -->
+            <div class="video-item">
+                <div class="video-title">Техники визуализации</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254778" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 17 -->
+            <div class="video-item">
+                <div class="video-title">Коллективная медитация</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=-227456729&id=456247047" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 18 -->
+            <div class="video-item">
+                <div class="video-title">Работа с родовой кармой</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254777" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 19 -->
+            <div class="video-item">
+                <div class="video-title">Энергетическое питание</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254775" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 20 -->
+            <div class="video-item">
+                <div class="video-title">Практики гармонизации</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254771" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 21 -->
+            <div class="video-item">
+                <div class="video-title">Работа с эмоциями</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254774" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 22 -->
+            <div class="video-item">
+                <div class="video-title">Ментальное очищение</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254768" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 23 -->
+            <div class="video-item">
+                <div class="video-title">Практики благодарности</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254767" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 24 -->
+            <div class="video-item">
+                <div class="video-title">Энергетический баланс</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254766" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Видео 25 -->
+            <div class="video-item">
+                <div class="video-title">Работа с намерением</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254763" allowfullscreen></iframe>
+                </div>
+            </div>
 
         </div>
 
@@ -264,7 +401,7 @@
         </div>
     </div>
 </div>
-
+<div class="floating-symbols"></div>
 <script src="script.js"></script>
 <script src="navigation.js"></script>
 </body>
