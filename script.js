@@ -20,26 +20,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-        function showPopup() {
-            const popup = document.getElementById('paymentPopup');
-            popup.style.display = 'flex';
+function showPopup() {
+    const popup = document.getElementById('paymentPopup');
+    popup.style.display = 'flex';
+}
+
+function closePopup() {
+    const popup = document.getElementById('paymentPopup');
+    popup.style.display = 'none';
+}
+
+// Один раз вешаем обработчики при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    // Кнопка открытия
+    const joinButton = document.querySelector('.join-button');
+    if (joinButton) {
+        joinButton.addEventListener('click', showPopup);
+    }
+    
+    // Закрытие по клику вне попапа (делегирование)
+    document.addEventListener('click', function(e) {
+        const popup = document.getElementById('paymentPopup');
+        if (popup.style.display === 'flex' && e.target === popup) {
+            closePopup();
         }
-
-        function closePopup() {
-            const popup = document.getElementById('paymentPopup');
-            popup.style.display = 'none';
+    });
+    
+    // Закрытие по ESC
+    document.addEventListener('keydown', function(e) {
+        const popup = document.getElementById('paymentPopup');
+        if (e.key === 'Escape' && popup.style.display === 'flex') {
+            closePopup();
         }
-
-        // Закрытие попапа при клике вне его
-        document.getElementById('paymentPopup').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePopup();
-            }
-        });
-
-        // Закрытие попапа по клавише ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closePopup();
-            }
-        });
+    });
+});
