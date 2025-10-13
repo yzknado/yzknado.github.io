@@ -7,68 +7,82 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
     <style>
-        .contacts-list {
-            list-style: none;
-            padding: 0;
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin: 2rem 0;
         }
         
-        .contacts-list li {
-            margin-bottom: 1.5rem;
-            padding: 0; /* УБИРАЕМ padding у li */
-            background: rgba(60, 10, 40, 0.2);
-            border-radius: 8px;
-            border-left: 3px solid #40E0D0;
-            overflow: hidden; /* ДОБАВЛЯЕМ чтобы скругления работали */
+        .contact-card {
+            background: rgba(60, 10, 40, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(64, 224, 208, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #40E0D0, #4169E1, #40E0D0);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(64, 224, 208, 0.2);
+            border-color: #40E0D0;
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
         }
         
         .contact-platform {
             color: #40E0D0;
+            font-size: 1.3rem;
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 0;
-            text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
-            padding: 1rem 1rem 0.5rem 1rem; /* ДОБАВЛЯЕМ padding только для заголовка */
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+        }
+        
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
         
         .contact-link {
             color: #ccc;
             text-decoration: none;
-            transition: all 0.3s ease;
-            display: block;
-            margin: 0; /* УБИРАЕМ margin */
-            padding: 0.7rem 1rem; /* УВЕЛИЧИВАЕМ padding */
-            border-radius: 0; /* УБИРАЕМ скругления у отдельных ссылок */
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
             background: rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* ДОБАВЛЯЕМ разделитель */
-        }
-        
-        /* Убираем нижнюю границу у последней ссылки в блоке */
-        .contact-link:last-child {
-            border-bottom: none;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
         
         .contact-link:hover {
             color: #40E0D0;
             background: rgba(64, 224, 208, 0.1);
+            border-color: #40E0D0;
+            transform: translateX(5px);
             text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
         }
         
-        .telegram-link { 
-            border-left: 2px solid #0088cc;
-        }
-        
-        .vk-link { 
-            border-left: 2px solid #4a76a8; 
-        }
-        
-        .youtube-link { 
-            border-left: 2px solid #ff0000; 
-        }
-        
-        .email-link { 
-            border-left: 2px solid #ff9900; 
-        }
+        .telegram-card::before { background: linear-gradient(90deg, #0088cc, #40E0D0); }
+        .vk-card::before { background: linear-gradient(90deg, #4a76a8, #40E0D0); }
+        .youtube-card::before { background: linear-gradient(90deg, #ff0000, #40E0D0); }
+        .email-card::before { background: linear-gradient(90deg, #ff9900, #40E0D0); }
     </style>
 </head>
 <body>
@@ -136,41 +150,57 @@
     <div class="section">
         <h1 class="title">Контакты и сотрудничество</h1>
         
-        <ul class="contacts-list">
-            <li>
-                <div class="contact-platform">📱 Телеграм</div>
-                <a href="https://t.me/isceleniepreobrazhenievoznesenie" class="contact-link telegram-link" target="_blank">
-                    https://t.me/isceleniepreobrazhenievoznesenie
-                </a>
-                <a href="https://t.me/temarunda_akshayna" class="contact-link telegram-link" target="_blank">
-                    https://t.me/temarunda_akshayna
-                </a>
-                <a href="https://t.me/Kyaabahan" class="contact-link telegram-link" target="_blank">
-                    @Kyaabahan
-                </a>
-            </li>
+        <div class="contacts-grid">
+            <!-- Телеграм -->
+            <div class="contact-card telegram-card">
+                <div class="contact-icon">📱</div>
+                <div class="contact-platform">Телеграм</div>
+                <div class="contact-links">
+                    <a href="https://t.me/isceleniepreobrazhenievoznesenie" class="contact-link" target="_blank">
+                        Исцеление • Преображение • Вознесение
+                    </a>
+                    <a href="https://t.me/temarunda_akshayna" class="contact-link" target="_blank">
+                        ТемаРунда Акшайна
+                    </a>
+                    <a href="https://t.me/Kyaabahan" class="contact-link" target="_blank">
+                        @Kyaabahan
+                    </a>
+                </div>
+            </div>
             
-            <li>
-                <div class="contact-platform">👥 ВКонтакте</div>
-                <a href="https://vk.com/yaznayukaknado" class="contact-link vk-link" target="_blank">
-                    https://vk.com/yaznayukaknado
-                </a>
-            </li>
+            <!-- ВКонтакте -->
+            <div class="contact-card vk-card">
+                <div class="contact-icon">👥</div>
+                <div class="contact-platform">ВКонтакте</div>
+                <div class="contact-links">
+                    <a href="https://vk.com/yaznayukaknado" class="contact-link" target="_blank">
+                        Я знаю, как надо
+                    </a>
+                </div>
+            </div>
             
-            <li>
-                <div class="contact-platform">🎥 YouTube</div>
-                <a href="https://www.youtube.com/@yaznayukaknado" class="contact-link youtube-link" target="_blank">
-                    https://www.youtube.com/@yaznayukaknado
-                </a>
-            </li>
+            <!-- YouTube -->
+            <div class="contact-card youtube-card">
+                <div class="contact-icon">🎥</div>
+                <div class="contact-platform">YouTube</div>
+                <div class="contact-links">
+                    <a href="https://www.youtube.com/@yaznayukaknado" class="contact-link" target="_blank">
+                        @yaznayukaknado
+                    </a>
+                </div>
+            </div>
             
-            <li>
-                <div class="contact-platform">✉️ E-mail</div>
-                <a href="mailto:InisVirgin@yandex.com" class="contact-link email-link">
-                    InisVirgin@yandex.com
-                </a>
-            </li>
-        </ul>
+            <!-- E-mail -->
+            <div class="contact-card email-card">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-platform">E-mail</div>
+                <div class="contact-links">
+                    <a href="mailto:InisVirgin@yandex.com" class="contact-link">
+                        InisVirgin@yandex.com
+                    </a>
+                </div>
+            </div>
+        </div>
         
     </div>
 </div>
