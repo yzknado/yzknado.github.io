@@ -256,3 +256,62 @@ body {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(180deg); }
 }
+
+/* Кастомный скроллбар для всего сайта */
+html {
+    scrollbar-width: thin; /* Для Firefox */
+    scrollbar-color: #40E0D0 rgba(40, 0, 16, 0.9); /* Для Firefox */
+}
+
+/* Для WebKit-браузеров (Chrome, Safari, Edge) */
+html::-webkit-scrollbar {
+    width: 12px;
+}
+
+html::-webkit-scrollbar-track {
+    background: rgba(40, 0, 16, 0.9);
+    border-left: 1px solid rgba(64, 224, 208, 0.3);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #40E0D0, #4169E1, #40E0D0);
+    border-radius: 6px;
+    border: 1px solid rgba(64, 224, 208, 0.5);
+    box-shadow: 0 0 10px rgba(64, 224, 208, 0.6);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #4169E1, #40E0D0, #4169E1);
+    box-shadow: 0 0 15px rgba(64, 224, 208, 0.8);
+}
+
+/* Символьный скроллбар для всего сайта */
+html.symbol-scroll::-webkit-scrollbar {
+    width: 14px;
+}
+
+html.symbol-scroll::-webkit-scrollbar-track {
+    background: rgba(40, 0, 16, 0.95);
+    border-left: 1px solid rgba(64, 224, 208, 0.4);
+}
+
+html.symbol-scroll::-webkit-scrollbar-thumb {
+    background: 
+        linear-gradient(45deg, transparent 30%, rgba(64, 224, 208, 0.3) 50%, transparent 70%),
+        rgba(64, 224, 208, 0.1);
+    border-radius: 7px;
+    border: 2px solid #40E0D0;
+}
+
+html.symbol-scroll::-webkit-scrollbar-thumb:hover {
+    background: 
+        linear-gradient(45deg, transparent 30%, #40E0D0 50%, transparent 70%),
+        rgba(64, 224, 208, 0.2);
+    box-shadow: 0 0 15px rgba(64, 224, 208, 0.7);
+}
+
+/* Для Firefox для всего сайта */
+html.symbol-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #40E0D0 rgba(40, 0, 16, 0.95);
+}
