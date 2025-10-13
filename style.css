@@ -1,207 +1,209 @@
-/* Левая панель навигации */
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 300px;
-    height: 100vh;
-    background: linear-gradient(135deg, rgba(40, 0, 16, 0.98) 0%, rgba(60, 10, 30, 0.95) 100%);
-    padding: 2rem 0;
-    overflow-y: auto;
-    border-right: 1px solid rgba(64, 224, 208, 0.3);
-    box-shadow: 5px 0 25px rgba(64, 224, 208, 0.2);
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
-
-.nav-header {
-    padding: 0 1.5rem 1.5rem;
-}
-
-.nav-title {
-    color: #40E0D0;
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
-    margin-bottom: 1rem;
-}
-
-.nav-divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #40E0D0, transparent);
-    width: 100%;
-}
-
-.nav-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 0 1rem;
-}
-
-.nav-btn {
-    position: relative;
-    background: rgba(64, 224, 208, 0.05);
-    color: #40E0D0;
-    border: 1px solid rgba(64, 224, 208, 0.2);
-    padding: 15px 20px;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: 'Times New Roman', serif;
-    transition: all 0.4s ease;
-    width: 100%;
-    overflow: hidden;
-    text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
-}
-
-.nav-btn:hover {
-    background: rgba(64, 224, 208, 0.1);
-    border-color: rgba(64, 224, 208, 0.5);
-    transform: translateX(8px);
-    box-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
-}
-
-.nav-btn.active {
-    background: rgba(64, 224, 208, 0.15);
-    border-color: #40E0D0;
-    box-shadow: 0 0 25px rgba(64, 224, 208, 0.5);
-    transform: translateX(5px);
-}
-
-.btn-text {
-    position: relative;
-    z-index: 2;
-}
-
-.btn-glow {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.1), transparent);
-    transition: left 0.6s ease;
-}
-
-.nav-btn:hover .btn-glow {
-    left: 100%;
-}
-
-/* Основной контент с центрированием */
-body {
-    margin: 0;
-    padding: 2rem;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding-left: 320px; /* Отступ для панели */
-}
-
-.container {
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-/* Секции контента */
-.content-section {
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
-
-.content-section.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { 
-        opacity: 0; 
-        transform: translateY(20px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
-
-/* Адаптивность */
-@media (max-width: 1200px) {
-    .container {
-        max-width: 700px;
-    }
-}
-
-@media (max-width: 992px) {
-    .container {
-        max-width: 600px;
-    }
-}
-
-@media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        border-right: none;
-        border-bottom: 1px solid rgba(64, 224, 208, 0.3);
-        padding: 1rem 0;
-    }
-    
-    body {
-        padding-left: 0;
-        padding-top: 0;
-        flex-direction: column;
-    }
-    
-    .nav-buttons {
-        flex-direction: row;
-        overflow-x: auto;
-        padding: 0 1rem;
-        gap: 5px;
-    }
-    
-    .nav-btn {
-        white-space: nowrap;
-        min-width: 200px;
-        font-size: 12px;
-        padding: 12px 15px;
-        transform: none !important;
-    }
-    
-    .nav-btn:hover {
-        transform: translateY(-2px) !important;
-    }
-    
-    .nav-header {
-        display: none;
-    }
-    
-    .container {
-        max-width: 100%;
-        margin-top: 1rem;
-    }
-}
-
-/* Скроллбар для панели */
-.sidebar::-webkit-scrollbar {
-    width: 4px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background: rgba(64, 224, 208, 0.1);
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: rgba(64, 224, 208, 0.3);
-    border-radius: 2px;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(64, 224, 208, 0.5);
-}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Times New Roman', serif;
+            background: #400010;
+            color: #40E0D0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .container { 
+            max-width: 800px; 
+            position: relative; 
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        .title { 
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+            line-height: 1.4;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #40E0D0, transparent);
+        }
+        .lightning { 
+            font-size: 1.8rem;
+            margin: 1rem 0;
+            animation: pulse 3s infinite alternate;
+        }
+        .text { 
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            text-align: left;
+        }
+        .highlight { 
+            color: #4169E1;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(65, 105, 225, 0.6);
+        }
+        .italic-text {
+            font-style: italic;
+        }
+        .question {
+            color: #40E0D0;
+            font-style: italic;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+        .final-line {
+            margin-top: 2.5rem;
+            position: relative;
+            padding-top: 1rem;
+        }
+        .final-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30%;
+            width: 40%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #40E0D0, transparent);
+        }
+        .symbol-image {
+            width: 100%;
+            height: auto;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
+        }
+        .join-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #4169E1, #40E0D0);
+            color: #400010;
+            padding: 15px 30px;
+            margin: 0rem 0 2rem 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(64, 224, 208, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .join-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(64, 224, 208, 0.8);
+        }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background: #400010;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #40E0D0;
+            box-shadow: 0 0 30px rgba(64, 224, 208, 0.5);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            color: #40E0D0;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        .close-popup:hover {
+            color: #4169E1;
+        }
+        .payment-details {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: rgba(60, 10, 40, 0.5);
+            border-radius: 8px;
+            border: 1px solid rgba(64, 224, 208, 0.3);
+        }
+        .bank-card {
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 1rem 0;
+            color: #40E0D0;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+        }
+        .telegram-link {
+            color: #40E0D0;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 8px 16px;
+            border: 1px solid #40E0D0;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .telegram-link:hover {
+            background: #40E0D0;
+            color: #400010;
+            text-decoration: none;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.7; text-shadow: 0 0 5px rgba(64, 224, 208, 0.5); }
+            100% { opacity: 1; text-shadow: 0 0 15px rgba(64, 224, 208, 0.9); }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(120vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-120px) rotate(360deg);
+            }
+        }
+        
+        .floating-symbols {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .symbol {
+            position: absolute;
+            color: rgba(64, 224, 208, 0.1);
+            font-size: 2rem;
+            animation: float 20s infinite linear;
+            top: -20vh
+        }
