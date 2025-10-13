@@ -8,29 +8,29 @@
     <link rel="stylesheet" href="navigation.css">
     <style>
         .videos-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
         }
         
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
             margin: 2rem 0;
         }
         
         .video-item {
             background: rgba(60, 10, 40, 0.5);
             border: 1px solid rgba(64, 224, 208, 0.3);
-            border-radius: 10px;
-            padding: 1.5rem;
+            border-radius: 8px;
+            padding: 1rem;
             transition: all 0.3s ease;
         }
         
         .video-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(64, 224, 208, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(64, 224, 208, 0.3);
             border-color: #40E0D0;
         }
         
@@ -39,8 +39,8 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
         }
         
         .video-wrapper iframe {
@@ -54,8 +54,15 @@
         
         .video-title {
             color: #40E0D0;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        .video-meta {
+            color: #888;
+            font-size: 0.8rem;
             text-align: center;
         }
         
@@ -69,13 +76,14 @@
         .page-btn {
             background: linear-gradient(45deg, #4169E1, #40E0D0);
             color: #400010;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: none;
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
         
         .page-btn:hover {
@@ -83,13 +91,36 @@
             box-shadow: 0 5px 15px rgba(64, 224, 208, 0.4);
         }
         
+        /* Для мобильных */
         @media (max-width: 768px) {
             .video-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1rem;
             }
             
             .videos-container {
                 padding: 1rem;
+            }
+        }
+        
+        /* Для очень широких экранов - 4 в ряд */
+        @media (min-width: 1400px) {
+            .video-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* Для средних экранов - 3 в ряд */
+        @media (min-width: 1024px) and (max-width: 1399px) {
+            .video-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Для планшетов - 2 в ряд */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -152,81 +183,47 @@
 <div class="videos-container">
     <div class="section">
         <h1 class="title">ВИДЕОТЕКА - СТРАНИЦА 1</h1>
-        <p class="text">Коллекция видео-материалов и онлайн-трансляций (1-25)</p>
+        <p class="text">Коллекция видео-материалов и онлайн-трансляций</p>
         
         <div class="video-grid">
-            <!-- Видео 1-25 -->
+            <!-- Видео 1 -->
             <div class="video-item">
-                <div class="video-title">Видео 1</div>
+                <div class="video-title">Основы миропонимания</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254815" allowfullscreen></iframe>
                 </div>
+                <div class="video-meta">Часть 1</div>
             </div>
 
+            <!-- Видео 2 -->
             <div class="video-item">
-                <div class="video-title">Видео 2</div>
+                <div class="video-title">Практики очищения</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254811" allowfullscreen></iframe>
                 </div>
+                <div class="video-meta">Часть 2</div>
             </div>
 
+            <!-- Видео 3 -->
             <div class="video-item">
-                <div class="video-title">Видео 3</div>
+                <div class="video-title">Энергетические потоки</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254810" allowfullscreen></iframe>
                 </div>
+                <div class="video-meta">Часть 3</div>
             </div>
 
+            <!-- Видео 4 -->
             <div class="video-item">
-                <div class="video-title">Видео 4</div>
+                <div class="video-title">Медитации</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254809" allowfullscreen></iframe>
                 </div>
+                <div class="video-meta">Утренняя практика</div>
             </div>
 
-            <div class="video-item">
-                <div class="video-title">Видео 5</div>
-                <div class="video-wrapper">
-                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254806" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="video-item">
-                <div class="video-title">Видео 6</div>
-                <div class="video-wrapper">
-                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254798" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="video-item">
-                <div class="video-title">Видео 7</div>
-                <div class="video-wrapper">
-                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254797" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="video-item">
-                <div class="video-title">Видео 8</div>
-                <div class="video-wrapper">
-                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254796" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="video-item">
-                <div class="video-title">Видео 9</div>
-                <div class="video-wrapper">
-                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254793" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="video-item">
-                <div class="video-title">Видео 10</div>
-                <div class="video-wrapper">
-                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254791" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <!-- Добавь видео 11-25 по аналогии -->
+            <!-- Добавь остальные видео по аналогии -->
+            <!-- Всего можно разместить 20-25 видео на странице -->
 
         </div>
 
