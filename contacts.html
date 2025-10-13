@@ -42,9 +42,18 @@
         }
         
         .contact-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem auto;
             display: block;
+            filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(160deg);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover .contact-icon {
+            opacity: 1;
+            transform: scale(1.1);
         }
         
         .contact-platform {
@@ -153,7 +162,7 @@
         <div class="contacts-grid">
             <!-- Телеграм -->
             <div class="contact-card telegram-card">
-                <div class="contact-icon">📱</div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="contact-icon">
                 <div class="contact-platform">Телеграм</div>
                 <div class="contact-links">
                     <a href="https://t.me/isceleniepreobrazhenievoznesenie" class="contact-link" target="_blank">
@@ -170,7 +179,7 @@
             
             <!-- ВКонтакте -->
             <div class="contact-card vk-card">
-                <div class="contact-icon">👥</div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/VK.com-logo.svg" alt="VK" class="contact-icon">
                 <div class="contact-platform">ВКонтакте</div>
                 <div class="contact-links">
                     <a href="https://vk.com/yaznayukaknado" class="contact-link" target="_blank">
@@ -181,18 +190,18 @@
             
             <!-- YouTube -->
             <div class="contact-card youtube-card">
-                <div class="contact-icon">🎥</div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" class="contact-icon">
                 <div class="contact-platform">YouTube</div>
                 <div class="contact-links">
                     <a href="https://www.youtube.com/@yaznayukaknado" class="contact-link" target="_blank">
-                        Я ЗНАЮ, КАК НАДО!
+                        Я ЗНАЮ КАК НАДО!
                     </a>
                 </div>
             </div>
             
             <!-- E-mail -->
             <div class="contact-card email-card">
-                <div class="contact-icon">✉️</div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" class="contact-icon">
                 <div class="contact-platform">E-mail</div>
                 <div class="contact-links">
                     <a href="mailto:InisVirgin@yandex.com" class="contact-link">
