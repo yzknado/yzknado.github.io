@@ -5,11 +5,13 @@
     top: 0;
     width: 300px;
     height: 100vh;
-    background: #400010;
+    background: linear-gradient(135deg, rgba(40, 0, 16, 0.98) 0%, rgba(60, 10, 30, 0.95) 100%);
     padding: 2rem 0;
     overflow-y: auto;
-    border-right: 1px solid #40E0D0;
+    border-right: 1px solid rgba(64, 224, 208, 0.3);
+    box-shadow: 5px 0 25px rgba(64, 224, 208, 0.2);
     z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
 .nav-header {
@@ -22,12 +24,13 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     text-align: center;
+    text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
     margin-bottom: 1rem;
 }
 
 .nav-divider {
     height: 1px;
-    background: #40E0D0;
+    background: linear-gradient(90deg, transparent, #40E0D0, transparent);
     width: 100%;
 }
 
@@ -39,16 +42,18 @@
 }
 
 .nav-btn {
-    background: transparent;
+    background: rgba(64, 224, 208, 0.05);
     color: #40E0D0;
-    border: 1px solid #40E0D0;
+    border: 1px solid rgba(64, 224, 208, 0.2);
     padding: 15px 20px;
     text-align: left;
     cursor: pointer;
     border-radius: 8px;
     font-size: 14px;
     font-family: 'Times New Roman', serif;
+    transition: all 0.4s ease;
     width: 100%;
+    text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
     white-space: normal;
     word-wrap: break-word;
     height: auto;
@@ -57,8 +62,24 @@
     align-items: center;
 }
 
+/* Для самой длинной кнопки можно добавить отдельный стиль */
+.nav-btn.long-text {
+    font-size: 13px;
+    min-height: 70px;
+}
+
 .nav-btn:hover {
     background: rgba(64, 224, 208, 0.1);
+    border-color: rgba(64, 224, 208, 0.5);
+    transform: translateX(8px);
+    box-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
+}
+
+.nav-btn.active {
+    background: rgba(64, 224, 208, 0.15);
+    border-color: #40E0D0;
+    box-shadow: 0 0 25px rgba(64, 224, 208, 0.5);
+    transform: translateX(5px);
 }
 
 /* Основной контент с центрированием */
@@ -82,10 +103,22 @@ body {
 /* Секции контента */
 .content-section {
     display: none;
+    animation: fadeIn 0.5s ease;
 }
 
 .content-section.active {
     display: block;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 /* Адаптивность */
@@ -95,7 +128,7 @@ body {
         height: auto;
         position: relative;
         border-right: none;
-        border-bottom: 1px solid #40E0D0;
+        border-bottom: 1px solid rgba(64, 224, 208, 0.3);
         padding: 1rem 0;
     }
     
@@ -117,6 +150,11 @@ body {
         min-width: 200px;
         font-size: 12px;
         padding: 12px 15px;
+        transform: none !important;
+    }
+    
+    .nav-btn:hover {
+        transform: translateY(-2px) !important;
     }
     
     .nav-header {
@@ -127,4 +165,94 @@ body {
         max-width: 100%;
         margin-top: 1rem;
     }
+}
+
+/* Для Firefox */
+.sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: #40E0D0 rgba(64, 224, 208, 0.1);
+}
+
+/* СТИЛЬ 1: fancy-scroll - Градиентный с анимацией */
+.sidebar.fancy-scroll::-webkit-scrollbar {
+    width: 10px;
+}
+
+.sidebar.fancy-scroll::-webkit-scrollbar-track {
+    background: rgba(40, 0, 16, 0.8);
+    border-radius: 5px;
+    margin: 10px 0;
+    border: 1px solid rgba(64, 224, 208, 0.2);
+}
+
+.sidebar.fancy-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #40E0D0, #4169E1, #40E0D0);
+    border-radius: 5px;
+    border: 1px solid rgba(64, 224, 208, 0.5);
+    box-shadow: 0 0 10px rgba(64, 224, 208, 0.6);
+    animation: scroll-glow 2s infinite alternate;
+}
+
+@keyframes scroll-glow {
+    0% { box-shadow: 0 0 10px rgba(64, 224, 208, 0.6); }
+    100% { box-shadow: 0 0 15px rgba(64, 224, 208, 0.9); }
+}
+
+/* СТИЛЬ 2: minimal-scroll - Минималистичный */
+.sidebar.minimal-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar.minimal-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar.minimal-scroll::-webkit-scrollbar-thumb {
+    background: rgba(64, 224, 208, 0.3);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.sidebar.minimal-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(64, 224, 208, 0.7);
+}
+
+/* СТИЛЬ 3: symbol-scroll - Символьный */
+.sidebar.symbol-scroll::-webkit-scrollbar {
+    width: 14px;
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-track {
+    background: rgba(60, 10, 30, 0.9);
+    border-radius: 7px;
+    margin: 5px 0;
+    border: 1px solid rgba(64, 224, 208, 0.4);
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-thumb {
+    background: rgba(64, 224, 208, 0.1);
+    border-radius: 7px;
+    border: 2px solid #40E0D0;
+    position: relative;
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-thumb::before {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #40E0D0;
+    font-size: 12px;
+    text-shadow: 0 0 8px rgba(64, 224, 208, 0.8);
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-thumb:hover::before {
+    content: '✧';
+    animation: symbol-rotate 1s infinite;
+}
+
+@keyframes symbol-rotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(180deg); }
 }
