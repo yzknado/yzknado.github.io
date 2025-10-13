@@ -5,8 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar.classList.add('minimal-scroll');
     }
     
-    // Автоматически активируем кнопку текущей страницы ПРИ КАЖДОЙ ЗАГРУЗКЕ
-    activateCurrentPageButton();
+    // Восстанавливаем активную кнопку из localStorage ИЛИ определяем текущую страницу
+    const savedActive = localStorage.getItem('activeNavButton');
+    if (savedActive) {
+        setActiveButton(savedActive);
+    } else {
+        activateCurrentPageButton();
+    }
     
     // Вешаем обработчики на все кнопки
     const navButtons = document.querySelectorAll('.nav-btn');
@@ -16,12 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const section = this.getAttribute('data-section');
             
+            // Сохраняем активную кнопку в localStorage
+            localStorage.setItem('activeNavButton', section);
+            
             // Обработка разных разделов
             switch(section) {
                 case 'main':
                     if (isMainPage()) {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                        // Обновляем активную кнопку
                         setActiveButton('main');
                     } else {
                         window.location.href = 'index.html';
