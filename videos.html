@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
     <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        
         .videos-container {
-            max-width: 95%;
-            margin: 0 auto;
-            padding: 1rem;
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0.5rem;
         }
         
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
         }
         
         .video-item {
@@ -54,7 +60,7 @@
         
         .video-title {
             color: #40E0D0;
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 0.3rem;
             text-align: center;
             line-height: 1.3;
@@ -64,20 +70,19 @@
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin: 3rem 0;
+            margin: 2rem 0;
         }
         
         .page-btn {
             background: linear-gradient(45deg, #4169E1, #40E0D0);
             color: #400010;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
         }
         
         .page-btn:hover {
@@ -85,32 +90,26 @@
             box-shadow: 0 5px 15px rgba(64, 224, 208, 0.4);
         }
         
-        /* Для широких экранов - больше видео в ряду */
-        @media (min-width: 1600px) {
-            .video-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
-        }
-        
-        @media (min-width: 1200px) and (max-width: 1599px) {
+        /* Фиксированное количество колонок */
+        @media (min-width: 1800px) {
             .video-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
         
-        @media (min-width: 900px) and (max-width: 1199px) {
+        @media (min-width: 1400px) and (max-width: 1799px) {
             .video-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
         
-        @media (max-width: 899px) {
+        @media (min-width: 1000px) and (max-width: 1399px) {
             .video-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 999px) {
             .video-grid {
                 grid-template-columns: 1fr;
             }
@@ -178,7 +177,7 @@
         <p class="text">Коллекция видео-материалов и онлайн-трансляций</p>
         
         <div class="video-grid">
-            <!-- Видео 1 -->
+            <!-- Видео 1-8 -->
             <div class="video-item">
                 <div class="video-title">Основы миропонимания</div>
                 <div class="video-wrapper">
@@ -186,7 +185,6 @@
                 </div>
             </div>
 
-            <!-- Видео 2 -->
             <div class="video-item">
                 <div class="video-title">Практики очищения</div>
                 <div class="video-wrapper">
@@ -194,7 +192,6 @@
                 </div>
             </div>
 
-            <!-- Видео 3 -->
             <div class="video-item">
                 <div class="video-title">Энергетические потоки</div>
                 <div class="video-wrapper">
@@ -202,7 +199,6 @@
                 </div>
             </div>
 
-            <!-- Видео 4 -->
             <div class="video-item">
                 <div class="video-title">Медитации</div>
                 <div class="video-wrapper">
@@ -210,7 +206,6 @@
                 </div>
             </div>
 
-            <!-- Видео 5 -->
             <div class="video-item">
                 <div class="video-title">Дыхательные практики</div>
                 <div class="video-wrapper">
@@ -218,7 +213,6 @@
                 </div>
             </div>
 
-            <!-- Видео 6 -->
             <div class="video-item">
                 <div class="video-title">Работа с энергией</div>
                 <div class="video-wrapper">
@@ -226,7 +220,6 @@
                 </div>
             </div>
 
-            <!-- Видео 7 -->
             <div class="video-item">
                 <div class="video-title">Техники защиты</div>
                 <div class="video-wrapper">
@@ -234,7 +227,6 @@
                 </div>
             </div>
 
-            <!-- Видео 8 -->
             <div class="video-item">
                 <div class="video-title">Развитие интуиции</div>
                 <div class="video-wrapper">
@@ -242,7 +234,7 @@
                 </div>
             </div>
 
-            <!-- Добавь остальные видео 9-25 -->
+            <!-- Добавь остальные видео -->
 
         </div>
 
