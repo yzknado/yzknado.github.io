@@ -69,14 +69,15 @@
     min-height: 70px;
 }
 
-.nav-btn:hover {
+/* Ховер только для неактивных кнопок */
+.nav-btn:hover:not(.active) {
     background: rgba(64, 224, 208, 0.1);
     border-color: rgba(64, 224, 208, 0.5);
     transform: translateX(8px);
     box-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
 }
 
-/* Стиль для активной кнопки */
+/* Стиль для активной кнопки БЕЗ сдвига */
 .nav-btn.active {
     background: rgba(64, 224, 208, 0.2) !important;
     border-color: #40E0D0 !important;
@@ -188,12 +189,12 @@ body {
         transform: none !important;
     }
     
-    .nav-btn:hover {
+    .nav-btn:hover:not(.active) {
         transform: translateY(-2px) !important;
     }
     
     .nav-btn.active {
-        transform: translateY(-2px) !important;
+        transform: none !important;
     }
     
     .nav-btn.active::after {
