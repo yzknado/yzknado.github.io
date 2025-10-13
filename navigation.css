@@ -216,3 +216,43 @@ body {
 .sidebar.minimal-scroll::-webkit-scrollbar-thumb:hover {
     background: rgba(64, 224, 208, 0.7);
 }
+
+/* СТИЛЬ 3: symbol-scroll - Символьный */
+.sidebar.symbol-scroll::-webkit-scrollbar {
+    width: 14px;
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-track {
+    background: rgba(60, 10, 30, 0.9);
+    border-radius: 7px;
+    margin: 5px 0;
+    border: 1px solid rgba(64, 224, 208, 0.4);
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-thumb {
+    background: rgba(64, 224, 208, 0.1);
+    border-radius: 7px;
+    border: 2px solid #40E0D0;
+    position: relative;
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-thumb::before {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #40E0D0;
+    font-size: 12px;
+    text-shadow: 0 0 8px rgba(64, 224, 208, 0.8);
+}
+
+.sidebar.symbol-scroll::-webkit-scrollbar-thumb:hover::before {
+    content: '✧';
+    animation: symbol-rotate 1s infinite;
+}
+
+@keyframes symbol-rotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(180deg); }
+}
