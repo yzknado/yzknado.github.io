@@ -1,12 +1,6 @@
-// Функция для навигации
+// Навигационная система
 function initNavigation() {
     const navButtons = document.querySelectorAll('.nav-btn');
-    const contentSections = document.querySelectorAll('.content-section');
-    
-    // Создаем секции если их нет
-    if (contentSections.length === 0) {
-        createContentSections();
-    }
     
     navButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -17,58 +11,73 @@ function initNavigation() {
             // Добавляем активный класс текущей кнопке
             this.classList.add('active');
             
-            // Скрываем все секции
-            contentSections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Показываем выбранную секцию
-            const activeSection = document.getElementById(sectionId);
-            if (activeSection) {
-                activeSection.classList.add('active');
-                activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            showSection(sectionId);
         });
     });
     
     // Активируем первую кнопку по умолчанию
     if (navButtons.length > 0) {
         navButtons[0].classList.add('active');
+        showSection(navButtons[0].getAttribute('data-section'));
     }
 }
 
-// Функция для создания секций контента
+// Функция показа секции
+function showSection(sectionId) {
+    // Скрываем все секции
+    const allSections = document.querySelectorAll('.content-section');
+    allSections.forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Показываем выбранную секцию
+    const activeSection = document.getElementById(sectionId);
+    if (activeSection) {
+        activeSection.classList.add('active');
+        // Плавная прокрутка к секции
+        setTimeout(() => {
+            activeSection.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }, 100);
+    }
+}
+
+// Создаем секции контента
 function createContentSections() {
-    const sections = [
-        { id: 'new-worldview', title: 'НОВОЕ ОБЪЯСНЕНИЕ МИРА', content: 'Содержимое раздела мировоззренческой теории...' },
-        { id: 'practice', title: 'Практика', content: 'Содержимое раздела практики...' },
-        { id: 'learning', title: 'Обучение', content: 'Содержимое раздела обучения...' },
-        { id: 'joint-actions', title: 'Совместные акции', content: 'Содержимое раздела совместных акций...' },
-        { id: 'broadcasts', title: 'Трансляции', content: 'Содержимое раздела трансляций...' },
-        { id: 'video', title: 'Видеотека', content: 'Содержимое видеотеки...' },
-        { id: 'interesting-cases', title: 'Интересные случаи из жизни', content: 'Содержимое раздела интересных случаев...' },
-        { id: 'reviews', title: 'Отзывы', content: 'Содержимое раздела отзывов...' },
-        { id: 'contacts', title: 'Контакты', content: 'Содержимое раздела контактов...' },
-        { id: 'cooperation', title: 'Сотрудничество', content: 'Содержимое раздела сотрудничества...' }
+    const sectionsConfig = [
+        { 
+            id: 'new-worldview', 
+            title: 'НОВОЕ ОБЪЯСНЕНИЕ МИРА', 
+            content: 'Здесь будет представлена мировоззренческая теория, предлагающая новое понимание устройства мира и места человека в нём.' 
+        },
+        { 
+            id: 'practice', 
+            title: 'Практика', 
+            content: 'Практические методы и техники для применения знаний в повседневной жизни.' 
+        },
+        // ... остальные секции по аналогии
     ];
     
     const container = document.querySelector('.container');
     
-    sections.forEach(section => {
+    sectionsConfig.forEach(section => {
         const sectionElement = document.createElement('div');
         sectionElement.className = 'content-section section';
         sectionElement.id = section.id;
         
         sectionElement.innerHTML = `
             <h1 class="title">${section.title}</h1>
-            <p class="text">${section.content}</p>
+            <div class="text">${section.content}</div>
         `;
         
         container.appendChild(sectionElement);
     });
 }
 
-// Инициализируем навигацию после загрузки DOM
+// Инициализация после загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
+    createContentSections();
     initNavigation();
 });
