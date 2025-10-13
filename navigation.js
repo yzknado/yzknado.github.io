@@ -1,4 +1,14 @@
-/*
+// Автоматически добавляем класс для красивого скроллбара
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+        sidebar.classList.add('fancy-scroll'); // или 'minimal-scroll', 'symbol-scroll'
+    }
+});
+
+return;
+
+
 // Навигационная система
 function initNavigation() {
     const navButtons = document.querySelectorAll('.nav-btn');
@@ -127,4 +137,3 @@ function createContentSections() {
 document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
 });
-*/
