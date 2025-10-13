@@ -3,9 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Название страницы</title>
+    <title>Контакты</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
+    <style>
+        .contacts-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .contacts-list li {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(60, 10, 40, 0.3);
+            border-radius: 8px;
+            border-left: 3px solid #40E0D0;
+        }
+        
+        .contact-platform {
+            color: #40E0D0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
+        }
+        
+        .contact-link {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0.3rem 0;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .contact-link:hover {
+            color: #40E0D0;
+            background: rgba(64, 224, 208, 0.1);
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+        }
+        
+        .telegram-link { border-left: 2px solid #0088cc; }
+        .vk-link { border-left: 2px solid #4a76a8; }
+        .youtube-link { border-left: 2px solid #ff0000; }
+        .email-link { border-left: 2px solid #ff9900; }
+    </style>
 </head>
 <body>
 <!-- Левая панель навигации -->
@@ -15,7 +59,7 @@
         <div class="nav-divider"></div>
     </div>
     <div class="nav-buttons">
-        <button class="nav-btn active" data-section="main">
+        <button class="nav-btn" data-section="main">
             <span class="btn-text">Главная</span>
             <span class="btn-glow"></span>
         </button>
@@ -56,7 +100,7 @@
             <span class="btn-text">Отзывы</span>
             <span class="btn-glow"></span>
         </button>
-        <button class="nav-btn" data-section="contacts">
+        <button class="nav-btn active" data-section="contacts">
             <span class="btn-text">Контакты, сотрудничество</span>
             <span class="btn-glow"></span>
         </button>
@@ -66,17 +110,51 @@
         </button>
     </div>
 </nav>
+
 <!-- Основной контент -->
 <div class="container">
     <div class="section">
-        <h1 class="title">Заголовок страницы</h1>
+        <h1 class="title">Контакты и сотрудничество</h1>
         
-        <!-- Ваш контент здесь -->
-        <p class="text">Текст вашей страницы...</p>
+        <ul class="contacts-list">
+            <li>
+                <div class="contact-platform">📱 Телеграм</div>
+                <a href="https://t.me/isceleniepreobrazhenievoznesenie" class="contact-link telegram-link" target="_blank">
+                    https://t.me/isceleniepreobrazhenievoznesenie
+                </a>
+                <a href="https://t.me/temarunda_akshayna" class="contact-link telegram-link" target="_blank">
+                    https://t.me/temarunda_akshayna
+                </a>
+                <a href="https://t.me/Kyaabahan" class="contact-link telegram-link" target="_blank">
+                    @Kyaabahan
+                </a>
+            </li>
+            
+            <li>
+                <div class="contact-platform">👥 ВКонтакте</div>
+                <a href="https://vk.com/yaznayukaknado" class="contact-link vk-link" target="_blank">
+                    https://vk.com/yaznayukaknado
+                </a>
+            </li>
+            
+            <li>
+                <div class="contact-platform">🎥 YouTube</div>
+                <a href="https://www.youtube.com/@yaznayukaknado" class="contact-link youtube-link" target="_blank">
+                    https://www.youtube.com/@yaznayukaknado
+                </a>
+            </li>
+            
+            <li>
+                <div class="contact-platform">✉️ E-mail</div>
+                <a href="mailto:InisVirgin@yandex.com" class="contact-link email-link">
+                    InisVirgin@yandex.com
+                </a>
+            </li>
+        </ul>
         
     </div>
 </div>
-
+<div class="floating-symbols"></div>
 <script src="script.js"></script>
 <script src="navigation.js"></script>
 </body>
