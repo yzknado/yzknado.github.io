@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar.classList.add('minimal-scroll');
     }
     
+    // Автоматически активируем кнопку текущей страницы ПРИ КАЖДОЙ ЗАГРУЗКЕ
+    activateCurrentPageButton();
+    
     // Вешаем обработчики на все кнопки
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(button => {
@@ -13,18 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const section = this.getAttribute('data-section');
             
-            // Убираем активный класс у всех кнопок
-            navButtons.forEach(btn => btn.classList.remove('active'));
-            // Добавляем активный класс текущей кнопке
-            this.classList.add('active');
-            
             // Обработка разных разделов
             switch(section) {
                 case 'main':
-                    if (window.location.pathname === '/' || window.location.pathname.includes('index')) {
+                    if (isMainPage()) {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                        // Обновляем активную кнопку
+                        setActiveButton('main');
                     } else {
-                        window.location.href = '/';
+                        window.location.href = 'index.html';
                     }
                     break;
                     
@@ -41,41 +41,40 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Автоматически активируем кнопку текущей страницы
-    activateCurrentPageButton();
 });
+
+// Функция для установки активной кнопки
+function setActiveButton(section) {
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-section') === section) {
+            btn.classList.add('active');
+        }
+    });
+}
 
 // Функция для автоматической активации кнопки текущей страницы
 function activateCurrentPageButton() {
     const currentPage = getCurrentPage();
-    const activeButton = document.querySelector(`.nav-btn[data-section="${currentPage}"]`);
-    
-    if (activeButton) {
-        // Убираем активный класс у всех кнопок
-        const allButtons = document.querySelectorAll('.nav-btn');
-        allButtons.forEach(btn => btn.classList.remove('active'));
-        
-        // Добавляем активный класс текущей странице
-        activeButton.classList.add('active');
-    }
+    setActiveButton(currentPage);
+}
+
+// Проверка на главную страницу
+function isMainPage() {
+    const path = window.location.pathname;
+    const page = path.split('/').pop();
+    return (path === '/' || page === 'index.html' || page === '' || page === 'yzknado.github.io');
 }
 
 // Функция для определения текущей страницы
 function getCurrentPage() {
     const path = window.location.pathname;
-    const page = path.split('/').pop(); // Получаем имя файла
+    const page = path.split('/').pop();
     
-    if (path === '/' || path.includes('index') || page === '' || page === 'yzknado.github.io') {
-        return 'main';
-    }
-    if (page.includes('practice')) return 'practice';
-    if (page.includes('learning')) return 'learning';
+    if (isMainPage()) return 'main';
+    if (page === 'practice.html') return 'practice';
+    if (page === 'learning.html') return 'learning';
     
-    return 'main'; // По умолчанию главная
+    return 'main';
 }
-
-// Слушаем событие возврата назад/вперед в истории
-window.addEventListener('popstate', function() {
-    activateCurrentPageButton();
-});
