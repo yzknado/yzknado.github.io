@@ -29,17 +29,28 @@
             }
         }
         
+        /* Поднимаем контент выше */
+        .section {
+            padding-top: 1rem; /* Уменьшаем верхний отступ */
+            min-height: auto; /* Убираем минимальную высоту */
+        }
+        
+        .title {
+            margin-top: 0.5rem; /* Уменьшаем отступ заголовка */
+            margin-bottom: 1.5rem; /* Уменьшаем отступ снизу */
+        }
+        
         .contacts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem; /* Уменьшаем gap между карточками */
-            margin: 1.5rem 0;
+            gap: 1.5rem;
+            margin: 1rem 0; /* Уменьшаем вертикальные отступы */
         }
         
         .contact-card {
             background: rgba(60, 10, 40, 0.3);
             border-radius: 12px;
-            padding: 1.5rem; /* Уменьшаем внутренние отступы */
+            padding: 1.5rem;
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(64, 224, 208, 0.2);
@@ -64,7 +75,7 @@
         }
         
         .contact-icon {
-            width: 60px; /* Немного уменьшаем иконки */
+            width: 60px;
             height: 60px;
             margin: 0 auto 1rem auto;
             display: block;
@@ -87,7 +98,7 @@
         
         .contact-platform {
             color: #40E0D0;
-            font-size: 1.2rem; /* Немного уменьшаем размер шрифта */
+            font-size: 1.2rem;
             font-weight: bold;
             margin-bottom: 1rem;
             text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
@@ -96,18 +107,18 @@
         .contact-links {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem; /* Уменьшаем gap между ссылками */
+            gap: 0.8rem;
         }
         
         .contact-link {
             color: #ccc;
             text-decoration: none;
-            padding: 0.7rem 0.8rem; /* Уменьшаем отступы ссылок */
+            padding: 0.7rem 0.8rem;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
             border: 1px solid transparent;
-            font-size: 0.9rem; /* Немного уменьшаем размер шрифта */
+            font-size: 0.9rem;
         }
         
         .contact-link:hover {
@@ -143,6 +154,22 @@
                 width: 60px;
                 height: 42px;
             }
+        }
+        
+        /* Дополнительные стили для поднятия контента */
+        body {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section {
+            flex: 0; /* Не растягиваем секцию на всю высоту */
         }
     </style>
 </head>
