@@ -66,3 +66,12 @@ function closePopup() {
         popup.style.display = 'none';
     }
 }
+
+<div class="video-item">
+    <div class="video-title" data-fulltitle="Очень длинное полное название видео которое не помещается в одну строку">
+        Очень длинное полное название видео которое не помещается в одну строку
+    </div>
+    <div class="video-wrapper">
+        <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254815" allowfullscreen></iframe>
+    </div>
+</div>
