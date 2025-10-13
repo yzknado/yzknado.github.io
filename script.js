@@ -22,17 +22,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function showPopup() {
     const popup = document.getElementById('paymentPopup');
-    popup.style.display = 'flex';
+    if (popup) {
+        popup.style.display = 'flex';
+    }
 }
 
 function closePopup() {
     const popup = document.getElementById('paymentPopup');
-    popup.style.display = 'none';
+    if (popup) {
+        popup.style.display = 'none';
+    }
 }
 
 // Один раз вешаем обработчики при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    // Кнопка открытия
+    // Кнопка открытия (только если существует на этой странице)
     const joinButton = document.querySelector('.join-button');
     if (joinButton) {
         joinButton.addEventListener('click', showPopup);
@@ -41,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Закрытие по клику вне попапа (делегирование)
     document.addEventListener('click', function(e) {
         const popup = document.getElementById('paymentPopup');
-        if (popup.style.display === 'flex' && e.target === popup) {
+        if (popup && popup.style.display === 'flex' && e.target === popup) {
             closePopup();
         }
     });
@@ -49,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Закрытие по ESC
     document.addEventListener('keydown', function(e) {
         const popup = document.getElementById('paymentPopup');
-        if (e.key === 'Escape' && popup.style.display === 'flex') {
+        if (e.key === 'Escape' && popup && popup.style.display === 'flex') {
             closePopup();
         }
     });
