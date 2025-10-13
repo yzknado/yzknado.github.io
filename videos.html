@@ -9,7 +9,7 @@
     <style>
         /* СТИЛИ ТОЛЬКО ДЛЯ ВИДЕОТЕКИ */
         body {
-            display: block; /* Переопределяем flex из главного стиля */
+            display: block;
             padding: 0;
         }
         
@@ -21,7 +21,7 @@
             max-width: none;
         }
         
-                .video-grid {
+        .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
@@ -41,55 +41,6 @@
             width: 100%; 
             min-width: 0;
             overflow: hidden;
-            cursor: help;
-            position: relative;
-        }
-
-        .video-item::after {
-            content: attr(data-fulltitle);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.95);
-            color: #40E0D0;
-            padding: 0.8rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #40E0D0;
-            white-space: normal;
-            width: 280px;
-            text-align: center;
-            font-size: 0.9rem;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(64, 224, 208, 0.3);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            line-height: 1.4;
-        }
-        
-        .video-item:hover::after {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(-5px);
-        }
-        
-        .video-item::before {
-            content: '';
-            position: absolute;
-            bottom: calc(100% - 8px);
-            left: 50%;
-            transform: translateX(-50%);
-            border: 8px solid transparent;
-            border-top-color: #40E0D0;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .video-item:hover::before {
-            opacity: 1;
-            visibility: visible;
         }
         
         .video-item:hover {
@@ -136,11 +87,6 @@
             display: block;
         }
         
-        /* Убираем нумерацию */
-        .video-counter {
-            display: none;
-        }
-        
         @media (min-width: 1400px) {
             .video-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -173,12 +119,12 @@
             
             .video-item {
                 padding: 0.8rem;
-                height: 300px; /* Чуть меньше для мобильных */
+                height: 300px;
             }
             
             .video-title {
                 font-size: 0.9rem;
-                height: 2.8rem; /* Чуть меньше для мобильных */
+                height: 2.8rem;
             }
         }
     </style>
@@ -245,7 +191,6 @@
     </div>
     
     <div class="video-grid">
-            <!-- Видео 1-60+ -->
             <div class="video-item" title="Мы сообща возродили ныне НОВОЕ Древо Жизни!">
                 <div class="video-title">
                     Мы сообща возродили ныне НОВОЕ Древо Жизни!
@@ -255,7 +200,7 @@
                 </div>
             </div>
 
-            <div class="video-item" data-fulltitle="МОЖНО ИЗБЕЖАТЬ СМЕРТИ – НО НЕЛЬЗЯ ИЗБЕЖАТЬ ЛЮБВИ!">
+            <div class="video-item" title="МОЖНО ИЗБЕЖАТЬ СМЕРТИ – НО НЕЛЬЗЯ ИЗБЕЖАТЬ ЛЮБВИ!">
                 <div class="video-title">
                     МОЖНО ИЗБЕЖАТЬ СМЕРТИ – НО НЕЛЬЗЯ ИЗБЕЖАТЬ ЛЮБВИ!
                 </div>
@@ -264,7 +209,7 @@
                 </div>
             </div>
 
-            <div class="video-item" data-fulltitle="НОВАЯ ЭЛИТА Руси *Земли Света* не нуждается в признании со стороны быдломассы">
+            <div class="video-item" title="НОВАЯ ЭЛИТА Руси *Земли Света* не нуждается в признании со стороны быдломассы">
                 <div class="video-title">
                     НОВАЯ ЭЛИТА Руси *Земли Света* не нуждается в признании со стороны быдломассы
                 </div>
@@ -273,337 +218,334 @@
                 </div>
             </div>
 
-            <div class="video-item" data-fulltitle="Медитации и концентрация">
+            <div class="video-item" title="Медитации и концентрация">
                 <div class="video-title">Медитации и концентрация</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254809" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item" data-fulltitle="Дыхательные практики">
+            <div class="video-item" title="Дыхательные практики">
                 <div class="video-title">Дыхательные практики</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254806" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item" data-fulltitle="Работа с энергией">
+            <div class="video-item" title="Работа с энергией">
                 <div class="video-title">Работа с энергией</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254798" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Техники защиты">
                 <div class="video-title">Техники защиты</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254797" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Развитие интуиции">
                 <div class="video-title">Развитие интуиции</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254796" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Работа с подсознанием">
                 <div class="video-title">Работа с подсознанием</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254793" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Очищение кармы">
                 <div class="video-title">Очищение кармы</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254791" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Энергетическое целительство">
                 <div class="video-title">Энергетическое целительство</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254790" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Мантры и звуковые вибрации">
                 <div class="video-title">Мантры и звуковые вибрации</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254788" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Работа с чакрами">
                 <div class="video-title">Работа с чакрами</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254786" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Астральные путешествия">
                 <div class="video-title">Астральные путешествия</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254784" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Осознанные сновидения">
                 <div class="video-title">Осознанные сновидения</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254783" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Техники визуализации">
                 <div class="video-title">Техники визуализации</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254778" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Коллективная медитация">
                 <div class="video-title">Коллективная медитация</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=-227456729&id=456247047" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Работа с родовой кармой">
                 <div class="video-title">Работа с родовой кармой</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254777" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Энергетическое питание">
                 <div class="video-title">Энергетическое питание</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254775" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Практики гармонизации">
                 <div class="video-title">Практики гармонизации</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254771" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Работа с эмоциями">
                 <div class="video-title">Работа с эмоциями</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254774" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Ментальное очищение">
                 <div class="video-title">Ментальное очищение</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254768" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Практики благодарности">
                 <div class="video-title">Практики благодарности</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254767" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Энергетический баланс">
                 <div class="video-title">Энергетический баланс</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254766" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Работа с намерением">
                 <div class="video-title">Работа с намерением</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254763" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Эмоциональное исцеление">
                 <div class="video-title">Эмоциональное исцеление</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254762" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Психологические техники">
                 <div class="video-title">Психологические техники</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254761" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Медитация для начинающих">
                 <div class="video-title">Медитация для начинающих</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254759" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Продвинутые практики">
                 <div class="video-title">Продвинутые практики</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254752" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Энергетические центры">
                 <div class="video-title">Энергетические центры</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254758" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Техники расслабления">
                 <div class="video-title">Техники расслабления</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254757" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Групповая работа">
                 <div class="video-title">Групповая работа</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=-205196208&id=456239693" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Самоисследование">
                 <div class="video-title">Самоисследование</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254754" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Индивидуальные сессии">
                 <div class="video-title">Индивидуальные сессии</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=-205196208&id=456239689" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Основы энергетики">
                 <div class="video-title">Основы энергетики</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254731" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Практики утра">
                 <div class="video-title">Практики утра</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254730" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Вечерние медитации">
                 <div class="video-title">Вечерние медитации</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254728" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Техники фокусировки">
                 <div class="video-title">Техники фокусировки</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254727" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Работа с вниманием">
                 <div class="video-title">Работа с вниманием</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254726" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Концентрация и осознанность">
                 <div class="video-title">Концентрация и осознанность</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254725" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <!-- Продолжение видео 41-60+ -->
-            <div class="video-item">
+            <div class="video-item" title="Плейлист практик">
                 <div class="video-title">Плейлист практик</div>
                 <div class="video-wrapper">
                     <iframe src="https://vkvideo.ru/video_ext.php?oid=87855351&id=456254724&hd=2&hash=45662875e242384c" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Специальная методика">
                 <div class="video-title">Специальная методика</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=-226745248&id=456239054" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Практика для продвинутых">
                 <div class="video-title">Практика для продвинутых</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254723" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Утренний комплекс">
                 <div class="video-title">Утренний комплекс</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254722" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Вечерний комплекс">
                 <div class="video-title">Вечерний комплекс</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254721" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Техника глубокого расслабления">
                 <div class="video-title">Техника глубокого расслабления</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254719" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Медитация для сна">
                 <div class="video-title">Медитация для сна</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254718" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Практика пробуждения">
                 <div class="video-title">Практика пробуждения</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254715" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Энергетическая гигиена">
                 <div class="video-title">Энергетическая гигиена</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254714" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-item" title="Защитные техники">
                 <div class="video-title">Защитные техники</div>
                 <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254713" allowfullscreen></iframe>
                 </div>
             </div>
-
-            <!-- Продолжение до 60+ -->
 
         </div>
 
