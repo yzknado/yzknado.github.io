@@ -54,6 +54,18 @@
     transition: all 0.4s ease;
     width: 100%;
     text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
+    white-space: normal;
+    word-wrap: break-word;
+    height: auto;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+/* Для самой длинной кнопки можно добавить отдельный стиль */
+.nav-btn.long-text {
+    font-size: 13px;
+    min-height: 70px;
 }
 
 .nav-btn:hover {
