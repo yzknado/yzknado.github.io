@@ -25,19 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Иначе переход на другую страницу (без .html)
             switch(section) {
                 case 'main': window.location.href = '/'; break;
-                case 'new-worldview': window.location.href = 'new-worldview'; break;
-                case 'practice': window.location.href = 'practice'; break;
-                case 'learning': window.location.href = 'learning'; break;
-                case 'joint-actions': window.location.href = 'joint-actions'; break;
-                case 'videos': window.location.href = 'videos'; break;
-                case 'publications': window.location.href = 'publications'; break;
-                case 'unpublished': window.location.href = 'unpublished'; break;
-                case 'interesting-cases': window.location.href = 'interesting-cases'; break;
-                case 'reviews': window.location.href = 'reviews'; break;
-                case 'contacts': window.location.href = 'contacts'; break;
+                case 'new-worldview': window.location.href = 'pages/new-worldview.html'; break;
+                case 'practice': window.location.href = 'pages/practice.html'; break;
+                case 'learning': window.location.href = 'pages/learning.html'; break;
+                case 'joint-actions': window.location.href = 'pages/joint-actions.html'; break;
+                case 'videos': window.location.href = 'pages/videos.html'; break;
+                case 'publications': window.location.href = 'pages/publications.html'; break;
+                case 'unpublished': window.location.href = 'pages/unpublished.html'; break;
+                case 'interesting-cases': window.location.href = 'pages/interesting-cases.html'; break;
+                case 'reviews': window.location.href = 'pages/reviews.html'; break;
+                case 'contacts': window.location.href = 'pages/contacts.html'; break;
                 default: console.log('Раздел:', section);
             }
         });
