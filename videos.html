@@ -38,6 +38,8 @@
             flex-direction: column;
             height: 320px; /* ФИКСИРОВАННАЯ высота блока */
             box-sizing: border-box;
+            width: 100%; 
+            min-width: 0;
         }
         
         .video-item:hover {
@@ -77,13 +79,15 @@
             cursor: help;
             position: relative;
             width: 100%;
-            height: 3rem; /* ФИКСИРОВАННАЯ высота названия */
+            height: 3rem; 
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 0.5rem;
             box-sizing: border-box;
             flex-shrink: 0;
+            min-width: 0;
+            max-width: 100%; 
         }
         
         /* Всплывающая подсказка */
@@ -267,7 +271,7 @@
                 <div class="video-title" data-fulltitle="НОВАЯ ЭЛИТА Руси *Земли Света* не нуждается в признании со стороны быдломассы">
                     НОВАЯ ЭЛИТА Руси *Земли Света* не нуждается в признании со стороны быдломассы
                 </div>
-                <div class="video-wrapper">>
+                <div class="video-wrapper">
                     <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254810" allowfullscreen></iframe>
                 </div>
             </div>
