@@ -3,25 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Название страницы</title>
+    <title>Видеотека - УНИВЕРСУМ ПредВечной ПраМатери</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
+    <style>
+        .videos-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .video-item {
+            background: rgba(60, 10, 40, 0.5);
+            border: 1px solid rgba(64, 224, 208, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(64, 224, 208, 0.2);
+            border-color: #40E0D0;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-title {
+            color: #40E0D0;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+        
+        .page-btn {
+            background: linear-gradient(45deg, #4169E1, #40E0D0);
+            color: #400010;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(64, 224, 208, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .videos-container {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- Левая панель навигации -->
 <nav class="sidebar minimal-scroll">
     <div class="nav-header">
         <div class="nav-title">НАВИГАЦИЯ</div>
         <div class="nav-divider"></div>
     </div>
     <div class="nav-buttons">
-        <button class="nav-btn active" data-section="main">
+        <button class="nav-btn" data-section="main">
             <span class="btn-text">Главная</span>
             <span class="btn-glow"></span>
         </button>
         
         <button class="nav-btn" data-section="new-worldview">
-            <span class="btn-text">НОВОЕ ОБЪЯСНЕНИЕ МИРА (мировоззренческая теория)</span>
+            <span class="btn-text">НОВОЕ ОБЪЯСНЕНИЕ МИРА</span>
             <span class="btn-glow"></span>
         </button>
         <button class="nav-btn" data-section="practice">
@@ -36,7 +122,7 @@
             <span class="btn-text">Посвящения, Разовые совместные акции</span>
             <span class="btn-glow"></span>
         </button>
-        <button class="nav-btn" data-section="videos">
+        <button class="nav-btn active" data-section="videos">
             <span class="btn-text">Онлайн-трансляции, Видеотека</span>
             <span class="btn-glow"></span>
         </button>
@@ -62,18 +148,107 @@
         </button>
     </div>
 </nav>
-<!-- Основной контент -->
-<div class="container">
+
+<div class="videos-container">
     <div class="section">
-        <h1 class="title">Заголовок страницы</h1>
+        <h1 class="title">ВИДЕОТЕКА - СТРАНИЦА 1</h1>
+        <p class="text">Коллекция видео-материалов и онлайн-трансляций (1-25)</p>
         
-        <!-- Ваш контент здесь -->
-        <p class="text">Текст вашей страницы...</p>
+        <div class="video-grid">
+            <!-- Видео 1-25 -->
+            <div class="video-item">
+                <div class="video-title">Видео 1</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254815" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-title">Видео 2</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254811" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-title">Видео 3</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254810" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-title">Видео 4</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254809" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-title">Видео 5</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254806" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-title">Видео 6</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254798" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-title">Видео 7</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254797" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-title">Видео 8</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254796" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-title">Видео 9</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254793" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-title">Видео 10</div>
+                <div class="video-wrapper">
+                    <iframe src="https://vk.com/video_ext.php?oid=87855351&id=456254791" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Добавь видео 11-25 по аналогии -->
+
+        </div>
+
+        <!-- Пагинация -->
+        <div class="pagination">
+            <span class="page-btn" style="background: #333; color: #40E0D0;">Страница 1</span>
+            <a href="videos-2.html" class="page-btn">Страница 2 →</a>
+        </div>
+
+        <div class="lightning">⚡️⚡️⚡️</div>
         
+        <p class="text" style="text-align: center; margin-top: 2rem;">
+            Для доступа ко всей коллекции видео присоединяйтесь к нашему закрытому каналу
+        </p>
+        
+        <div style="text-align: center; margin: 2rem 0;">
+            <button class="join-button">ВСТУПИТЬ В ЗАКРЫТУЮ ГРУППУ</button>
+        </div>
     </div>
 </div>
-
-<script src="script.js"></script>
-<script src="navigation.js"></script>
+    <div class="floating-symbols"></div>
+    <script src="script.js"></script>
+    <script src="navigation.js"></script>
 </body>
 </html>
