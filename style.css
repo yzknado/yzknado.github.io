@@ -265,3 +265,17 @@ html.symbol-scroll {
     scrollbar-width: thin;
     scrollbar-color: #40E0D0 rgba(40, 0, 16, 0.95);
 }
+
+.video-title {
+    color: #40E0D0;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    text-align: center;
+    line-height: 1.3;
+    
+    /* Всегда одна строка с обрезкой */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
