@@ -26,17 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Иначе переход на другую страницу
             switch(section) {
-                case 'main': window.location.href = 'index.html'; break;
-                case 'new-worldview': window.location.href = 'new-worldview.html'; break;
-                case 'practice': window.location.href = 'practice.html'; break;
-                case 'learning': window.location.href = 'learning.html'; break;
-                case 'joint-actions': window.location.href = 'joint-actions.html'; break;
-                case 'videos': window.location.href = 'videos.html'; break;
-                case 'publications': window.location.href = 'publications.html'; break;
-                case 'unpublished': window.location.href = 'unpublished.html'; break;
-                case 'interesting-cases': window.location.href = 'interesting-cases.html'; break;
-                case 'reviews': window.location.href = 'reviews.html'; break;
-                case 'contacts': window.location.href = 'contacts.html'; break;
+                case 'main': window.location.href = '/'; break;
+                case 'new-worldview': window.location.href = 'new-worldview'; break;
+                case 'practice': window.location.href = 'practice'; break;
+                case 'learning': window.location.href = 'learning'; break;
+                case 'joint-actions': window.location.href = 'joint-actions'; break;
+                case 'videos': window.location.href = 'videos'; break;
+                case 'publications': window.location.href = 'publications'; break;
+                case 'unpublished': window.location.href = 'unpublished'; break;
+                case 'interesting-cases': window.location.href = 'interesting-cases'; break;
+                case 'reviews': window.location.href = 'reviews'; break;
+                case 'contacts': window.location.href = 'contacts'; break;
                 default: console.log('Раздел:', section);
             }
         });
