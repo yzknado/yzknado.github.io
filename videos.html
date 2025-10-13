@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Видео</title>
+    <title>Видеотека</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
     <style>
@@ -64,7 +64,6 @@
             width: 100%; 
             min-width: 0;
             overflow: hidden;
-            justify-content: space-between; /* ДОБАВЛЕНО */
         }
         
         .video-item:hover {
@@ -80,8 +79,7 @@
             overflow: hidden;
             border-radius: 6px;
             flex-shrink: 0;
-            flex-grow: 1; 
-            margin-bottom: 0.8rem;
+            margin-top: auto;
         }
         
         .video-wrapper iframe {
@@ -113,6 +111,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 0.8rem;
         }
         
         @media (min-width: 1400px) {
@@ -143,10 +142,6 @@
             .video-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
-            }
-
-            .video-wrapper {
-                margin-bottom: 0.6rem;
             }
             
             .video-item {
