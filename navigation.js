@@ -65,17 +65,17 @@ function getCurrentPage() {
     const path = window.location.pathname;
     const page = path.split('/').pop();
     
-    if (path === '/' || page === 'index.html' || page === '' || path.includes('yzknado')) return 'main';
-    if (page === 'new-worldview.html') return 'new-worldview';
-    if (page === 'practice.html') return 'practice';
-    if (page === 'learning.html') return 'learning';
-    if (page === 'joint-actions.html') return 'joint-actions';
-    if (page === 'videos.html') return 'videos';
-    if (page === 'publications.html') return 'publications';
-    if (page === 'unpublished.html') return 'unpublished';
-    if (page === 'interesting-cases.html') return 'interesting-cases';
-    if (page === 'reviews.html') return 'reviews';
-    if (page === 'contacts.html') return 'contacts';
+    if (path === '/' || page === '' || page === 'index.html' || path.includes('yzknado')) return 'main';
+    if (page === 'new-worldview' || page === 'new-worldview.html') return 'new-worldview';
+    if (page === 'practice' || page === 'practice.html') return 'practice';
+    if (page === 'learning' || page === 'learning.html') return 'learning';
+    if (page === 'joint-actions' || page === 'joint-actions.html') return 'joint-actions';
+    if (page === 'videos' || page === 'videos.html') return 'videos';
+    if (page === 'publications' || page === 'publications.html') return 'publications';
+    if (page === 'unpublished' || page === 'unpublished.html') return 'unpublished';
+    if (page === 'interesting-cases' || page === 'interesting-cases.html') return 'interesting-cases';
+    if (page === 'reviews' || page === 'reviews.html') return 'reviews';
+    if (page === 'contacts' || page === 'contacts.html') return 'contacts';
     
     return 'main';
 }
