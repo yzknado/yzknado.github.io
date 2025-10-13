@@ -46,7 +46,7 @@
             height: 64px;
             margin: 0 auto 1rem auto;
             display: block;
-            fill: #40E0D0;
+            filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(160deg);
             opacity: 0.8;
             transition: all 0.3s ease;
         }
@@ -54,7 +54,6 @@
         .contact-card:hover .contact-icon {
             opacity: 1;
             transform: scale(1.1);
-            filter: drop-shadow(0 0 10px rgba(64, 224, 208, 0.5));
         }
         
         .contact-platform {
@@ -163,9 +162,7 @@
         <div class="contacts-grid">
             <!-- Телеграм -->
             <div class="contact-card telegram-card">
-                <svg class="contact-icon" viewBox="0 0 24 24">
-                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.191c-.174.761-1.408 6.781-1.408 6.781s-.105.725-.479 1.019c-.296.232-.708.232-.708.232l-2.908-.954-.954-.636-1.593-1.593 5.035-4.773c.232-.232.232-.636 0-.848-.232-.232-.636-.232-.848 0l-6.305 5.826-2.224-.742c-.848-.296-.954-1.06-.954-1.06s7.417-6.993 8.493-7.729c.636-.424 1.593.106 1.593.106l4.773 1.593c0 .106-.106.53-.318.742z"/>
-                </svg>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="contact-icon">
                 <div class="contact-platform">Телеграм</div>
                 <div class="contact-links">
                     <a href="https://t.me/isceleniepreobrazhenievoznesenie" class="contact-link" target="_blank">
@@ -182,9 +179,7 @@
             
             <!-- ВКонтакте -->
             <div class="contact-card vk-card">
-                <svg class="contact-icon" viewBox="0 0 24 24">
-                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 16.962c-1.013.318-1.699.53-2.121.53-.424 0-.636-.318-1.06-1.167l-1.593-3.497c-.106-.212-.212-.424-.424-.53-.212-.106-.424-.106-.636 0-.212.106-.318.318-.318.53v3.285c0 .424-.318.742-.742.742h-1.593c-.424 0-.742-.318-.742-.742V7.416c0-.424.318-.742.742-.742h1.593c.424 0 .742.318.742.742v2.121c0 .424.318.742.742.742.424 0 .742-.318.742-.742V7.416c0-.424.318-.742.742-.742h1.593c.424 0 .742.318.742.742v2.121c0 .424.318.742.742.742.424 0 .742-.318.742-.742V7.416c0-.424.318-.742.742-.742h1.593c.424 0 .742.318.742.742v4.773c0 1.699-.53 2.859-1.593 3.497z"/>
-                </svg>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/VK.com-logo.svg" alt="VK" class="contact-icon">
                 <div class="contact-platform">ВКонтакте</div>
                 <div class="contact-links">
                     <a href="https://vk.com/yaznayukaknado" class="contact-link" target="_blank">
