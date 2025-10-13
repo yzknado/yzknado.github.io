@@ -5,10 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar.classList.add('minimal-scroll');
     }
     
-    // Сначала скрываем все кнопки от показа
-    hideNavButtons();
-    
-    // Затем активируем текущую страницу
     activateCurrentPageButton();
     
     // Вешаем обработчики на все кнопки
@@ -47,20 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Функция для скрытия кнопок до определения активной
-function hideNavButtons() {
-    const navButtons = document.querySelectorAll('.nav-btn');
-    navButtons.forEach(btn => {
-        btn.style.opacity = '0.7'; // Полупрозрачные до активации
-    });
-}
-
 // Функция для установки активной кнопки
 function setActiveButton(section) {
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(btn => {
         btn.classList.remove('active');
-        btn.style.opacity = '1'; // Возвращаем нормальную прозрачность
         if (btn.getAttribute('data-section') === section) {
             btn.classList.add('active');
         }
