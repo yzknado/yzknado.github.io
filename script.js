@@ -12,6 +12,14 @@
             symbolsContainer.appendChild(symbol);
         }
 
+// Обработчик для кнопки "ВСТУПИТЬ В ЗАКРЫТУЮ ГРУППУ"
+document.addEventListener('DOMContentLoaded', function() {
+    const joinButton = document.querySelector('.join-button');
+    if (joinButton) {
+        joinButton.addEventListener('click', showPopup);
+    }
+});
+
         function showPopup() {
             const popup = document.getElementById('paymentPopup');
             popup.style.display = 'flex';
