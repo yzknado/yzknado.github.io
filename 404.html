@@ -40,22 +40,21 @@
     </div>
 
     <script>
-        // Роутинг для красивых URL
+        // Роутинг для красивых URL с папкой pages
         const path = window.location.pathname.split('/').pop();
         const routes = {
-            'new-worldview': 'new-worldview.html',
-            'practice': 'practice.html',
-            'learning': 'learning.html',
-            'joint-actions': 'joint-actions.html',
-            'videos': 'videos.html',
-            'publications': 'publications.html',
-            'unpublished': 'unpublished.html',
-            'interesting-cases': 'interesting-cases.html',
-            'reviews': 'reviews.html',
-            'contacts': 'contacts.html'
+            'new-worldview': 'pages/new-worldview.html',
+            'practice': 'pages/practice.html',
+            'learning': 'pages/learning.html',
+            'joint-actions': 'pages/joint-actions.html',
+            'videos': 'pages/videos.html',
+            'publications': 'pages/publications.html',
+            'unpublished': 'pages/unpublished.html',
+            'interesting-cases': 'pages/interesting-cases.html',
+            'reviews': 'pages/reviews.html',
+            'contacts': 'pages/contacts.html'
         };
 
-        // Немного задержки для красоты
         setTimeout(() => {
             if (routes[path]) {
                 window.location.href = routes[path];
