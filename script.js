@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Создание плавающих символов
-    const symbolsContainer = document.getElementById('symbols');
+    const symbolsContainer = document.querySelector('.floating-symbols');
     if (symbolsContainer) {
         const symbols = ['✧', '✦', '❖', '♰', '⚚', '☾', '☽', '⚕', '⚔', '🜁', '🜂', '🜃', '🜄'];
         
