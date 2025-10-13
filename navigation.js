@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Если кликаем на кнопку текущей страницы - прокрутка наверх
             if (section === currentPage) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                setActiveButton(section); // Активируем кнопку
+                setActiveButton(section);
                 return;
             }
             
