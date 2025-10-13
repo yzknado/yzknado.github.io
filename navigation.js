@@ -5,9 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar.classList.add('minimal-scroll');
     }
     
+    // Сразу активируем текущую страницу
     activateCurrentPageButton();
     
-    // Вешаем обработчики на все кнопки
+    // ПОСЛЕ активации показываем навигацию
+    setTimeout(() => {
+        if (sidebar) {
+            sidebar.classList.add('loaded');
+        }
+    }, 10);
+    
+    // Остальной код обработчиков...
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(button => {
         button.addEventListener('click', function(event) {
@@ -16,14 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const section = this.getAttribute('data-section');
             const currentPage = getCurrentPage();
             
-            // Если кликаем на кнопку текущей страницы - прокрутка наверх
             if (section === currentPage) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                setActiveButton(section);
                 return;
             }
             
-            // Переход на страницы в КОРНЕ
+            // Переход на страницы...
             switch(section) {
                 case 'main': window.location.href = 'index.html'; break;
                 case 'new-worldview': window.location.href = 'new-worldview.html'; break;
@@ -43,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Функция для установки активной кнопки
 function setActiveButton(section) {
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(btn => {
@@ -54,13 +59,11 @@ function setActiveButton(section) {
     });
 }
 
-// Функция для автоматической активации кнопки текущей страницы
 function activateCurrentPageButton() {
     const currentPage = getCurrentPage();
     setActiveButton(currentPage);
 }
 
-// Функция для определения текущей страницы
 function getCurrentPage() {
     const path = window.location.pathname;
     const page = path.split('/').pop();
