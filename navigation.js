@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
-        sidebar.classList.add('fancy-scroll'); // или 'minimal-scroll', 'symbol-scroll'
+        sidebar.classList.add('symbol-scroll'); // или 'minimal-scroll', 'symbol-scroll'
     }
 });
 
