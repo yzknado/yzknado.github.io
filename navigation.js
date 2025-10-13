@@ -1,12 +1,12 @@
-// РАБОЧАЯ ВЕРСИЯ
+// Универсальная навигация для всех страниц
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
         sidebar.classList.add('minimal-scroll');
     }
     
-    // Определяем активную кнопку по текущему URL
-    setActiveButtonByCurrentPage();
+    // Автоматически активируем кнопку текущей страницы
+    activateCurrentPageButton();
     
     // Вешаем обработчики на все кнопки
     const navButtons = document.querySelectorAll('.nav-btn');
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Если кликаем на кнопку текущей страницы - прокрутка наверх
             if (section === currentPage) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                setActiveButton(section); // Активируем кнопку
                 return;
             }
             
@@ -42,18 +43,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function setActiveButtonByCurrentPage() {
-    const currentPage = getCurrentPage();
+// Функция для установки активной кнопки
+function setActiveButton(section) {
     const navButtons = document.querySelectorAll('.nav-btn');
-    
     navButtons.forEach(btn => {
         btn.classList.remove('active');
-        if (btn.getAttribute('data-section') === currentPage) {
+        if (btn.getAttribute('data-section') === section) {
             btn.classList.add('active');
         }
     });
 }
 
+// Функция для автоматической активации кнопки текущей страницы
+function activateCurrentPageButton() {
+    const currentPage = getCurrentPage();
+    setActiveButton(currentPage);
+}
+
+// Функция для определения текущей страницы
 function getCurrentPage() {
     const path = window.location.pathname;
     const page = path.split('/').pop();
