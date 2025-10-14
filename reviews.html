@@ -6,6 +6,121 @@
     <title>Название страницы</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
+    <style>
+        .construction-wrapper {
+            position: relative;
+            margin: 3rem auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .ancient-scroll {
+            background: #0a0a0a;
+            border: 3px double #40E0D0;
+            border-radius: 2px;
+            padding: 3rem 2rem;
+            position: relative;
+            box-shadow: 0 0 40px rgba(64, 224, 208, 0.2);
+        }
+
+        .ancient-scroll::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 95%, rgba(64, 224, 208, 0.1) 100%),
+                linear-gradient(0deg, transparent 95%, rgba(64, 224, 208, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        .sacred-symbol {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: rotate 8s infinite linear;
+            filter: drop-shadow(0 0 10px rgba(64, 224, 208, 0.5));
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .oracle-text {
+            color: #40E0D0;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+        }
+
+        .prophecy {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .portal-gate {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border: 1px solid #40E0D0;
+            color: #40E0D0;
+            text-decoration: none;
+            margin: 1rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .portal-gate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .portal-gate:hover::before {
+            left: 100%;
+        }
+
+        .portal-gate:hover {
+            background: rgba(64, 224, 208, 0.1);
+            box-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
+        }
+
+        .mystic-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #40E0D0, transparent);
+            margin: 2rem 0;
+        }
+
+        .arcane-message {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .floating-runes {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            color: #40E0D0;
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
 <!-- Левая панель навигации -->
@@ -72,12 +187,48 @@
     <div class="section">
         <h1 class="title">Заголовок страницы</h1>
         
+        <!-- Мистическое уведомление о разработке -->
+        <div class="construction-wrapper">
+            <div class="floating-runes">⌬ ⚡ ⌾</div>
+            
+            <div class="ancient-scroll">
+                <span class="sacred-symbol">🔮</span>
+                
+                <div class="oracle-text">
+                    ВРАТА ЕЩЁ НЕ ОТКРЫТЫ
+                </div>
+                
+                <div class="prophecy">
+                    Силы вселенной ещё трудятся над созданием этого пространства. 
+                    Энергетические потоки формируют новую реальность, но процесс ещё не завершён.
+                </div>
+                
+                <div class="mystic-divider"></div>
+                
+                <div class="prophecy">
+                    Сквозь пелену времени проступают очертания грядущего. 
+                    Пространство наполняется знаниями и откровениями, которые скоро явятся миру.
+                </div>
+                
+                <a href="#" class="portal-gate">
+                    ВЕРНУТЬСЯ К ИСТОКАМ
+                </a>
+                
+                <div class="mystic-divider"></div>
+                
+                <div class="arcane-message">
+                    Когда звёзды сойдутся в нужном порядке и луна осветит путь, 
+                    эти врата откроются для всех ищущих
+                </div>
+            </div>
+        </div>
+        
         <!-- Ваш контент здесь -->
         <p class="text">Текст вашей страницы...</p>
         
     </div>
 </div>
-
+<div class="floating-symbols"></div>
 <script src="script.js"></script>
 <script src="navigation.js"></script>
 </body>
