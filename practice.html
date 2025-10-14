@@ -6,6 +6,120 @@
     <title>Название страницы</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
+    <style>
+        .development-notice {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 2px solid #40E0D0;
+            border-radius: 10px;
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(64, 224, 208, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .development-notice::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .development-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .development-title {
+            color: #40E0D0;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .development-subtitle {
+            color: #ccc;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        .development-text {
+            color: #999;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-container {
+            background: #333;
+            border-radius: 10px;
+            height: 8px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #40E0D0, #20B2AA);
+            height: 100%;
+            width: 65%;
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .progress-text {
+            color: #40E0D0;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .coming-soon {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            background: rgba(64, 224, 208, 0.1);
+            border: 1px solid #40E0D0;
+            border-radius: 8px;
+            padding: 1rem;
+            min-width: 150px;
+            text-align: center;
+        }
+        
+        .feature-name {
+            color: #40E0D0;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-status {
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 <!-- Левая панель навигации -->
@@ -66,17 +180,50 @@
         </button>
     </div>
 </nav>
+
 <!-- Основной контент -->
 <div class="container">
     <div class="section">
         <h1 class="title">Заголовок страницы</h1>
         
-        <!-- Ваш контент здесь -->
-        <p class="text">Текст вашей страницы...</p>
-        
+        <!-- Уведомление о разработке -->
+        <div class="development-notice">
+            <div class="development-title">СТРАНИЦА В РАЗРАБОТКЕ</div>
+            <div class="development-subtitle">
+                Мы активно работаем над созданием этого раздела
+            </div>
+            
+            <div class="development-text">
+                Данная страница находится в процессе наполнения и совершенствования. 
+                Скоро здесь появится уникальный контент, который поможет вам на пути духовного развития.
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            
+            <div class="coming-soon">
+                <div class="feature">
+                    <div class="feature-name">Контент</div>
+                    <div class="feature-status">В разработке</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Функции</div>
+                    <div class="feature-status">Тестирование</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Дизайн</div>
+                    <div class="feature-status">Завершён</div>
+                </div>
+            </div>
+            
+            <div class="development-text" style="margin-top: 2rem; font-style: italic;">
+                Благодарим за понимание и терпение. Следите за обновлениями!
+            </div>
+        </div>
     </div>
 </div>
-
+<div class="floating-symbols"></div>
 <script src="script.js"></script>
 <script src="navigation.js"></script>
 </body>
