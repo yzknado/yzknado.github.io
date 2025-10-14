@@ -8,68 +8,117 @@
     <link rel="stylesheet" href="navigation.css">
     <style>
         .dev-notice {
-            background: #0f0f0f;
-            border: 2px solid #40E0D0;
-            padding: 3rem 2rem;
-            margin: 2rem 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border: 1px solid #40E0D0;
+            padding: 4rem 3rem;
+            margin: 3rem auto;
             text-align: center;
             position: relative;
-            box-shadow: 0 0 30px rgba(64, 224, 208, 0.1);
+            max-width: 700px;
+            box-shadow: 
+                0 0 50px rgba(64, 224, 208, 0.15),
+                inset 0 0 50px rgba(64, 224, 208, 0.05);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .dev-notice::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 49%, rgba(64, 224, 208, 0.03) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(64, 224, 208, 0.03) 50%, transparent 51%);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        .dev-notice::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #40E0D0, transparent, #40E0D0, transparent, #40E0D0);
+            z-index: -1;
+            animation: borderGlow 4s linear infinite;
+            border-radius: 4px;
+        }
+
+        @keyframes borderGlow {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.3; }
+        }
+
+        .dev-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            color: #40E0D0;
+            text-shadow: 0 0 20px rgba(64, 224, 208, 0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .dev-title {
             color: #40E0D0;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.3);
         }
 
         .dev-text {
-            color: #ccc;
-            font-size: 1.2rem;
-            line-height: 1.6;
+            color: #e0e0e0;
+            font-size: 1.3rem;
+            line-height: 1.7;
             margin-bottom: 2rem;
-            max-width: 600px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 300;
         }
 
-        .portal-gate {
+        .status-pulse {
             display: inline-block;
-            padding: 1rem 2.5rem;
+            padding: 0.8rem 2rem;
+            background: rgba(64, 224, 208, 0.1);
             border: 1px solid #40E0D0;
             color: #40E0D0;
-            text-decoration: none;
-            margin: 1rem 0 2rem 0;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
-            background: transparent;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .portal-gate::before {
+        .status-pulse::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.2), transparent);
-            transition: left 0.5s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #40E0D0;
+            opacity: 0.1;
+            border-radius: 25px;
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        .portal-gate:hover::before {
-            left: 100%;
-        }
-
-        .portal-gate:hover {
-            background: rgba(64, 224, 208, 0.1);
-            box-shadow: 0 0 25px rgba(64, 224, 208, 0.3);
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.05); opacity: 0.2; }
         }
     </style>
 </head>
@@ -140,20 +189,16 @@
         
         <!-- Уведомление о разработке -->
         <div class="dev-notice">
-            <div class="dev-title">СТРАНИЦА В РАЗРАБОТКЕ</div>
+            <div class="dev-icon">⌬</div>
+            <div class="dev-title">В РАЗРАБОТКЕ</div>
             
             <div class="dev-text">
-                Данный раздел находится в процессе создания. 
-                Мы работаем над его наполнением и улучшением.
+                Этот раздел находится в процессе создания. 
+                Мы работаем над наполнением контентом и улучшением функционала.
             </div>
 
-            <a href="#" class="portal-gate">
-                ВЕРНУТЬСЯ НА ГЛАВНУЮ
-            </a>
-
-            <div class="dev-text">
-                Приносим извинения за временные неудобства. 
-                Скоро здесь появится новый контент.
+            <div class="status-pulse">
+                СТАТУС: В РАЗРАБОТКЕ
             </div>
         </div>
         
