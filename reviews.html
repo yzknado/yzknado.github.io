@@ -211,8 +211,45 @@
         
     </div>
 </div>
-<script src="script.js"></script>
+
+<script>
+// Отладочный код для диагностики floating symbols
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('=== FLOATING SYMBOLS DEBUG ===');
+    console.log('1. DOM полностью загружен');
+    
+    const symbolsContainer = document.querySelector('.floating-symbols');
+    console.log('2. Symbols container:', symbolsContainer);
+    
+    if (symbolsContainer) {
+        console.log('3. Container found, creating symbols...');
+        const symbols = ['✧', '✦', '❖', '♰', '⚚', '☾', '☽', '⚕', '⚔', '🜁', '🜂', '🜃', '🜄'];
+        console.log('4. Symbols array length:', symbols.length);
+        
+        for (let i = 0; i < 40; i++) {
+            const symbol = document.createElement('div');
+            symbol.className = 'symbol';
+            symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            symbol.style.left = Math.random() * 100 + 'vw';
+            symbol.style.animationDuration = (15 + Math.random() * 20) + 's';
+            symbol.style.animationDelay = (i * 0.75) + 's';
+            symbol.style.fontSize = (1 + Math.random() * 2) + 'rem';
+            symbolsContainer.appendChild(symbol);
+        }
+        
+        console.log('5. Symbols created:', symbolsContainer.children.length);
+        console.log('6. First symbol styles:', symbolsContainer.children[0]?.style.cssText);
+    } else {
+        console.log('3. ERROR: Symbols container NOT FOUND!');
+    }
+    
+    console.log('=== DEBUG COMPLETE ===');
+});
+    
+</script>
+
 <div class="floating-symbols"></div>
+
 <script src="navigation.js"></script>
 </body>
 </html>
