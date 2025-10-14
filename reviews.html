@@ -65,7 +65,7 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes float {
+        @keyframes iconfloat {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
@@ -128,6 +128,39 @@
             box-shadow: 0 0 25px rgba(64, 224, 208, 0.3);
             transform: translateY(-2px);
         }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; text-shadow: 0 0 5px rgba(64, 224, 208, 0.5); }
+            100% { opacity: 1; text-shadow: 0 0 15px rgba(64, 224, 208, 0.9); }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(120vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-120px) rotate(360deg);
+            }
+        }
+        
+        .floating-symbols {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .symbol {
+            position: absolute;
+            color: rgba(64, 224, 208, 0.3);
+            font-size: 2rem;
+            animation: float 20s infinite linear;
+            top: -20vh
+        }
+        
     </style>
 </head>
 <body>
