@@ -6,6 +6,129 @@
     <title>Название страницы</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
+    <style>
+        .dev-notice {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border: 1px solid #40E0D0;
+            padding: 4rem 3rem;
+            margin: 3rem auto;
+            text-align: center;
+            position: relative;
+            max-width: 700px;
+            box-shadow: 
+                0 0 50px rgba(64, 224, 208, 0.15),
+                inset 0 0 50px rgba(64, 224, 208, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .dev-notice::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 49%, rgba(64, 224, 208, 0.03) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(64, 224, 208, 0.03) 50%, transparent 51%);
+            background-size: 20px 20px;
+            pointer-events: none;
+            border-radius: 12px;
+        }
+
+        .dev-notice::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #40E0D0, transparent, #40E0D0, transparent, #40E0D0);
+            z-index: -1;
+            animation: borderGlow 4s linear infinite;
+            border-radius: 14px;
+        }
+
+        @keyframes borderGlow {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.3; }
+        }
+
+        .dev-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            color: #40E0D0;
+            text-shadow: 0 0 20px rgba(64, 224, 208, 0.5);
+            animation: iconfloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconfloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .dev-title {
+            color: #40E0D0;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.3);
+        }
+
+        .dev-text {
+            color: #e0e0e0;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .portal-gate {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 1px solid #40E0D0;
+            color: #40E0D0;
+            text-decoration: none;
+            background: rgba(64, 224, 208, 0.1);
+            border-radius: 25px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .portal-gate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.2), transparent);
+            transition: left 0.5s ease;
+            border-radius: 25px;
+        }
+
+        .portal-gate:hover::before {
+            left: 100%;
+        }
+
+        .portal-gate:hover {
+            background: rgba(64, 224, 208, 0.15);
+            box-shadow: 0 0 25px rgba(64, 224, 208, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
 <!-- Левая панель навигации -->
@@ -70,14 +193,25 @@
 <!-- Основной контент -->
 <div class="container">
     <div class="section">
-        <h1 class="title">Заголовок страницы</h1>
         
-        <!-- Ваш контент здесь -->
-        <p class="text">Текст вашей страницы...</p>
+        <!-- Уведомление о разработке -->
+        <div class="dev-notice">
+            <div class="dev-icon">⌬</div>
+            <div class="dev-title">В РАЗРАБОТКЕ</div>
+            
+            <div class="dev-text">
+                Этот раздел находится в процессе создания. 
+                Мы работаем над наполнением контентом и улучшением функционала.
+            </div>
+
+            <a href="index.html" class="portal-gate">
+                Вернуться на главную
+            </a>
+        </div>
         
     </div>
 </div>
-
+<div class="floating-symbols"></div>
 <script src="script.js"></script>
 <script src="navigation.js"></script>
 </body>
