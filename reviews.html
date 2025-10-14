@@ -18,7 +18,7 @@
             box-shadow: 
                 0 0 50px rgba(64, 224, 208, 0.15),
                 inset 0 0 50px rgba(64, 224, 208, 0.05);
-            border-radius: 2px;
+            border-radius: 12px;
             overflow: hidden;
         }
 
@@ -34,6 +34,7 @@
                 linear-gradient(-45deg, transparent 49%, rgba(64, 224, 208, 0.03) 50%, transparent 51%);
             background-size: 20px 20px;
             pointer-events: none;
+            border-radius: 12px;
         }
 
         .dev-notice::after {
@@ -46,7 +47,7 @@
             background: linear-gradient(45deg, #40E0D0, transparent, #40E0D0, transparent, #40E0D0);
             z-index: -1;
             animation: borderGlow 4s linear infinite;
-            border-radius: 4px;
+            border-radius: 14px;
         }
 
         @keyframes borderGlow {
@@ -83,42 +84,49 @@
             color: #e0e0e0;
             font-size: 1.3rem;
             line-height: 1.7;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
             font-weight: 300;
         }
 
-        .status-pulse {
+        .portal-gate {
             display: inline-block;
-            padding: 0.8rem 2rem;
-            background: rgba(64, 224, 208, 0.1);
+            padding: 1rem 2.5rem;
             border: 1px solid #40E0D0;
             color: #40E0D0;
+            text-decoration: none;
+            background: rgba(64, 224, 208, 0.1);
             border-radius: 25px;
             font-size: 1.1rem;
+            text-transform: uppercase;
             letter-spacing: 1px;
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .status-pulse::before {
+        .portal-gate::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #40E0D0;
-            opacity: 0.1;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.2), transparent);
+            transition: left 0.5s ease;
             border-radius: 25px;
-            animation: pulse 2s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.1; }
-            50% { transform: scale(1.05); opacity: 0.2; }
+        .portal-gate:hover::before {
+            left: 100%;
+        }
+
+        .portal-gate:hover {
+            background: rgba(64, 224, 208, 0.15);
+            box-shadow: 0 0 25px rgba(64, 224, 208, 0.3);
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -185,7 +193,6 @@
 <!-- Основной контент -->
 <div class="container">
     <div class="section">
-        <h1 class="title">Заголовок страницы</h1>
         
         <!-- Уведомление о разработке -->
         <div class="dev-notice">
@@ -197,13 +204,10 @@
                 Мы работаем над наполнением контентом и улучшением функционала.
             </div>
 
-            <div class="status-pulse">
-                СТАТУС: В РАЗРАБОТКЕ
-            </div>
+            <a href="index.html" class="portal-gate">
+                Вернуться на главную
+            </a>
         </div>
-        
-        <!-- Ваш контент здесь -->
-        <p class="text">Текст вашей страницы...</p>
         
     </div>
 </div>
