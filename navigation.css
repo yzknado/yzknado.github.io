@@ -183,11 +183,38 @@ body {
     }
     
     .nav-btn {
-        white-space: nowrap;
-        min-width: 200px;
-        font-size: 12px;
-        padding: 12px 15px;
+        /* Сначала пытаемся разместить в 2 строки */
+        white-space: normal;
+        word-wrap: break-word;
+        line-height: 1.2;
+        min-height: 50px;
+        max-height: 50px;
+        min-width: 150px;
+        max-width: 180px;
+        font-size: 11px;
+        padding: 8px 10px;
         transform: none !important;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+    
+    .btn-text {
+        /* Пытаемся показать 2 строки */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;        /* Ограничиваем 2 строками */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.2;
+        max-height: 2.4em;           /* 2 строки × 1.2 line-height */
+        width: 100%;
+    }
+    
+    /* Для очень длинных текстов, которые не помещаются в 2 строки */
+    .nav-btn.long-text .btn-text {
+        -webkit-line-clamp: 1;        /* Если не помещается, показываем 1 строку */
+        max-height: 1.2em;
     }
     
     .nav-btn:hover:not(.active) {
@@ -199,7 +226,7 @@ body {
     }
     
     .nav-btn.active::after {
-        display: none; /* Скрываем точку на мобильных */
+        display: none;
     }
     
     .nav-header {
@@ -209,6 +236,21 @@ body {
     .container {
         max-width: 100%;
         margin-top: 1rem;
+    }
+    
+    /* Для очень маленьких экранов */
+    @media (max-width: 480px) {
+        .nav-btn {
+            min-width: 130px;
+            max-width: 140px;
+            font-size: 10px;
+            padding: 6px 8px;
+        }
+        
+        .btn-text {
+            -webkit-line-clamp: 2;
+            max-height: 2.4em;
+        }
     }
 }
 
