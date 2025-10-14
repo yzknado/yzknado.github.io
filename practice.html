@@ -62,10 +62,10 @@
             display: block;
             color: #40E0D0;
             text-shadow: 0 0 20px rgba(64, 224, 208, 0.5);
-            animation: float 3s ease-in-out infinite;
+            animation: iconfloat 3s ease-in-out infinite;
         }
 
-        @keyframes float {
+        @keyframes iconfloat {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
@@ -193,37 +193,22 @@
 <!-- Основной контент -->
 <div class="container">
     <div class="section">
+        
         <!-- Уведомление о разработке -->
-        <div class="development-notice">
-            <div class="development-title">СТРАНИЦА В РАЗРАБОТКЕ</div>
-            <div class="development-subtitle">
-                Мы активно работаем над созданием этого раздела
-            </div>
+        <div class="dev-notice">
+            <div class="dev-icon">⌬</div>
+            <div class="dev-title">В РАЗРАБОТКЕ</div>
             
-            <div class="development-text">
-                Данная страница находится в процессе наполнения и совершенствования. 
-                Скоро здесь появится уникальный контент, который поможет вам на пути духовного развития.
+            <div class="dev-text">
+                Этот раздел находится в процессе создания. 
+                Мы работаем над наполнением контентом и улучшением функционала.
             </div>
-            
-            <div class="coming-soon">
-                <div class="feature">
-                    <div class="feature-name">Контент</div>
-                    <div class="feature-status">В разработке</div>
-                </div>
-                <div class="feature">
-                    <div class="feature-name">Функции</div>
-                    <div class="feature-status">Тестирование</div>
-                </div>
-                <div class="feature">
-                    <div class="feature-name">Дизайн</div>
-                    <div class="feature-status">Завершён</div>
-                </div>
-            </div>
-            
-            <div class="development-text" style="margin-top: 2rem; font-style: italic;">
-                Благодарим за понимание и терпение. Следите за обновлениями!
-            </div>
+
+            <a href="index.html" class="portal-gate">
+                Вернуться на главную
+            </a>
         </div>
+        
     </div>
 </div>
 <div class="floating-symbols"></div>
