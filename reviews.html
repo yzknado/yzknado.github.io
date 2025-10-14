@@ -7,64 +7,107 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
     <style>
-        .construction-wrapper {
-            position: relative;
-            margin: 3rem auto;
-            max-width: 600px;
+        .dev-notice {
+            background: #0f0f0f;
+            border-left: 4px solid #40E0D0;
+            border-right: 4px solid #40E0D0;
+            padding: 2.5rem;
+            margin: 2rem 0;
             text-align: center;
-        }
-
-        .ancient-scroll {
-            background: #0a0a0a;
-            border: 3px double #40E0D0;
-            border-radius: 2px;
-            padding: 3rem 2rem;
             position: relative;
-            box-shadow: 0 0 40px rgba(64, 224, 208, 0.2);
         }
 
-        .ancient-scroll::before {
+        .dev-notice::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(90deg, transparent 95%, rgba(64, 224, 208, 0.1) 100%),
-                linear-gradient(0deg, transparent 95%, rgba(64, 224, 208, 0.1) 100%);
-            pointer-events: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #40E0D0, transparent);
         }
 
-        .sacred-symbol {
-            font-size: 4rem;
+        .dev-notice::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #40E0D0, transparent);
+        }
+
+        .dev-icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
             display: block;
-            animation: rotate 8s infinite linear;
-            filter: drop-shadow(0 0 10px rgba(64, 224, 208, 0.5));
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .oracle-text {
             color: #40E0D0;
-            font-size: 1.8rem;
+        }
+
+        .dev-title {
+            color: #40E0D0;
+            font-size: 2rem;
             margin-bottom: 1rem;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
         }
 
-        .prophecy {
+        .dev-text {
             color: #ccc;
             font-size: 1.1rem;
             line-height: 1.6;
             margin-bottom: 1.5rem;
-            font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dev-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(64, 224, 208, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: #40E0D0;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #40E0D0;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .dev-features {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #40E0D0;
+        }
+
+        .feature-text {
+            color: #999;
+            font-size: 0.9rem;
         }
 
         .portal-gate {
@@ -77,6 +120,7 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
+            background: transparent;
         }
 
         .portal-gate::before {
@@ -99,26 +143,11 @@
             box-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
         }
 
-        .mystic-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #40E0D0, transparent);
-            margin: 2rem 0;
-        }
-
-        .arcane-message {
+        .dev-note {
             color: #888;
             font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        .floating-runes {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.2rem;
-            color: #40E0D0;
-            opacity: 0.7;
+            font-style: italic;
+            margin-top: 1.5rem;
         }
     </style>
 </head>
@@ -187,45 +216,48 @@
     <div class="section">
         <h1 class="title">Заголовок страницы</h1>
         
-        <!-- Мистическое уведомление о разработке -->
-        <div class="construction-wrapper">
-            <div class="floating-runes">⌬ ⚡ ⌾</div>
+        <!-- Уведомление о разработке -->
+        <div class="dev-notice">
+            <div class="dev-icon">🛠️</div>
+            <div class="dev-title">Раздел в разработке</div>
             
-            <div class="ancient-scroll">
-                <span class="sacred-symbol">🔮</span>
-                
-                <div class="oracle-text">
-                    ВРАТА ЕЩЁ НЕ ОТКРЫТЫ
+            <div class="dev-text">
+                В настоящее время эта страница находится в стадии активной разработки. 
+                Мы работаем над наполнением её качественным контентом и улучшением функционала.
+            </div>
+
+            <div class="dev-status">
+                <div class="status-dot"></div>
+                Статус: В разработке
+            </div>
+
+            <div class="dev-features">
+                <div class="feature-item">
+                    <div class="feature-icon">📝</div>
+                    <div class="feature-text">Наполнение контентом</div>
                 </div>
-                
-                <div class="prophecy">
-                    Силы вселенной ещё трудятся над созданием этого пространства. 
-                    Энергетические потоки формируют новую реальность, но процесс ещё не завершён.
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-text">Разработка дизайна</div>
                 </div>
-                
-                <div class="mystic-divider"></div>
-                
-                <div class="prophecy">
-                    Сквозь пелену времени проступают очертания грядущего. 
-                    Пространство наполняется знаниями и откровениями, которые скоро явятся миру.
-                </div>
-                
-                <a href="#" class="portal-gate">
-                    ВЕРНУТЬСЯ К ИСТОКАМ
-                </a>
-                
-                <div class="mystic-divider"></div>
-                
-                <div class="arcane-message">
-                    Когда звёзды сойдутся в нужном порядке и луна осветит путь, 
-                    эти врата откроются для всех ищущих
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-text">Оптимизация</div>
                 </div>
             </div>
+
+            <a href="#" class="portal-gate">
+                ВЕРНУТЬСЯ НА ГЛАВНУЮ
+            </a>
+
+            <div class="dev-text">
+                Скоро здесь появится полезная информация. Спасибо за ваше терпение!
+            </div>
+
+            <div class="dev-note">
+                Ожидайте обновления в ближайшее время
+            </div>
         </div>
-        
-        <!-- Ваш контент здесь -->
-        <p class="text">Текст вашей страницы...</p>
-        
     </div>
 </div>
 <div class="floating-symbols"></div>
