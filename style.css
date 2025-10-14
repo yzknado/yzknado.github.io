@@ -181,7 +181,7 @@
             100% { opacity: 1; text-shadow: 0 0 15px rgba(64, 224, 208, 0.9); }
         }
         
-        @keyframes float {
+        @keyframes symbolfloat {
             0% {
                 transform: translateY(120vh) rotate(0deg);
             }
@@ -202,9 +202,9 @@
         
         .symbol {
             position: absolute;
-            color: rgba(64, 224, 208, 0.3);
+            color: rgba(64, 224, 208, 0.1);
             font-size: 2rem;
-            animation: float 20s infinite linear;
+            animation: symbolfloat 20s infinite linear;
             top: -20vh
         }
 /* Кастомный скроллбар для всего сайта */
