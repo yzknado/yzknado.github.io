@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Переход на страницы...
             switch(section) {
                 case 'main': window.location.href = 'index.html'; break;
+                case 'aboutcredits': window.location.href = 'aboutcredits.html'; break;
                 case 'new-worldview': window.location.href = 'new-worldview.html'; break;
                 case 'practice': window.location.href = 'practice.html'; break;
                 case 'learning': window.location.href = 'learning.html'; break;
@@ -62,6 +63,7 @@ function getCurrentPage() {
     const page = path.split('/').pop();
     
     if (path === '/' || page === 'index.html' || page === '' || path.includes('yzknado')) return 'main';
+    if (page === 'aboutcredits.html') return 'aboutcredits';
     if (page === 'new-worldview.html') return 'new-worldview';
     if (page === 'practice.html') return 'practice';
     if (page === 'learning.html') return 'learning';
