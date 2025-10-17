@@ -33,12 +33,12 @@
     transition: all 0.3s ease;
 }
 
-/* Первая картинка - обрезаем выше середины */
+/* Первая картинка - обрезаем еще выше (15% от верха) */
 .gallery-item.first-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%; /* Обрезаем выше середины (30% от верха) */
+    object-position: center 15%; /* Еще выше - 15% от верха */
     display: block;
 }
 
@@ -423,7 +423,6 @@
                     <div class="image-counter" id="imageCounter"></div>
                 </div>
             </div>
-
             
             <div class="final-line"></div>
             
@@ -439,18 +438,21 @@ function openModal(imageSrc) {
     const items = document.querySelectorAll('.gallery-item img');
     currentImages = Array.from(items).map(img => img.src);
     
-    // Находим правильный индекс выбранной картинки
-    currentIndex = currentImages.findIndex(src => src.includes(imageSrc));
-    
-    // Если не нашли, используем первый индекс
-    if (currentIndex === -1) currentIndex = 0;
+    // Простой поиск по имени файла
+    currentIndex = 0;
+    for (let i = 0; i < currentImages.length; i++) {
+        if (currentImages[i].includes(imageSrc)) {
+            currentIndex = i;
+            break;
+        }
+    }
     
     const modal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
     const counter = document.getElementById('imageCounter');
     
     modalImage.src = currentImages[currentIndex];
-    modalImage.alt = document.querySelector(`.gallery-item img[src="${currentImages[currentIndex]}"]`).alt;
+    modalImage.alt = items[currentIndex].alt;
     counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
     
     modal.style.display = 'flex';
