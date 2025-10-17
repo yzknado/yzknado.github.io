@@ -38,7 +38,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 15%; /* Еще выше - 15% от верха */
+    object-position: center 35%;
     display: block;
 }
 
@@ -88,41 +88,75 @@
     border: 3px solid #40E0D0;
 }
 
+/* Крестик закрытия */
 .modal-close {
     position: absolute;
-    top: -40px;
-    right: -40px;
-    background: #400010;
+    top: -50px;
+    right: 0;
+    background: none;
     color: #40E0D0;
-    border: 2px solid #40E0D0;
-    border-radius: 50%;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
     width: 40px;
     height: 40px;
-    font-size: 24px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(64, 224, 208, 0.8);
 }
 
 .modal-close:hover {
-    background: #40E0D0;
-    color: #400010;
-    transform: scale(1.1);
+    color: #4169E1;
+    transform: scale(1.2);
 }
 
+/* Стрелочки навигации */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: #40E0D0;
+    border: none;
+    font-size: 60px;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 15px rgba(64, 224, 208, 0.8);
+    z-index: 1001;
+}
+
+.nav-arrow:hover {
+    color: #4169E1;
+    transform: translateY(-50%) scale(1.2);
+}
+
+.nav-prev {
+    left: -80px;
+}
+
+.nav-next {
+    right: -80px;
+}
+
+/* Счетчик - без контейнера, ниже */
 .image-counter {
     position: absolute;
-    bottom: -40px;
+    bottom: -60px;
     left: 50%;
     transform: translateX(-50%);
     color: #40E0D0;
     font-size: 1.1rem;
-    background: rgba(64, 224, 208, 0.1);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    border: 1px solid #40E0D0;
+    text-shadow: 0 0 10px rgba(64, 224, 208, 0.8);
+    background: none;
+    padding: 0;
+    border: none;
 }
 
 /* Адаптивность */
@@ -137,11 +171,26 @@
     }
     
     .modal-close {
-        top: -30px;
-        right: -30px;
-        width: 35px;
-        height: 35px;
-        font-size: 20px;
+        top: -40px;
+        font-size: 35px;
+    }
+    
+    .nav-arrow {
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .nav-prev {
+        left: -50px;
+    }
+    
+    .nav-next {
+        right: -50px;
+    }
+    
+    .image-counter {
+        bottom: -50px;
     }
 }
 </style>
@@ -419,6 +468,11 @@
             <div class="modal-overlay" id="imageModal" onclick="closeModal()">
                 <div class="modal-content" onclick="event.stopPropagation()">
                     <button class="modal-close" onclick="closeModal()">×</button>
+                    
+                    <!-- Стрелочки навигации -->
+                    <button class="nav-arrow nav-prev" onclick="navigateImages(-1)">‹</button>
+                    <button class="nav-arrow nav-next" onclick="navigateImages(1)">›</button>
+                    
                     <img id="modalImage" src="" alt="">
                     <div class="image-counter" id="imageCounter"></div>
                 </div>
