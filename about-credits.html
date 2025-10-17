@@ -4,498 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>КАК ВАШИХ КРЕДИТОРОВ ПРЕВРАТИТЬ В ВАШИХ ДОЛЖНИКОВ</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Times New Roman', serif;
-            background: #400010;
-            color: #40E0D0;
-            min-height: 100vh;
-            display: flex;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow-x: hidden;
-        }
-        .container { 
-            max-width: 800px; 
-            position: relative; 
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            margin: 0 auto;
-        }
-        .title { 
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
-            line-height: 1.4;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        .title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 25%;
-            width: 50%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #40E0D0, transparent);
-        }
-        .lightning { 
-            font-size: 1.8rem;
-            margin: 1rem 0;
-            animation: pulse 3s infinite alternate;
-        }
-        .text { 
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            text-align: left;
-        }
-        .highlight { 
-            color: #4169E1;
-            font-weight: bold;
-            text-shadow: 0 0 8px rgba(65, 105, 225, 0.6);
-        }
-        .italic-text {
-            font-style: italic;
-        }
-        .question {
-            color: #40E0D0;
-            font-style: italic;
-            margin: 1.5rem 0;
-            text-align: center;
-            font-size: 1.3rem;
-        }
-        .final-line {
-            margin-top: 2.5rem;
-            position: relative;
-            padding-top: 1rem;
-        }
-        .final-line::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 30%;
-            width: 40%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #40E0D0, transparent);
-        }
-        .symbol-image {
-            width: 100%;
-            height: auto;
-            margin: 0.5rem 0;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
-        }
-        .join-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #4169E1, #40E0D0);
-            color: #400010;
-            padding: 15px 30px;
-            margin: 0rem 0 2rem 0;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-decoration: none;
-            box-shadow: 0 0 15px rgba(64, 224, 208, 0.5);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .join-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(64, 224, 208, 0.8);
-        }
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .popup-content {
-            background: #400010;
-            padding: 2rem;
-            border-radius: 15px;
-            border: 2px solid #40E0D0;
-            box-shadow: 0 0 30px rgba(64, 224, 208, 0.5);
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-        }
-        .close-popup {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 2rem;
-            color: #40E0D0;
-            cursor: pointer;
-            background: none;
-            border: none;
-            line-height: 1;
-        }
-        .close-popup:hover {
-            color: #4169E1;
-        }
-        .payment-details {
-            margin: 1.5rem 0;
-            padding: 1.5rem;
-            background: rgba(60, 10, 40, 0.5);
-            border-radius: 8px;
-            border: 1px solid rgba(64, 224, 208, 0.3);
-        }
-        .bank-card {
-            font-size: 1.4rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin: 1rem 0;
-            color: #40E0D0;
-            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
-        }
-        .telegram-link {
-            color: #40E0D0;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 8px 16px;
-            border: 1px solid #40E0D0;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .telegram-link:hover {
-            background: #40E0D0;
-            color: #400010;
-            text-decoration: none;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.7; text-shadow: 0 0 5px rgba(64, 224, 208, 0.5); }
-            100% { opacity: 1; text-shadow: 0 0 15px rgba(64, 224, 208, 0.9); }
-        }
-        
-        @keyframes symbolfloat {
-            0% {
-                transform: translateY(120vh) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-120px) rotate(360deg);
-            }
-        }
-        
-        .floating-symbols {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .symbol {
-            position: absolute;
-            color: rgba(64, 224, 208, 0.1);
-            font-size: 2rem;
-            animation: symbolfloat 20s infinite linear;
-            top: -20vh
-        }
-
-        /* Кастомный скроллбар для всего сайта */
-        html {
-            scrollbar-width: thin; /* Для Firefox */
-            scrollbar-color: #40E0D0 rgba(40, 0, 16, 0.9); /* Для Firefox */
-        }
-
-        /* Для WebKit-браузеров (Chrome, Safari, Edge) */
-        html::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        html::-webkit-scrollbar-track {
-            background: rgba(40, 0, 16, 0.9);
-            border-left: 1px solid rgba(64, 224, 208, 0.3);
-        }
-
-        html::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #40E0D0, #4169E1, #40E0D0);
-            border-radius: 6px;
-            border: 1px solid rgba(64, 224, 208, 0.5);
-            box-shadow: 0 0 10px rgba(64, 224, 208, 0.6);
-        }
-
-        html::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #4169E1, #40E0D0, #4169E1);
-            box-shadow: 0 0 15px rgba(64, 224, 208, 0.8);
-        }
-
-        /* Символьный скроллбар для всего сайта */
-        html.symbol-scroll::-webkit-scrollbar {
-            width: 14px;
-        }
-
-        html.symbol-scroll::-webkit-scrollbar-track {
-            background: rgba(40, 0, 16, 0.95);
-            border-left: 1px solid rgba(64, 224, 208, 0.4);
-        }
-
-        html.symbol-scroll::-webkit-scrollbar-thumb {
-            background: 
-                linear-gradient(45deg, transparent 30%, rgba(64, 224, 208, 0.3) 50%, transparent 70%),
-                rgba(64, 224, 208, 0.1);
-            border-radius: 7px;
-            border: 2px solid #40E0D0;
-        }
-
-        html.symbol-scroll::-webkit-scrollbar-thumb:hover {
-            background: 
-                linear-gradient(45deg, transparent 30%, #40E0D0 50%, transparent 70%),
-                rgba(64, 224, 208, 0.2);
-            box-shadow: 0 0 15px rgba(64, 224, 208, 0.7);
-        }
-
-        /* Для Firefox для всего сайта */
-        html.symbol-scroll {
-            scrollbar-width: thin;
-            scrollbar-color: #40E0D0 rgba(40, 0, 16, 0.95);
-        }
-
-        /* Стили для контента о кредиторах */
-        .content-section {
-            text-align: left;
-            padding: 2rem;
-        }
-
-        .announcement {
-            background: rgba(60, 10, 40, 0.5);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid rgba(64, 224, 208, 0.3);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .dialogue-guide {
-            margin-bottom: 3rem;
-        }
-
-        .argument-block {
-            background: rgba(60, 10, 40, 0.3);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            border-left: 3px solid #40E0D0;
-        }
-
-        .argument-block h3 {
-            color: #4169E1;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 8px rgba(65, 105, 225, 0.6);
-        }
-
-        .conclusion {
-            background: rgba(60, 10, 40, 0.5);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid rgba(64, 224, 208, 0.3);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .payment-section {
-            background: rgba(60, 10, 40, 0.7);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 2px solid #40E0D0;
-            margin-bottom: 2rem;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
-        }
-
-        .btn-pay {
-            display: inline-block;
-            background: linear-gradient(45deg, #4169E1, #40E0D0);
-            color: #400010;
-            padding: 15px 30px;
-            margin: 1rem 0;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-decoration: none;
-            box-shadow: 0 0 15px rgba(64, 224, 208, 0.5);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-pay:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(64, 224, 208, 0.8);
-        }
-
-        .payment-note {
-            font-style: italic;
-            margin: 1rem 0;
-        }
-
-        .warning-note {
-            color: #4169E1;
-            font-weight: bold;
-            margin: 1rem 0;
-            text-shadow: 0 0 8px rgba(65, 105, 225, 0.6);
-        }
-
-        .final-argument {
-            background: rgba(60, 10, 40, 0.5);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid rgba(64, 224, 208, 0.3);
-            text-align: center;
-            margin-top: 2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navigation.css">
 </head>
 <body>
-    <div class="container">
-        <div class="content-section">
-            <h1 class="title">КАК ВАШИХ КРЕДИТОРОВ ПРЕВРАТИТЬ В ВАШИХ ДОЛЖНИКОВ</h1>
-            
-            <div class="announcement">
-                <p><strong>Набираю группу на обучение по теме: "КАК ВАШИХ КРЕДИТОРОВ ПРЕВРАТИТЬ В ВАШИХ ДОЛЖНИКОВ".</strong></p>
+<!-- Левая панель навигации -->
+<nav class="sidebar minimal-scroll">
+    <div class="nav-header">
+        <div class="nav-title">НАВИГАЦИЯ</div>
+        <div class="nav-divider"></div>
+    </div>
+    <div class="nav-buttons">
+        <button class="nav-btn active" data-section="main">
+            <span class="btn-text">Главная</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn active" data-section="about-credits">
+            <span class="btn-text">КАК ВАШИХ КРЕДИТОРОВ ПРЕВРАТИТЬ В ВАШИХ ДОЛЖНИКОВ</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="new-worldview">
+            <span class="btn-text">НОВОЕ ОБЪЯСНЕНИЕ МИРА (мировоззренческая теория)</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="practice">
+            <span class="btn-text">Наши практики</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="learning">
+            <span class="btn-text">ОБУЧЕНИЕ, тренинги, интенсивы, семинары</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="joint-actions">
+            <span class="btn-text">Посвящения, Разовые совместные акции</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="videos">
+            <span class="btn-text">Онлайн-трансляции, Видеотека</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="publications">
+            <span class="btn-text">Мои публикации</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="unpublished">
+            <span class="btn-text">Отрывки из ещё неизданных произведений</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="interesting-cases">
+            <span class="btn-text">Интересные случаи из жизни</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="reviews">
+            <span class="btn-text">Отзывы</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="contacts">
+            <span class="btn-text">Контакты, сотрудничество</span>
+            <span class="btn-glow"></span>
+        </button>
+        <button class="nav-btn" data-section="exclusive">
+            <span class="btn-text">Эксклюзивные материалы</span>
+            <span class="btn-glow"></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Основной контент -->
+<div class="container">
+    <div class="content-section">
+        <h1 class="title">КАК ВАШИХ КРЕДИТОРОВ ПРЕВРАТИТЬ В ВАШИХ ДОЛЖНИКОВ</h1>
+        
+        <div class="announcement">
+            <p><strong>Набираю группу на обучение по теме: "КАК ВАШИХ КРЕДИТОРОВ ПРЕВРАТИТЬ В ВАШИХ ДОЛЖНИКОВ".</strong></p>
+        </div>
+
+        <div class="dialogue-guide">
+            <h2>РАЗГОВОР С КОЛЛЕКТОРОМ:</h2>
+            <p>Разумные и вполне ожидаемые вопросы, которые почему-то никто не догадывается задать, находясь под ГЛАМУРом - зловещим оЧА(К)Рованием кредитной мафии.</p>
+
+            <div class="argument-block">
+                <h3>1. Приветствие</h3>
+                <p>Здравия вам духовного и умственного - а ПО МЕРЕ его, здравия также душевного и телесного! (т.е. если обратившийся к вам не будет проявлять духовного и умственного здоровья, то это пожелание лишает его душевного покоя и телесного здравия).</p>
             </div>
 
-            <div class="dialogue-guide">
-                <h2>РАЗГОВОР С КОЛЛЕКТОРОМ:</h2>
-                <p>Разумные и вполне ожидаемые вопросы, которые почему-то никто не догадывается задать, находясь под ГЛАМУРом - зловещим оЧА(К)Рованием кредитной мафии.</p>
-
-                <div class="argument-block">
-                    <h3>1. Приветствие</h3>
-                    <p>Здравия вам духовного и умственного - а ПО МЕРЕ его, здравия также душевного и телесного! (т.е. если обратившийся к вам не будет проявлять духовного и умственного здоровья, то это пожелание лишает его душевного покоя и телесного здравия).</p>
-                </div>
-
-                <div class="argument-block">
-                    <h3>2. Вопрос о реальном заимодавце</h3>
-                    <p>Существует ли реальный человек, который давал мне денег взаймы и теперь требует с меня возвращения этого долга - или же вы мне навязываете соучастие в некой завуалированной, а потому и деперсонализированной, мошеннической схеме?</p>
-                    <p>Когда человек занимается легальным бизнесом, то у него нет ни одной причины скрывать своё лицо, имя и прочие данные.</p>
-                    <p>Поэтому назовите мне фамилию, имя, год рождения, адрес и телефон человека, который считает, что я ему что-то должен - и мы с ним тет-а-тет выясним этот вопрос. Если он подослал ко мне вас, звонящих мне каждые 5 минут - то и я тоже вправе ему названивать в любое время, когда мне заблагорассудится. Даже если он мне действительно занял некоторую сумму денег - это не ставит его автоматически выше меня, не даёт ему никаких преимуществ и дополнительных прав надо мной - и не лишает меня равных со всеми людьми человеческих прав.</p>
-                    <p><strong>Не можете назвать? Значит, такого человека не существует.</strong></p>
-                    <p>Конфиденциальная информация? Но если я предоставил вам мои данные - то и заимодавец обязан сделать то же самое, иначе нарушается принцип равноправия.</p>
-                    <p>Все люди рождаются равными в правах, и если кто-то пытается меня ущемить в моих правах - он совершает преступление, за которое достоин равноценного наказания, т.е. ущемления в его собственной телесности, которое я вам и предписываю, в соответствии с моим более высоким статусом. Ибо я человек, живущий в СВОЕЙ ВОЛЕ - а вы являетесь служащим, наёмным работником (цепным псом).</p>
-                </div>
-
-                <div class="argument-block">
-                    <h3>3. О безликих организациях</h3>
-                    <p>Я никак не могу быть должен некой БЕЗЛИКОЙ "организации", т.к. правом СОБЬственности обладает только живой человек, а не какая-либо абстракция\фикция.</p>
-                </div>
-
-                <div class="argument-block">
-                    <h3>4. О преступном бизнесе</h3>
-                    <p>Вы в курсе, что вы занимаетесь преступным бизнесом? вы разоряете людей. Но человек В ЛЮБОМ СЛУЧАЕ обладает БЕЗУСЛОВНЫМ правом на жизнь и, следовательно, на всё, что обеспечивает его жизнь, честь и здоровье.</p>
-                    <p>По Закону Творца ТОРГОВЛЯ РАЗРЕШЕНА, А ЛИХВА ЗАПРЕЩЕНА - т.е. процент дохода разрешено взимать только с прибыли, а не с убытка. Никто не вправе наживаться, разоряя других, доводя их тем самым до самоубийства или толкая на преступления - это без-человечно, т.е. ЛИШАЕТ ВАС статуса человека и всех человеческих прав, делает нелюдем, который находится вне закона и по отношению к которому этика неуместна.</p>
-                    <p>Вы наживаетесь разорением людей - т.е. паразитизмом - потому, что вы сами не способны ничего создавать? Но человек, созданный по Образу и Подобию Божию, наделён творческой способностью! более того, это главный его атрибут, как сонаследника Славы Царства Божия на Земле. Значит, ваш статус уже под большим сомнением - и он явно ниже, чем мой статус. Следовательно, в разговоре со мной - Человеком*Творцом, живущим в СОБЬственной воле, вы должны соблюдать субординацию. А вы её нарушаете, пытаясь безосновательно навязать мне более низкий статус - т.е. вы занимаетесь наведением морока, оказанием психологического давления, нарушаете принцип свободной воли, пытаясь меня принудить действовать вопреки моим интересам.</p>
-                </div>
-
-                <div class="argument-block">
-                    <h3>5. Вопрос о происхождении денег</h3>
-                    <p>А были ли деньги у так называемого "заимодавца"? Приведите мне доказательства, что человек, который занял мне денег (кстати, кто этот человек? он существует?), действительно ими обладал. Приведите мне отчёт об источниках его дохода. Не являются ли они противозаконными - или, тем паче, без-человечными?</p>
-                    <p>У меня нет и не может быть обязательств перед тем, кто сам нарушает все принципы и законы человеческой жизни - перед бесом, нелюдем, демоном.</p>
-                    <p>(т.е. он, напр., внезапно заболеет раком и умрёт раньше времени, оставив своих детей сиротами, или его переедет машина и он останется инвалидом, прикованным к креслу.</p>
-                    <p>Будучи Человеком - воплощённым Творцом в Творении - я обладаю силой и властью приговорить его к этой участи за его преступления против человечности, за утрату им человеческого естества, при видимой двуногости, т.е. за введение в заблуждение).</p>
-                </div>
-
-                <div class="argument-block">
-                    <h3>6. Для христиан-заимодавцев</h3>
-                    <p>Если заимодавец, христианин, то: прощайте людям долги их перед вами, если хотите, чтобы Всевышний простил вам долги ваши перед Ним.</p>
-                </div>
-
-                <div class="argument-block">
-                    <h3>7. Для атеистов-заимодавцев</h3>
-                    <p>Если же он атеист, т.е. безбожник - тогда он сам должен платить налог на неверие, так наз. "джизью". Ибо никто не может пользоваться благами, дарованными Творцом, без признательности Ему. Ни один человек не является ни создателем, ни обладателем благ иначе, как только во Славу Творца миров - следовательно, он обязан признавать, Кому всем обязан он сам, и что он сам является неоплатным должником Всевышнего.</p>
-                </div>
-
-                <div class="argument-block">
-                    <h3>8. Убойный аргумент</h3>
-                    <p><strong>ВСЁ МНЕ СЛУЖИТ И ВСЁ МНЕ ПРИНАДЛЕЖИТ НА ПУТИ ИСПОЛНЕНИЯ ВЫСОЧАЙШЕГО ЗАМЫСЛА, И В СЛУЖЕНИИ ИСТИННО ВЫСШЕЙ ВЛАСТИ.</strong></p>
-                    <p>Поскольку я служу Наивысшему - мне даётся, а у неверующих и неверных отнимается. Это правильно, нравственно и справедливо.</p>
-                </div>
+            <div class="argument-block">
+                <h3>2. Вопрос о реальном заимодавце</h3>
+                <p>Существует ли реальный человек, который давал мне денег взаймы и теперь требует с меня возвращения этого долга - или же вы мне навязываете соучастие в некой завуалированной, а потому и деперсонализированной, мошеннической схеме?</p>
+                <p>Когда человек занимается легальным бизнесом, то у него нет ни одной причины скрывать своё лицо, имя и прочие данные.</p>
+                <p>Поэтому назовите мне фамилию, имя, год рождения, адрес и телефон человека, который считает, что я ему что-то должен - и мы с ним тет-а-тет выясним этот вопрос. Если он подослал ко мне вас, звонящих мне каждые 5 минут - то и я тоже вправе ему названивать в любое время, когда мне заблагорассудится. Даже если он мне действительно занял некоторую сумму денег - это не ставит его автоматически выше меня, не даёт ему никаких преимуществ и дополнительных прав надо мной - и не лишает меня равных со всеми людьми человеческих прав.</p>
+                <p><strong>Не можете назвать? Значит, такого человека не существует.</strong></p>
+                <p>Конфиденциальная информация? Но если я предоставил вам мои данные - то и заимодавец обязан сделать то же самое, иначе нарушается принцип равноправия.</p>
+                <p>Все люди рождаются равными в правах, и если кто-то пытается меня ущемить в моих правах - он совершает преступление, за которое достоин равноценного наказания, т.е. ущемления в его собственной телесности, которое я вам и предписываю, в соответствии с моим более высоким статусом. Ибо я человек, живущий в СВОЕЙ ВОЛЕ - а вы являетесь служащим, наёмным работником (цепным псом).</p>
             </div>
 
-            <div class="conclusion">
-                <p>И, разумеется, это относится не только и не столько к теме денег - которые служат лишь символом некой УНИВЕРСАЛЬНОЙ ЦЕННОСТИ.</p>
-                <p>Вот, каждый раз, когда вам безосновательно "предъявляют" - пытаясь принудить вас "каяться и платить" - неплохо бы разобраться вначале, кто и кому в действительности должен.</p>
-                <p>А нашими должниками они становятся потому, что встреча с нами - приводящая к сбою их программ, обнаруживающая неэффективность паразитических алгоритмов ОБЕЗКРОВЛИВАНИЯ ЛЮДЕЙ - объективно содействует их очеловечиванию и повышению уровня осознанности, т.е. содействует их эволюции в направлении обретения БогоПодобия.</p>
+            <div class="argument-block">
+                <h3>3. О безликих организациях</h3>
+                <p>Я никак не могу быть должен некой БЕЗЛИКОЙ "организации", т.к. правом СОБЬственности обладает только живой человек, а не какая-либо абстракция\фикция.</p>
             </div>
 
-            <div class="payment-section">
-                <h3>Как и за счёт чего это срабатывает, разъясняется здесь:</h3>
-                <div class="payment-button">
-                    <button class="btn-pay" onclick="showPopup()">Вступить в закрытую группу</button>
-                </div>
-                <p class="payment-note">Искренность и серьёзность ваших намерений разобраться с этим вопросом подтверждается взносом в таком размере, насколько вы цените его окончательное решение в вашу пользу.</p>
-                <p class="warning-note">А кто готов и дальше кормить собой паразитов - идите и продолжайте! кормите их, которыми кормимся МЫ...</p>
+            <div class="argument-block">
+                <h3>4. О преступном бизнесе</h3>
+                <p>Вы в курсе, что вы занимаетесь преступным бизнесом? вы разоряете людей. Но человек В ЛЮБОМ СЛУЧАЕ обладает БЕЗУСЛОВНЫМ правом на жизнь и, следовательно, на всё, что обеспечивает его жизнь, честь и здоровье.</p>
+                <p>По Закону Творца ТОРГОВЛЯ РАЗРЕШЕНА, А ЛИХВА ЗАПРЕЩЕНА - т.е. процент дохода разрешено взимать только с прибыли, а не с убытка. Никто не вправе наживаться, разоряя других, доводя их тем самым до самоубийства или толкая на преступления - это без-человечно, т.е. ЛИШАЕТ ВАС статуса человека и всех человеческих прав, делает нелюдем, который находится вне закона и по отношению к которому этика неуместна.</p>
+                <p>Вы наживаетесь разорением людей - т.е. паразитизмом - потому, что вы сами не способны ничего создавать? Но человек, созданный по Образу и Подобию Божию, наделён творческой способностью! более того, это главный его атрибут, как сонаследника Славы Царства Божия на Земле. Значит, ваш статус уже под большим сомнением - и он явно ниже, чем мой статус. Следовательно, в разговоре со мной - Человеком*Творцом, живущим в СОБЬственной воле, вы должны соблюдать субординацию. А вы её нарушаете, пытаясь безосновательно навязать мне более низкий статус - т.е. вы занимаетесь наведением морока, оказанием психологического давления, нарушаете принцип свободной воли, пытаясь меня принудить действовать вопреки моим интересам.</p>
             </div>
 
-            <div class="final-argument">
-                <p>Поскольку НИКТО ИНОЙ, КАК ТОЛЬКО САМ ЧЕЛОВЕК является единственно неоспоримым ЗаконоДателем в своей ЖизнеСфере и её чувствительной окрестности, то не следует подчиняться чужим законам - ибо никто их не вправе для нас прописывать, он может лишь предлагать, а мы принимаем или не принимаем эту оферту.</p>
-                <p><strong>А ещё лучше - СФОРМУЛИРУЙ СВОЙ ЗАКОН И ПОСТАВЬ ИХ НА СЧЁТЧИК!</strong></p>
+            <div class="argument-block">
+                <h3>5. Вопрос о происхождении денег</h3>
+                <p>А были ли деньги у так называемого "заимодавца"? Приведите мне доказательства, что человек, который занял мне денег (кстати, кто этот человек? он существует?), действительно ими обладал. Приведите мне отчёт об источниках его дохода. Не являются ли они противозаконными - или, тем паче, без-человечными?</p>
+                <p>У меня нет и не может быть обязательств перед тем, кто сам нарушает все принципы и законы человеческой жизни - перед бесом, нелюдем, демоном.</p>
+                <p>(т.е. он, напр., внезапно заболеет раком и умрёт рачьше времени, оставив своих детей сиротами, или его переедет машина и он останется инвалидом, прикованным к креслу.</p>
+                <p>Будучи Человеком - воплощённым Творцом в Творении - я обладаю силой и властью приговорить его к этой участи за его преступления против человечности, за утрату им человеческого естества, при видимой двуногости, т.е. за введение в заблуждение).</p>
+            </div>
+
+            <div class="argument-block">
+                <h3>6. Для христиан-заимодавцев</h3>
+                <p>Если заимодавец, христианин, то: прощайте людям долги их перед вами, если хотите, чтобы Всевышний простил вам долги ваши перед Ним.</p>
+            </div>
+
+            <div class="argument-block">
+                <h3>7. Для атеистов-заимодавцев</h3>
+                <p>Если же он атеист, т.е. безбожник - тогда он сам должен платить налог на неверие, так наз. "джизью". Ибо никто не может пользоваться благами, дарованными Творцом, без признательности Ему. Ни один человек не является ни создателем, ни обладателем благ иначе, как только во Славу Творца миров - следовательно, он обязан признавать, Кому всем обязан он сам, и что он сам является неоплатным должником Всевышнего.</p>
+            </div>
+
+            <div class="argument-block">
+                <h3>8. Убойный аргумент</h3>
+                <p><strong>ВСЁ МНЕ СЛУЖИТ И ВСЁ МНЕ ПРИНАДЛЕЖИТ НА ПУТИ ИСПОЛНЕНИЯ ВЫСОЧАЙШЕГО ЗАМЫСЛА, И В СЛУЖЕНИИ ИСТИННО ВЫСШЕЙ ВЛАСТИ.</strong></p>
+                <p>Поскольку я служу Наивысшему - мне даётся, а у неверующих и неверных отнимается. Это правильно, нравственно и справедливо.</p>
             </div>
         </div>
-    </div>
 
-    <!-- Попап оплаты -->
-    <div class="popup-overlay" id="paymentPopup">
-        <div class="popup-content">
-            <button class="close-popup" onclick="closePopup()">×</button>
-            <h2 style="margin-bottom: 1.5rem; color: #40E0D0;">ВЗНОС ПО СЕРДЦУ</h2>
-            
-            <div class="payment-details">
-                <p style="margin-bottom: 1rem;">
-                    <strong>Подтверждением вашей доброй воли является взнос по сердцу на карту:</strong><br>
-                </p>
-                
-                <div class="bank-card">2202 2084 1630 6752</div>
-                
-                <p style="margin: 1rem 0;">
-                    <strong>Или по номеру телефона:</strong><br>
-                    +7 978 508 69 39
-                </p>
-                
-                <p style="margin: 0.5rem 0;">
-                    <strong>Сбербанк</strong><br>
-                    Радомир Евгеньевич А.
-                </p>
+        <div class="conclusion">
+            <p>И, разумеется, это относится не только и не столько к теме денег - которые служат лишь символом некой УНИВЕРСАЛЬНОЙ ЦЕННОСТИ.</p>
+            <p>Вот, каждый раз, когда вам безосновательно "предъявляют" - пытаясь принудить вас "каяться и платить" - неплохо бы разобраться вначале, кто и кому в действительности должен.</p>
+            <p>А нашими должниками они становятся потому, что встреча с нами - приводящая к сбою их программ, обнаруживающая неэффективность паразитических алгоритмов ОБЕЗКРОВЛИВАНИЯ ЛЮДЕЙ - объективно содействует их очеловечиванию и повышению уровня осознанности, т.е. содействует их эволюции в направлении обретения БогоПодобия.</p>
+        </div>
+
+        <div class="payment-section">
+            <h3>Как и за счёт чего это срабатывает, разъясняется здесь:</h3>
+            <div class="payment-button">
+                <button class="join-button" onclick="showPopup()">КНОПКА ОПЛАТЫ</button>
             </div>
+            <p class="payment-note">Искренность и серьёзность ваших намерений разобраться с этим вопросом подтверждается взносом в таком размере, насколько вы цените его окончательное решение в вашу пользу.</p>
+            <p class="warning-note">А кто готов и дальше кормить собой паразитов - идите и продолжайте! кормите их, которыми кормимся МЫ...</p>
+        </div>
+
+        <div class="final-argument">
+            <p>Поскольку НИКТО ИНОЙ, КАК ТОЛЬКО САМ ЧЕЛОВЕК является единственно неоспоримым ЗаконоДателем в своей ЖизнеСфере и её чувствительной окрестности, то не следует подчиняться чужим законам - ибо никто их не вправе для нас прописывать, он может лишь предлагать, а мы принимаем или не принимаем эту оферту.</p>
+            <p><strong>А ещё лучше - СФОРМУЛИРУЙ СВОЙ ЗАКОН И ПОСТАВЬ ИХ НА СЧЁТЧИК!</strong></p>
+        </div>
+    </div>
+</div>
+
+<!-- Попап оплаты -->
+<div class="popup-overlay" id="paymentPopup">
+    <div class="popup-content">
+        <button class="close-popup" onclick="closePopup()">×</button>
+        <h2 style="margin-bottom: 1.5rem; color: #40E0D0;">ВЗНОС ПО СЕРДЦУ</h2>
+        
+        <div class="payment-details">
+            <p style="margin-bottom: 1rem;">
+                <strong>Подтверждением вашей доброй воли является взнос по сердцу на карту:</strong><br>
+            </p>
+            
+            <div class="bank-card">2202 2084 1630 6752</div>
+            
+            <p style="margin: 1rem 0;">
+                <strong>Или по номеру телефона:</strong><br>
+                +7 978 508 69 39
+            </p>
             
             <p style="margin: 0.5rem 0;">
-                После оплаты пришлите чек скриншотом<br>
-                в Телеграм на имя:
-            </p>
-            
-            <a href="https://t.me/Kyaabahan" class="telegram-link" target="_blank">
-                @Kyaabahan
-            </a>
-            
-            <p style="margin-top: 1.5rem; font-style: italic;">
-                После проверки чека вы будете сразу добавлены в закрытый канал
+                <strong>Сбербанк</strong><br>
+                Радомир Евгеньевич А.
             </p>
         </div>
+        
+        <p style="margin: 0.5rem 0;">
+            После оплаты пришлите чек скриншотом<br>
+            в Телеграм на имя:
+        </p>
+        
+        <a href="https://t.me/Kyaabahan" class="telegram-link" target="_blank">
+            @Kyaabahan
+        </a>
+        
+        <p style="margin-top: 1.5rem; font-style: italic;">
+            После проверки чека вы будете сразу добавлены в закрытый канал
+        </p>
     </div>
+</div>
 
-    <div class="floating-symbols"></div>
+<div class="floating-symbols"></div>
+
+<script src="navigation.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
