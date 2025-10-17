@@ -33,17 +33,27 @@
     transition: all 0.3s ease;
 }
 
-.gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(64, 224, 208, 0.5);
-    border-color: #4169E1;
+/* Первая картинка - обрезаем выше середины */
+.gallery-item.first-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%; /* Обрезаем выше середины (30% от верха) */
+    display: block;
 }
 
-.gallery-item img {
+/* Остальные картинки - обычное отображение */
+.gallery-item:not(.first-item) img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(64, 224, 208, 0.5);
+    border-color: #4169E1;
 }
 
 /* Модальное окно */
@@ -381,7 +391,7 @@
 
             <div class="gallery-container">
                 <div class="gallery-grid">
-                    <div class="gallery-item" onclick="openModal('image (1).jpg')">
+                    <div class="gallery-item first-item" onclick="openModal('image (1).jpg')">
                         <img src="image (1).jpg" alt="Описание 1" loading="lazy">
                     </div>
                     <div class="gallery-item" onclick="openModal('image (2).jpg')">
@@ -428,14 +438,19 @@ function openModal(imageSrc) {
     // Собираем все изображения галереи
     const items = document.querySelectorAll('.gallery-item img');
     currentImages = Array.from(items).map(img => img.src);
-    currentIndex = currentImages.indexOf(imageSrc);
+    
+    // Находим правильный индекс выбранной картинки
+    currentIndex = currentImages.findIndex(src => src.includes(imageSrc));
+    
+    // Если не нашли, используем первый индекс
+    if (currentIndex === -1) currentIndex = 0;
     
     const modal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
     const counter = document.getElementById('imageCounter');
     
-    modalImage.src = imageSrc;
-    modalImage.alt = document.querySelector(`.gallery-item img[src="${imageSrc}"]`).alt;
+    modalImage.src = currentImages[currentIndex];
+    modalImage.alt = document.querySelector(`.gallery-item img[src="${currentImages[currentIndex]}"]`).alt;
     counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
     
     modal.style.display = 'flex';
