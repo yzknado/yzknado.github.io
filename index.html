@@ -36,7 +36,6 @@
     flex-shrink: 0;
 }
 
-/* Первая картинка - обрезаем еще выше (8% от верха) */
 .gallery-item.first-item img {
     width: 100%;
     height: 100%;
@@ -45,7 +44,6 @@
     display: block;
 }
 
-/* Остальные картинки - обычное отображение */
 .gallery-item:not(.first-item) img {
     width: 100%;
     height: 100%;
@@ -59,7 +57,7 @@
     border-color: #4169E1;
 }
 
-/* Модальное окно */
+/* Модальное окно - ПЕРЕПИСАНО */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -76,28 +74,28 @@
 
 .modal-content {
     position: relative;
-    max-width: calc((100vw - 300px) / 1.5);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 80%;
 }
 
-/* Контейнер для изображения с фиксированной высотой */
-.modal-image-container {
+/* ФИКСИРОВАННАЯ ВЫСОТА ДЛЯ ВСЕХ КАРТИНОК */
+.modal-image-wrapper {
+    max-height: 400px !important; /* Жесткое ограничение */
     max-width: 100%;
-    max-height: 50vh; /* Фиксированная высота для ВСЕХ картинок */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px; /* Отступ для счетчика */
+    margin-bottom: 20px;
 }
 
-.modal-content img {
+#modalImage {
+    max-height: 400px !important; /* Жесткое ограничение */
     max-width: 100%;
-    max-height: 100%;
-    width: auto;
     height: auto;
+    width: auto;
     border-radius: 15px;
     box-shadow: 0 0 50px rgba(64, 224, 208, 0.5);
     border: 3px solid #40E0D0;
@@ -107,8 +105,8 @@
 /* Крестик закрытия */
 .modal-close {
     position: absolute;
-    top: -70px;
-    right: -70px;
+    top: -60px;
+    right: 10px;
     background: none;
     color: #40E0D0;
     border: none;
@@ -137,10 +135,10 @@
     background: none;
     color: #40E0D0;
     border: none;
-    font-size: 70px;
+    font-size: 60px;
     cursor: pointer;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,34 +153,34 @@
 }
 
 .nav-prev {
-    left: -90px;
+    left: -80px;
 }
 
 .nav-next {
-    right: -90px;
+    right: -80px;
 }
 
-/* Счетчик - ПОД изображением */
+/* Счетчик - ПОД картинкой */
 .image-counter {
-    position: relative;
     color: #40E0D0;
     font-size: 1.3rem;
     text-shadow: 0 0 10px rgba(64, 224, 208, 0.8);
     background: none;
-    padding: 0;
-    border: none;
-    margin-top: 10px;
-    z-index: 1002;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid #40E0D0;
+    background: rgba(64, 224, 208, 0.1);
 }
 
 /* Адаптивность */
 @media (max-width: 1200px) {
     .modal-content {
-        max-width: calc((100vw - 200px) / 1.5);
+        max-width: 70%;
     }
     
-    .modal-image-container {
-        max-height: 45vh;
+    .modal-image-wrapper,
+    #modalImage {
+        max-height: 350px !important;
     }
     
     .nav-prev {
@@ -191,11 +189,6 @@
     
     .nav-next {
         right: -70px;
-    }
-    
-    .modal-close {
-        right: -60px;
-        top: -60px;
     }
 }
 
@@ -210,24 +203,21 @@
     }
     
     .modal-content {
-        max-width: calc((100vw - 100px) / 1.5);
+        max-width: 85%;
     }
     
-    .modal-image-container {
-        max-height: 40vh;
-        margin-bottom: 25px;
+    .modal-image-wrapper,
+    #modalImage {
+        max-height: 300px !important;
     }
     
     .modal-close {
         top: -50px;
-        right: -50px;
         font-size: 40px;
     }
     
     .nav-arrow {
         font-size: 50px;
-        width: 50px;
-        height: 50px;
     }
     
     .nav-prev {
@@ -236,10 +226,6 @@
     
     .nav-next {
         right: -60px;
-    }
-    
-    .image-counter {
-        font-size: 1.1rem;
     }
 }
 
@@ -254,31 +240,28 @@
     }
     
     .modal-content {
-        max-width: calc((100vw - 60px) / 1.5);
+        max-width: 90%;
     }
     
-    .modal-image-container {
-        max-height: 35vh;
-        margin-bottom: 20px;
+    .modal-image-wrapper,
+    #modalImage {
+        max-height: 250px !important;
     }
     
     .nav-prev {
-        left: -45px;
+        left: -40px;
     }
     
     .nav-next {
-        right: -45px;
+        right: -40px;
     }
     
     .nav-arrow {
         font-size: 40px;
-        width: 40px;
-        height: 40px;
     }
     
     .modal-close {
         top: -40px;
-        right: -40px;
         font-size: 35px;
     }
 }
@@ -557,13 +540,13 @@
                 <div class="modal-content">
                     <button class="modal-close" onclick="closeModal()">×</button>
                     
-                    <!-- Стрелочки навигации -->
                     <button class="nav-arrow nav-prev" onclick="navigateImages(-1)">‹</button>
                     <button class="nav-arrow nav-next" onclick="navigateImages(1)">›</button>
                     
-                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
                         <img id="modalImage" src="" alt="">
                     </div>
+                    
                     <div class="image-counter" id="imageCounter"></div>
                 </div>
             </div>
