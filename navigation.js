@@ -1,4 +1,3 @@
-// Универсальная навигация для всех страниц
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
