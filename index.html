@@ -6,6 +6,36 @@
     <title>УНИВЕРСУМ ПредВечной ПраМатери</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
+    <style>
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid #40E0D0;
+    box-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
+    background: rgba(60, 10, 40, 0.5);
+    transition: all 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(64, 224, 208, 0.5);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+</style>
 </head> 
 <body>
 <!-- Левая панель навигации -->
@@ -250,6 +280,32 @@
 
             <div class="final-line"></div>
 
+            <div class="image-grid">
+                <div class="grid-item">
+                    <img src="image (1).jpg" alt="Описание" loading="lazy">
+                </div>
+                <div class="grid-item">
+                    <img src="image (2).jpg" alt="Описание" loading="lazy">
+                </div>
+                <div class="grid-item">
+                    <img src="image (3).jpg" alt="Описание" loading="lazy">
+                </div>
+                <div class="grid-item">
+                    <img src="image (4).jpg" alt="Описание" loading="lazy">
+                </div>
+                <div class="grid-item">
+                    <img src="image (5).jpg" alt="Описание" loading="lazy">
+                </div>
+                <div class="grid-item">
+                    <img src="image (6).jpg" alt="Описание" loading="lazy">
+                </div>
+                <div class="grid-item">
+                    <img src="image (7).jpg" alt="Описание" loading="lazy">
+                </div>
+            </div>
+            
+            <div class="final-line"></div>
+            
         </div>
     </div>
     <div class="floating-symbols"></div>
