@@ -60,7 +60,7 @@ function activateCurrentPageButton() {
 
 function getCurrentPage() {
     const path = window.location.pathname;
-    const page = path.split('/').pop();
+    const page = path.split('/').pop(); 
     
     if (path === '/' || page === 'index.html' || page === '' || path.includes('yzknado')) return 'main';
     if (page === 'about-credits.html') return 'about-credits';
