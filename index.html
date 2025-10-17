@@ -77,7 +77,16 @@
 .modal-content {
     position: relative;
     max-width: calc((100vw - 300px) / 1.5);
-    max-height: calc((100vh - 200px) / 1.5); /* Увеличил отступ снизу для счетчика */
+    max-height: calc((100vh - 200px) / 1.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ограничиваем высоту для вертикальных фото */
+.modal-image-container {
+    max-width: 100%;
+    max-height: 60vh; /* Фиксированная максимальная высота */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,17 +103,10 @@
     object-fit: contain;
 }
 
-/* Ограничиваем высоту картинки как у первой миниатюры */
-.modal-content img[src*="image (1).jpg"],
-.modal-content img[src*="image (3).jpg"] {
-    max-height: 60vh; /* Ограничиваем высоту для вертикальных фото */
-    object-fit: contain; /* Сохраняем пропорции */
-}
-
-/* Крестик закрытия - поднимаем выше */
+/* Крестик закрытия */
 .modal-close {
     position: absolute;
-    top: -80px; /* Подняли выше */
+    top: -80px;
     right: -80px;
     background: none;
     color: #40E0D0;
@@ -121,10 +123,48 @@
     z-index: 1002;
 }
 
-/* Счетчик - поднимаем выше */
+.modal-close:hover {
+    color: #4169E1;
+    transform: scale(1.2);
+}
+
+/* Стрелочки навигации */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: #40E0D0;
+    border: none;
+    font-size: 70px;
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 15px rgba(64, 224, 208, 0.8);
+    z-index: 1001;
+}
+
+.nav-arrow:hover {
+    color: #4169E1;
+    transform: translateY(-50%) scale(1.2);
+}
+
+.nav-prev {
+    left: -90px;
+}
+
+.nav-next {
+    right: -90px;
+}
+
+/* Счетчик */
 .image-counter {
     position: absolute;
-    bottom: -80px; /* Подняли выше */
+    bottom: -80px;
     left: 50%;
     transform: translateX(-50%);
     color: #40E0D0;
@@ -143,8 +183,7 @@
         max-height: calc((100vh - 180px) / 1.5);
     }
     
-    .modal-content img[src*="image (1).jpg"],
-    .modal-content img[src*="image (3).jpg"] {
+    .modal-image-container {
         max-height: 55vh;
     }
     
@@ -181,8 +220,7 @@
         max-height: calc((100vh - 150px) / 1.5);
     }
     
-    .modal-content img[src*="image (1).jpg"],
-    .modal-content img[src*="image (3).jpg"] {
+    .modal-image-container {
         max-height: 50vh;
     }
     
@@ -227,8 +265,7 @@
         max-height: calc((100vh - 120px) / 1.5);
     }
     
-    .modal-content img[src*="image (1).jpg"],
-    .modal-content img[src*="image (3).jpg"] {
+    .modal-image-container {
         max-height: 45vh;
     }
     
@@ -535,7 +572,9 @@
                     <button class="nav-arrow nav-prev" onclick="navigateImages(-1)">‹</button>
                     <button class="nav-arrow nav-next" onclick="navigateImages(1)">›</button>
                     
-                    <img id="modalImage" src="" alt="">
+                    <div class="modal-image-container">
+                        <img id="modalImage" src="" alt="">
+                    </div>
                     <div class="image-counter" id="imageCounter"></div>
                 </div>
             </div>
