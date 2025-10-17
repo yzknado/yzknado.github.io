@@ -77,7 +77,7 @@
 .modal-content {
     position: relative;
     max-width: calc((100vw - 300px) / 1.5);
-    max-height: calc((100vh - 100px) / 1.5);
+    max-height: calc((100vh - 200px) / 1.5); /* Увеличил отступ снизу для счетчика */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,11 +94,18 @@
     object-fit: contain;
 }
 
-/* Крестик закрытия */
+/* Ограничиваем высоту картинки как у первой миниатюры */
+.modal-content img[src*="image (1).jpg"],
+.modal-content img[src*="image (3).jpg"] {
+    max-height: 60vh; /* Ограничиваем высоту для вертикальных фото */
+    object-fit: contain; /* Сохраняем пропорции */
+}
+
+/* Крестик закрытия - поднимаем выше */
 .modal-close {
     position: absolute;
-    top: -60px;
-    right: -60px;
+    top: -80px; /* Подняли выше */
+    right: -80px;
     background: none;
     color: #40E0D0;
     border: none;
@@ -114,48 +121,10 @@
     z-index: 1002;
 }
 
-.modal-close:hover {
-    color: #4169E1;
-    transform: scale(1.2);
-}
-
-/* Стрелочки навигации */
-.nav-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    color: #40E0D0;
-    border: none;
-    font-size: 70px;
-    cursor: pointer;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    text-shadow: 0 0 15px rgba(64, 224, 208, 0.8);
-    z-index: 1001;
-}
-
-.nav-arrow:hover {
-    color: #4169E1;
-    transform: translateY(-50%) scale(1.2);
-}
-
-.nav-prev {
-    left: -90px;
-}
-
-.nav-next {
-    right: -90px;
-}
-
-/* Счетчик - без контейнера, ниже */
+/* Счетчик - поднимаем выше */
 .image-counter {
     position: absolute;
-    bottom: -70px;
+    bottom: -80px; /* Подняли выше */
     left: 50%;
     transform: translateX(-50%);
     color: #40E0D0;
@@ -171,6 +140,12 @@
 @media (max-width: 1200px) {
     .modal-content {
         max-width: calc((100vw - 200px) / 1.5);
+        max-height: calc((100vh - 180px) / 1.5);
+    }
+    
+    .modal-content img[src*="image (1).jpg"],
+    .modal-content img[src*="image (3).jpg"] {
+        max-height: 55vh;
     }
     
     .nav-prev {
@@ -182,7 +157,12 @@
     }
     
     .modal-close {
-        right: -50px;
+        right: -60px;
+        top: -70px;
+    }
+    
+    .image-counter {
+        bottom: -70px;
     }
 }
 
@@ -198,12 +178,17 @@
     
     .modal-content {
         max-width: calc((100vw - 100px) / 1.5);
-        max-height: calc((100vh - 80px) / 1.5);
+        max-height: calc((100vh - 150px) / 1.5);
+    }
+    
+    .modal-content img[src*="image (1).jpg"],
+    .modal-content img[src*="image (3).jpg"] {
+        max-height: 50vh;
     }
     
     .modal-close {
-        top: -50px;
-        right: -40px;
+        top: -60px;
+        right: -50px;
         font-size: 40px;
     }
     
@@ -239,7 +224,12 @@
     
     .modal-content {
         max-width: calc((100vw - 60px) / 1.5);
-        max-height: calc((100vh - 60px) / 1.5);
+        max-height: calc((100vh - 120px) / 1.5);
+    }
+    
+    .modal-content img[src*="image (1).jpg"],
+    .modal-content img[src*="image (3).jpg"] {
+        max-height: 45vh;
     }
     
     .nav-prev {
@@ -257,9 +247,13 @@
     }
     
     .modal-close {
-        top: -40px;
-        right: -30px;
+        top: -50px;
+        right: -40px;
         font-size: 35px;
+    }
+    
+    .image-counter {
+        bottom: -50px;
     }
 }
 </style>
