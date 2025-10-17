@@ -70,6 +70,46 @@
     </div>
 </nav>
 
+    <!-- Попап для платежной информации -->
+    <div class="popup-overlay" id="paymentPopup">
+        <div class="popup-content">
+            <button class="close-popup" onclick="closePopup()">×</button>
+            <h2 style="margin-bottom: 1.5rem; color: #40E0D0;">ВЗНОС ПО СЕРДЦУ</h2>
+            
+            <div class="payment-details">
+                <p style="margin-bottom: 1rem;">
+                    <strong>Подтверждением вашей доброй воли является взнос по сердцу на карту:</strong><br>
+                </p>
+                
+                <div class="bank-card">2202 2084 1630 6752</div>
+                
+                <p style="margin: 1rem 0;">
+                    <strong>Или по номеру телефона:</strong><br>
+                    +7 978 508 69 39
+                </p>
+                
+                <p style="margin: 0.5rem 0;">
+                    <strong>Сбербанк</strong><br>
+                    Радомир Евгеньевич А.
+                </p>
+
+            </div>
+            
+            <p style="margin: 0.5rem 0;">
+                После оплаты пришлите чек скриншотом<br>
+                в Телеграм на имя:
+            </p>
+            
+            <a href="https://t.me/Kyaabahan" class="telegram-link" target="_blank">
+                @Kyaabahan
+            </a>
+            
+            <p style="margin-top: 1.5rem; font-style: italic;">
+                После проверки чека вы будете сразу добавлены в закрытый канал
+            </p>
+        </div>
+    </div>
+   
 <!-- Основной контент -->
 <div class="container">
     <div class="content-section">
@@ -144,7 +184,9 @@
         <div class="payment-section">
             <h3>Как и за счёт чего это срабатывает, разъясняется здесь:</h3>
             <div class="payment-button">
-                <button class="join-button" onclick="showPopup()">КНОПКА ОПЛАТЫ</button>
+                <button class="join-button" onclick="showPopup()">
+                    ВСТУПИТЬ В ЗАКРЫТУЮ ГРУППУ
+                </button>
             </div>
             <p class="payment-note">Искренность и серьёзность ваших намерений разобраться с этим вопросом подтверждается взносом в таком размере, насколько вы цените его окончательное решение в вашу пользу.</p>
             <p class="warning-note">А кто готов и дальше кормить собой паразитов - идите и продолжайте! кормите их, которыми кормимся МЫ...</p>
@@ -156,49 +198,8 @@
         </div>
     </div>
 </div>
-
-<!-- Попап оплаты -->
-<div class="popup-overlay" id="paymentPopup">
-    <div class="popup-content">
-        <button class="close-popup" onclick="closePopup()">×</button>
-        <h2 style="margin-bottom: 1.5rem; color: #40E0D0;">ВЗНОС ПО СЕРДЦУ</h2>
-        
-        <div class="payment-details">
-            <p style="margin-bottom: 1rem;">
-                <strong>Подтверждением вашей доброй воли является взнос по сердцу на карту:</strong><br>
-            </p>
-            
-            <div class="bank-card">2202 2084 1630 6752</div>
-            
-            <p style="margin: 1rem 0;">
-                <strong>Или по номеру телефона:</strong><br>
-                +7 978 508 69 39
-            </p>
-            
-            <p style="margin: 0.5rem 0;">
-                <strong>Сбербанк</strong><br>
-                Радомир Евгеньевич А.
-            </p>
-        </div>
-        
-        <p style="margin: 0.5rem 0;">
-            После оплаты пришлите чек скриншотом<br>
-            в Телеграм на имя:
-        </p>
-        
-        <a href="https://t.me/Kyaabahan" class="telegram-link" target="_blank">
-            @Kyaabahan
-        </a>
-        
-        <p style="margin-top: 1.5rem; font-style: italic;">
-            После проверки чека вы будете сразу добавлены в закрытый канал
-        </p>
-    </div>
-</div>
-
 <div class="floating-symbols"></div>
-
-<script src="navigation.js"></script>
 <script src="script.js"></script>
+<script src="navigation.js"></script>
 </body>
 </html>
