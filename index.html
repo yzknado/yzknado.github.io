@@ -101,12 +101,13 @@
 }
 
 .modal-image-wrapper {
+    position: relative;
     max-height: 70vh;
     max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #modalImage {
@@ -123,15 +124,15 @@
 /* Кнопка закрытия */
 .modal-close {
     position: absolute;
-    top: -60px;
-    right: 10px;
+    top: -50px;
+    right: 0;
     background: none;
     color: #40E0D0;
     border: none;
-    font-size: 50px;
+    font-size: 40px;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,7 +146,7 @@
     transform: scale(1.2);
 }
 
-/* Стрелки навигации */
+/* Стрелки навигации - позиционируем относительно modal-image-wrapper */
 .nav-arrow {
     position: absolute;
     top: 50%;
@@ -171,11 +172,11 @@
 }
 
 .nav-prev {
-    left: -80px;
+    left: -70px;
 }
 
 .nav-next {
-    right: -80px;
+    right: -70px;
 }
 
 /* Счетчик изображений */
@@ -186,17 +187,7 @@
     background: none;
     padding: 0;
     border: none;
-    margin-top: 15px;
-}
-
-/* Описание изображения */
-.image-description {
-    color: #40E0D0;
-    font-size: 1.1rem;
-    text-align: center;
-    margin-top: 10px;
-    max-width: 80%;
-    text-shadow: 0 0 5px rgba(64, 224, 208, 0.5);
+    margin-top: 5px;
 }
 
 /* Адаптивность */
@@ -206,11 +197,11 @@
     }
     
     .nav-prev {
-        left: -70px;
+        left: -60px;
     }
     
     .nav-next {
-        right: -70px;
+        right: -60px;
     }
 }
 
@@ -225,8 +216,8 @@
     }
     
     .modal-close {
-        top: -50px;
-        font-size: 40px;
+        top: -40px;
+        font-size: 35px;
     }
     
     .nav-arrow {
@@ -234,11 +225,11 @@
     }
     
     .nav-prev {
-        left: -60px;
+        left: -50px;
     }
     
     .nav-next {
-        right: -60px;
+        right: -50px;
     }
 }
 
@@ -253,11 +244,11 @@
     }
     
     .nav-prev {
-        left: -40px;
+        left: -30px;
     }
     
     .nav-next {
-        right: -40px;
+        right: -30px;
     }
     
     .nav-arrow {
@@ -265,8 +256,8 @@
     }
     
     .modal-close {
-        top: -40px;
-        font-size: 35px;
+        top: -35px;
+        font-size: 30px;
     }
     
     .gallery-title {
@@ -531,15 +522,13 @@
                 <div class="modal-content">
                     <button class="modal-close" onclick="closeModal()">×</button>
                     
-                    <button class="nav-arrow nav-prev" onclick="navigateImages(-1)">‹</button>
-                    <button class="nav-arrow nav-next" onclick="navigateImages(1)">›</button>
-                    
                     <div class="modal-image-wrapper">
+                        <button class="nav-arrow nav-prev" onclick="navigateImages(-1)">‹</button>
                         <img id="modalImage" src="" alt="">
+                        <button class="nav-arrow nav-next" onclick="navigateImages(1)">›</button>
                     </div>
                     
                     <div class="image-counter" id="imageCounter"></div>
-                    <div class="image-description" id="imageDescription"></div>
                 </div>
             </div>
             
@@ -553,38 +542,31 @@
 const galleryData = [
     {
         src: "image (1).jpg",
-        alt: "Сакральный символ 1",
-        description: "Первый символ ПредВечной ПраМатери"
+        alt: "Сакральный символ 1"
     },
     {
         src: "image (2).jpg",
-        alt: "Сакральный символ 2",
-        description: "Второй символ ПредВечной ПраМатери"
+        alt: "Сакральный символ 2"
     },
     {
         src: "image (3).jpg",
-        alt: "Сакральный символ 3",
-        description: "Третий символ ПредВечной ПраМатери"
+        alt: "Сакральный символ 3"
     },
     {
         src: "image (4).jpg",
-        alt: "Сакральный символ 4",
-        description: "Четвертый символ ПредВечной ПраМатери"
+        alt: "Сакральный символ 4"
     },
     {
         src: "image (5).jpg",
-        alt: "Сакральный символ 5",
-        description: "Пятый символ ПредВечной ПраМатери"
+        alt: "Сакральный символ 5"
     },
     {
         src: "image (6).jpg",
-        alt: "Сакральный символ 6",
-        description: "Шестой символ ПредВечной ПраМатери"
+        alt: "Сакральный символ 6"
     },
     {
         src: "image (7).jpg",
-        alt: "Сакральный символ 7",
-        description: "Седьмой символ ПредВечной ПраМатери"
+        alt: "Сакральный символ 7"
     }
 ];
 
@@ -615,12 +597,10 @@ function openModal(index) {
     const modal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
     const counter = document.getElementById('imageCounter');
-    const description = document.getElementById('imageDescription');
     
     modalImage.src = galleryData[currentIndex].src;
     modalImage.alt = galleryData[currentIndex].alt;
     counter.textContent = `${currentIndex + 1} / ${galleryData.length}`;
-    description.textContent = galleryData[currentIndex].description;
     
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -640,12 +620,10 @@ function navigateImages(direction) {
     
     const modalImage = document.getElementById('modalImage');
     const counter = document.getElementById('imageCounter');
-    const description = document.getElementById('imageDescription');
     
     modalImage.src = galleryData[currentIndex].src;
     modalImage.alt = galleryData[currentIndex].alt;
     counter.textContent = `${currentIndex + 1} / ${galleryData.length}`;
-    description.textContent = galleryData[currentIndex].description;
 }
 
 // Закрытие модального окна
