@@ -31,7 +31,7 @@
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 1.5rem;
     justify-content: center;
-    align-items: center;
+    align-items: start; /* Изменено с center на start */
     margin: 2rem 0;
     width: 100%;
     max-width: 900px;
@@ -49,6 +49,11 @@
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+/* Первая миниатюра - выравнивание по верху */
+.gallery-item:first-child {
+    align-self: start;
 }
 
 .gallery-item img {
@@ -664,6 +669,9 @@ function initGallery() {
     galleryData.forEach((item, index) => {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
+        if (index === 0) {
+            galleryItem.style.alignSelf = 'start';
+        }
         galleryItem.onclick = () => openModal(index);
         
         const img = document.createElement('img');
