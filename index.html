@@ -64,6 +64,11 @@
     transition: transform 0.3s ease;
 }
 
+/* Первая миниатюра - показываем верх изображения */
+.gallery-item:first-child img {
+    object-position: top;
+}
+
 .gallery-item:hover {
     transform: scale(1.05);
     box-shadow: 0 0 25px rgba(64, 224, 208, 0.5);
@@ -558,7 +563,7 @@
             </p>
             
             <p class="text">
-                Давайте же переломим эту позорную и пагубную тенденцию, и покажем <span class="highlight">БОЛЕЕ ВЫСОКИЙ УРОВЕНЬ ДИСЦИПЛИНЫ</span>, нежели чёрные маги. 
+                Давайте же переломим эту позорную и пагубная тенденцию, и покажем <span class="highlight">БОЛЕЕ ВЫСОКИЙ УРОВЕНЬ ДИСЦИПЛИНЫ</span>, нежели чёрные маги. 
                 Сим победим!💪🏻 ибо
             </p>
             
@@ -687,6 +692,12 @@ function initGallery() {
             const item = galleryData[i + j];
             const galleryItem = document.createElement('div');
             galleryItem.className = 'gallery-item';
+            
+            // Для первой миниатюры добавляем специальный класс
+            if (i + j === 0) {
+                galleryItem.classList.add('first-item');
+            }
+            
             galleryItem.onclick = () => openModal(i + j);
             
             const img = document.createElement('img');
