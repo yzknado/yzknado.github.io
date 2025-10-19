@@ -517,7 +517,7 @@
             </p>
             
             <p class="text">
-                В силу этого и возникла необходимость <span class="highlight">ВЫРАЗИТЬ КОЛЛЕКТИВНУЮ ВОЛЮ ВСЕГО НАРОДА</span> на обнуление всех паразитарных структур. И наилучшее время для этого - <span class="highlight">Праздник Самайна (Велесова Ночь)</span>, когда открываются Врата между мирами. Именно в эти три дни <span class="highlight">КОЛЛЕКТИВНОЕ ОБЩЕНАРОДНОЕ ВОЛЕИЗЪЯВЛЕНИЕ</span> имеет силу и власть отправить их обратно в потусторонний мир на расщепление до первоэлементов.
+                В силу этого и возникла необходимость <span class="highlight">ВЫРАЗИТЬ КОЛЛЕКТИВНУЮ ВОЛЮ ВСЕГО НАРОДА</span> на обнуление всех паразитарных структур. И наилучшее время для этого - <span class="highlight">Праздник Самайна (Велесова Ночь)</span>, когда открываются Врата между мирами. Именно в эти три дня <span class="highlight">КОЛЛЕКТИВНОЕ ОБЩЕНАРОДНОЕ ВОЛЕИЗЪЯВЛЕНИЕ</span> имеет силу и власть отправить их обратно в потусторонний мир на расщепление до первоэлементов.
             </p>
         </div>
 
@@ -672,35 +672,35 @@
     </div>
 <div class="floating-symbols"></div>
 <script>
-// Данные галереи
+// Данные галереи с реальными изображениями
 const galleryData = [
     {
         src: "image (1).jpg",
-        alt: ""
+        alt: "Сакральный символ 1"
     },
     {
-        src: "image (2).jpg",
-        alt: ""
+        src: "image (2).jpg", 
+        alt: "Сакральный символ 2"
     },
     {
         src: "image (3).jpg",
-        alt: ""
+        alt: "Сакральный символ 3"
     },
     {
         src: "image (4).jpg",
-        alt: ""
+        alt: "Сакральный символ 4"
     },
     {
         src: "image (5).jpg",
-        alt: ""
+        alt: "Сакральный символ 5"
     },
     {
         src: "image (6).jpg",
-        alt: ""
+        alt: "Сакральный символ 6"
     },
     {
         src: "image (7).jpg",
-        alt: ""
+        alt: "Сакральный символ 7"
     }
 ];
 
@@ -723,4 +723,104 @@ function initGallery() {
     }
     
     // Создаем строки
-    for (let i = 0; i < galleryData.length; i += itemsPer
+    for (let i = 0; i < galleryData.length; i += itemsPerRow) {
+        const row = document.createElement('div');
+        row.className = 'gallery-row';
+        
+        // Добавляем элементы в текущую строку
+        for (let j = 0; j < itemsPerRow && i + j < galleryData.length; j++) {
+            const item = galleryData[i + j];
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            
+            galleryItem.onclick = () => openModal(i + j);
+            
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = item.alt;
+            img.loading = 'lazy';
+            
+            galleryItem.appendChild(img);
+            row.appendChild(galleryItem);
+        }
+        
+        galleryGrid.appendChild(row);
+    }
+}
+
+// Открытие модального окна
+function openModal(index) {
+    currentIndex = index;
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const counter = document.getElementById('imageCounter');
+    
+    modalImage.src = galleryData[currentIndex].src;
+    modalImage.alt = galleryData[currentIndex].alt;
+    counter.textContent = `${currentIndex + 1} / ${galleryData.length}`;
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    document.addEventListener('keydown', handleKeyPress);
+}
+
+// Навигация по изображениям
+function navigateImages(direction) {
+    currentIndex += direction;
+    
+    if (currentIndex < 0) {
+        currentIndex = galleryData.length - 1;
+    } else if (currentIndex >= galleryData.length) {
+        currentIndex = 0;
+    }
+    
+    const modalImage = document.getElementById('modalImage');
+    const counter = document.getElementById('imageCounter');
+    
+    modalImage.src = galleryData[currentIndex].src;
+    modalImage.alt = galleryData[currentIndex].alt;
+    counter.textContent = `${currentIndex + 1} / ${galleryData.length}`;
+}
+
+// Закрытие модального окна
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    
+    document.removeEventListener('keydown', handleKeyPress);
+}
+
+// Обработка нажатий клавиш
+function handleKeyPress(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    } else if (event.key === 'ArrowRight') {
+        navigateImages(1);
+    } else if (event.key === 'ArrowLeft') {
+        navigateImages(-1);
+    }
+}
+
+// Закрытие по клику на overlay
+document.getElementById('imageModal').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeModal();
+    }
+});
+
+// Пересоздание галереи при изменении размера окна
+window.addEventListener('resize', function() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryGrid.innerHTML = '';
+    initGallery();
+});
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', initGallery);
+</script>
+<script src="script.js"></script>
+<script src="navigation.js"></script>
+</body>
+</html>
