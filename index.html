@@ -40,7 +40,6 @@
     justify-content: center;
     gap: 1.5rem;
     width: 100%;
-    flex-wrap: wrap;
 }
 
 .gallery-item {
@@ -665,7 +664,18 @@ let currentIndex = 0;
 // Инициализация галереи с группировкой по строкам
 function initGallery() {
     const galleryGrid = document.getElementById('galleryGrid');
-    const itemsPerRow = window.innerWidth > 1200 ? 4 : window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 2;
+    
+    // Определяем количество элементов в строке в зависимости от ширины экрана
+    let itemsPerRow;
+    if (window.innerWidth > 1200) {
+        itemsPerRow = 4;
+    } else if (window.innerWidth > 768) {
+        itemsPerRow = 3;
+    } else if (window.innerWidth > 480) {
+        itemsPerRow = 2;
+    } else {
+        itemsPerRow = 2;
+    }
     
     // Создаем строки
     for (let i = 0; i < galleryData.length; i += itemsPerRow) {
