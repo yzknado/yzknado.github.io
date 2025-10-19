@@ -12,6 +12,9 @@
     max-width: 1000px;
     margin: 3rem auto;
     padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .gallery-title {
@@ -20,6 +23,7 @@
     font-size: 2rem;
     margin-bottom: 2rem;
     text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+    width: 100%;
 }
 
 .gallery-grid {
@@ -29,12 +33,15 @@
     justify-content: center;
     align-items: center;
     margin: 2rem 0;
+    width: 100%;
+    max-width: 900px;
+    justify-items: center;
 }
 
 .gallery-item {
     position: relative;
-    width: 100%;
-    aspect-ratio: 1/1;
+    width: 150px;
+    height: 150px;
     border-radius: 12px;
     border: 2px solid #40E0D0;
     box-shadow: 0 0 15px rgba(64, 224, 208, 0.3);
@@ -229,6 +236,12 @@
     .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 1rem;
+        max-width: 600px;
+    }
+    
+    .gallery-item {
+        width: 120px;
+        height: 120px;
     }
     
     .modal-content {
@@ -267,6 +280,12 @@
     .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 0.8rem;
+        max-width: 400px;
+    }
+    
+    .gallery-item {
+        width: 100px;
+        height: 100px;
     }
     
     .modal-content {
@@ -306,6 +325,16 @@
 }
 
 @media (max-width: 360px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        max-width: 300px;
+    }
+    
+    .gallery-item {
+        width: 80px;
+        height: 80px;
+    }
+    
     .modal-image-wrapper,
     #modalImage {
         min-height: 120px;
