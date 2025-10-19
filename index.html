@@ -102,17 +102,23 @@
 
 .modal-image-wrapper {
     position: relative;
-    max-height: 70vh;
-    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    
+    /* Ограничения по размеру */
+    min-height: 300px;
+    max-height: 70vh;
+    max-width: 90vw;
 }
 
 #modalImage {
+    /* Ограничения по размеру изображения */
+    min-height: 300px;
     max-height: 70vh;
-    max-width: 100%;
+    max-width: 90vw;
+    
     height: auto;
     width: auto;
     border-radius: 15px;
@@ -203,6 +209,13 @@
     .nav-next {
         right: -60px;
     }
+    
+    .modal-image-wrapper,
+    #modalImage {
+        min-height: 250px;
+        max-height: 65vh;
+        max-width: 85vw;
+    }
 }
 
 @media (max-width: 768px) {
@@ -230,6 +243,13 @@
     
     .nav-next {
         right: -50px;
+    }
+    
+    .modal-image-wrapper,
+    #modalImage {
+        min-height: 200px;
+        max-height: 60vh;
+        max-width: 80vw;
     }
 }
 
@@ -262,6 +282,22 @@
     
     .gallery-title {
         font-size: 1.5rem;
+    }
+    
+    .modal-image-wrapper,
+    #modalImage {
+        min-height: 150px;
+        max-height: 55vh;
+        max-width: 75vw;
+    }
+}
+
+@media (max-width: 360px) {
+    .modal-image-wrapper,
+    #modalImage {
+        min-height: 120px;
+        max-height: 50vh;
+        max-width: 70vw;
     }
 }
 </style>
