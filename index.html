@@ -27,15 +27,20 @@
 }
 
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
-    justify-content: center;
-    align-items: start; /* Изменено с center на start */
     margin: 2rem 0;
     width: 100%;
-    max-width: 900px;
-    justify-items: center;
+}
+
+.gallery-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .gallery-item {
@@ -49,11 +54,7 @@
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-/* Первая миниатюра - выравнивание по верху */
-.gallery-item:first-child {
-    align-self: start;
+    flex-shrink: 0;
 }
 
 .gallery-item img {
@@ -239,9 +240,11 @@
 
 @media (max-width: 768px) {
     .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 1rem;
-        max-width: 600px;
+    }
+    
+    .gallery-row {
+        gap: 1rem;
     }
     
     .gallery-item {
@@ -283,9 +286,11 @@
 
 @media (max-width: 480px) {
     .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 0.8rem;
-        max-width: 400px;
+    }
+    
+    .gallery-row {
+        gap: 0.8rem;
     }
     
     .gallery-item {
@@ -330,11 +335,6 @@
 }
 
 @media (max-width: 360px) {
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-        max-width: 300px;
-    }
-    
     .gallery-item {
         width: 80px;
         height: 80px;
@@ -526,7 +526,7 @@
             </p>
             
             <p class="text">
-                В силу этого и возникла необходимость <span class="highlight">ВЫРАЗИТЬ КОЛЛЕКТИВНУЮ ВОЛЮ ВСЕГО НАРОДА</span> на обнуление всех паразитарных структур. И наилучшее время для этого - <span class="highlight">Праздник Самайна (Велесова Ночь)</span>, когда открываются Врата между мирами. Именно в эти три дня <span class="highlight">КОЛЛЕКТИВНОЕ ОБЩЕНАРОДНОЕ ВОЛЕИЗЪЯВЛЕНИЕ</span> имеет силу и власть отправить их обратно в потусторонний мир на расщепление до первоэлементов.
+                В силу этого и возникла необходимость <span class="highlight">ВЫРАЗИТЬ КОЛЛЕКТИВНУЮ ВОЛЮ ВСЕГО НАРОДА</span> на обнуление всех паразитарных структур. И наилучшее время для этого - <span class="highlight">Праздник Самайна (Велесова Ночь)</span>, когда открываются Врата между мирами. Именно в эти три дни <span class="highlight">КОЛЛЕКТИВНОЕ ОБЩЕНАРОДНОЕ ВОЛЕИЗЪЯВЛЕНИЕ</span> имеет силу и власть отправить их обратно в потусторонний мир на расщепление до первоэлементов.
             </p>
         </div>
 
@@ -604,7 +604,7 @@
                 <h2 class="gallery-title">Сакральные изображения</h2>
                 
                 <div class="gallery-grid" id="galleryGrid">
-                    <!-- Элементы галереи будут добавлены через JavaScript -->
+                    <!-- Строки будут созданы через JavaScript -->
                 </div>
             </div>
             
@@ -662,26 +662,34 @@ const galleryData = [
 
 let currentIndex = 0;
 
-// Инициализация галереи
+// Инициализация галереи с группировкой по строкам
 function initGallery() {
     const galleryGrid = document.getElementById('galleryGrid');
+    const itemsPerRow = window.innerWidth > 1200 ? 4 : window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 2;
     
-    galleryData.forEach((item, index) => {
-        const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item';
-        if (index === 0) {
-            galleryItem.style.alignSelf = 'start';
+    // Создаем строки
+    for (let i = 0; i < galleryData.length; i += itemsPerRow) {
+        const row = document.createElement('div');
+        row.className = 'gallery-row';
+        
+        // Добавляем элементы в текущую строку
+        for (let j = 0; j < itemsPerRow && i + j < galleryData.length; j++) {
+            const item = galleryData[i + j];
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.onclick = () => openModal(i + j);
+            
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = item.alt;
+            img.loading = 'lazy';
+            
+            galleryItem.appendChild(img);
+            row.appendChild(galleryItem);
         }
-        galleryItem.onclick = () => openModal(index);
         
-        const img = document.createElement('img');
-        img.src = item.src;
-        img.alt = item.alt;
-        img.loading = 'lazy';
-        
-        galleryItem.appendChild(img);
-        galleryGrid.appendChild(galleryItem);
-    });
+        galleryGrid.appendChild(row);
+    }
 }
 
 // Открытие модального окна
@@ -744,6 +752,13 @@ document.getElementById('imageModal').addEventListener('click', function(event) 
     if (event.target === this) {
         closeModal();
     }
+});
+
+// Пересоздание галереи при изменении размера окна
+window.addEventListener('resize', function() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryGrid.innerHTML = '';
+    initGallery();
 });
 
 // Инициализация при загрузке страницы
